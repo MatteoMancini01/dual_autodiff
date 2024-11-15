@@ -6,8 +6,9 @@ authors = ["Matteo Mancini <mem97@cam.ac.uk>"]
 license = "Unilicense"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.12.3"
 #Once the full code is ready add any dependencies here, e.g., numpy = "^1.21.0"
+numpy = "^1.26.4"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2"
