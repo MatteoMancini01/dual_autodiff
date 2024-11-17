@@ -21,6 +21,11 @@ class Dual:
             real_part = self.real + other.real
             dual_part = self.dual + other.dual
             return Dual(real_part, dual_part)
+            # Adding a real number to a dual
+        elif isinstance(other,(int, float)):
+            real = self.real + other
+            dual = self.dual
+            return Dual(real, dual)
         else:
             raise TypeError("Addition is only supported between Dual numbers.")
 
@@ -30,6 +35,11 @@ class Dual:
             # Subtracting real and dual parts separately
             real = self.real - other.real
             dual = self.dual - other.dual
+            return Dual(real, dual)
+            # Subtraction between dual and real numbers
+        elif isinstance(other,(int, float)):
+            real = self.real - other
+            dual = self.dual
             return Dual(real, dual)
         else:
             raise TypeError("Subtraction is only supported between Dual numbers.")
@@ -41,6 +51,11 @@ class Dual:
             # Multiplication between dual numbers
             real = self.real*other.real
             dual = self.real*other.dual + self.dual*other.real
+            return Dual(real, dual)
+            # Multiplication between dual and real numbers
+        elif isinstance(other,(int, float)):
+            real = self.real*other
+            dual = self.dual*other
             return Dual(real, dual)
         else:
             raise TypeError("Multiplication is only supported between Dual numbers.")
@@ -61,6 +76,13 @@ class Dual:
             real = (self.real)/(other.real) # a*c/c**2 = a/c
             dual = (other.real*self.dual - self.real*other.dual)/(other.real**2) # (c*b - a*d)/c**2
             return Dual(real, dual)
+            # Dividing a dual number by a real number
+        elif isinstance(other,(int, float)):
+            if other==0:
+                raise ZeroDivisionError("Division by zero is undefined")
+            real = self.real/other
+            dual = self.dual/other
+            return Dual(real, dual)
         else:
             raise TypeError("Dicision is only supported between dual numbers")
     
@@ -71,8 +93,74 @@ class Dual:
             real = (self.real)//(other.real) # a*c//c**2 = a//c
             dual = (other.real*self.dual - self.real*other.dual)//(other.real**2) # (c*b - a*d)//c**2
             return Dual(real, dual)
+        # Division betweeen dual and real numbers
+        elif isinstance(other,(int, float)):
+            if other==0:
+                raise ZeroDivisionError("Division by zero is undefined")
+            real = self.real//other
+            dual = self.dual//other
         else:
             raise TypeError("Floor Division is only supported between dual numbers")
+
+# Implementing reverse addition, subtraction, multiplication and division
+    # Implementing Addition
+    def __radd__(self, other):
+
+        if isinstance(other,(int, float)):
+            real = other + self.real 
+            dual = self.dual
+            return Dual(real, dual)
+        else:
+            raise TypeError("Reversed addition is only supported with real numbers.")
+    
+    # Implementing Subtraction
+    def __rsub__(self,other):
+
+        # Subtraction between dual and real numbers
+        if isinstance(other,(int, float)):
+            real = other - self.real 
+            dual = self.dual
+            return Dual(real, dual)
+        else:
+            raise TypeError("Reversed subtraction is only supported with real numbers.")
+    
+    
+    # Implementing Multiplication
+    def __rmul__(self,other):
+
+        # Multiplication between real and dual numbers
+        if isinstance(other,(int, float)):
+            real = other*self.real
+            dual = other*self.dual
+            return Dual(real, dual)
+        else:
+            raise TypeError("Reversed multiplication is only supported with real numbers")
+    
+        
+    # Implementing Standard Division
+    def __rtruediv__(self, other): 
+        if isinstance(other, (int, float)):
+            # Division of a real number by a dual number 
+            if self.real==0:
+                raise ZeroDivisionError("Division by zero is undefined") 
+            real = other / self.real  # n / a
+            dual = (-other * self.dual) / (self.real**2)  # -n * (ε * b) / a^2
+            return Dual(real, dual) 
+       
+        else: 
+            raise TypeError("Reversed division is only supported with real numbers.")
+    
+    def __rfloordiv__(self, other): 
+        if isinstance(other, (int, float)): 
+            # Division of a real number by a dual number 
+            if self.real==0:
+                raise ZeroDivisionError("Division by zero is undefined") 
+            real = other // self.real  # n / a
+            dual = (-other * self.dual) // (self.real**2)  # -n * (ε * b) / a^2
+            return Dual(real, dual) 
+       
+        else: 
+            raise TypeError("Reversed division is only supported with real numbers.")
 
 
     # Adding some of the esseintial functions
