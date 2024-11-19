@@ -62,10 +62,17 @@ class Dual:
     
     # Implementing Power
     def __pow__(self,n):
+
         if isinstance(n, (int, float)): # enabling integers and decimals as inputs
             real = self.real**n
             dual = n*(self.real**(n-1))*self.dual
             return Dual(real, dual)
+
+        elif isinstance(n, Dual):
+            real = self.real**n.dual
+            dual = (self.real**n.dual)*((n.real*self.dual)/self.real + np.log(self.real)*n.dual)
+            return Dual(real, dual)
+
         else:
             raise TypeError("Power has to be an integer or a float")
 
@@ -137,6 +144,13 @@ class Dual:
             raise TypeError("Reversed multiplication is only supported with real numbers")
     
         
+    def __rpow__(self,n):
+        if isinstance(n, (int, float)): # enabling integers and decimals as inputs
+            real = n**self.real
+            dual = (n**self.real)*(np.log(n)*self.dual)
+            return Dual(real, dual)
+
+
     # Implementing Standard Division
     def __rtruediv__(self, other): 
         if isinstance(other, (int, float)):
