@@ -23,9 +23,9 @@ class num_diff:
         Implementing first order numerical differenitaion forward difference.
         '''
         if self.h==0:
-        '''
-        h cannot be zero or negative, otherwise one gets an undefined answer, hence:
-        '''
+            '''
+            h cannot be zero or negative, otherwise one gets an undefined answer, hence:
+            '''
             raise ZeroDivisionError('Division by zero is undefined')
         elif self.h<0:
             raise TypeError('Step size input must be a positive real number')
