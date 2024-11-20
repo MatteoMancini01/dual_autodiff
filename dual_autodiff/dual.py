@@ -8,9 +8,9 @@ import numpy as np
 class Dual:
 
     def __init__(self, a, b):
-    '''
-    A class designed for algebraic computation of dual numbers, and automatic differentiation with dual numbers.
-    '''
+        '''
+        A class designed for algebraic computation of dual numbers, and automatic differentiation with dual numbers.
+        '''
         self.real = a
         self.dual = b
         
@@ -80,9 +80,9 @@ class Dual:
     
     
     def __mul__(self,other):
-    '''
-    Implementing multiplication.
-    '''
+        '''
+        Implementing multiplication.
+        '''
         if isinstance(other, Dual):
             '''
             Multiplication between dual numbers, in general Dual(a,b)*Dual(c,d) = Dual(a*c, a*d + b*c)
@@ -155,10 +155,10 @@ class Dual:
             Division of a dual number by a real number.
             '''
             if other==0:
-            '''
-            If division by zero occurs, raise ZeroDivisionError.
-            '''
-                raise ZeroDivisionError("Division by zero is undefined")
+                '''
+                If division by zero occurs, raise ZeroDivisionError.
+                '''
+            raise ZeroDivisionError("Division by zero is undefined")
             '''
             Compotation; Dual(a,b)/n = Dual(a/n,b/n)
             '''
