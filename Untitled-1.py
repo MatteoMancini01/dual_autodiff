@@ -22,12 +22,6 @@ class Dual:
         '''
         return f"Dual(real = {self.real}, dual = {self.dual})"
     
-    def __neg__(self):
-        '''
-        Changning the sign of a dual number to negative -(a+εb) = -a-εb
-        '''
-        return Dual(-self.real, -self.dual)
-    
     '''
     Implementing Addition, Subtraction, Multiplication, Division and Power Operators.
     ''' 
@@ -129,10 +123,10 @@ class Dual:
             '''
             Dual number to evaluated to the power of a dual number:
             This is evaluated as,
-            Dual(a,b)**Dual(c,d) = (a**c)*Dual(1, c*b/a + np.log(a)*d) see report for the full derivation.
+            Dual(a,b)**Dual(c,d) = (a**c)*Dual(1, c*b/a**2 + np.log(a)*d) see report for the full derivation.
             '''
-            real = self.real**n.real
-            dual = (self.real**n.real)*((n.real*self.dual)/self.real + np.log(self.real)*n.dual)
+            real = self.real**n.dual
+            dual = (self.real**n.dual)*((n.real*self.dual)/self.real + np.log(self.real)*n.dual)
             return Dual(real, dual)
 
         else:
@@ -164,7 +158,7 @@ class Dual:
                 '''
                 If division by zero occurs, raise ZeroDivisionError.
                 '''
-                raise ZeroDivisionError("Division by zero is undefined")
+            raise ZeroDivisionError("Division by zero is undefined")
             '''
             Compotation; Dual(a,b)/n = Dual(a/n,b/n)
             '''
@@ -199,7 +193,6 @@ class Dual:
                 raise ZeroDivisionError("Division by zero is undefined")
             real = self.real//other
             dual = self.dual//other
-            return Dual(real, dual)
         else:
             raise TypeError("Floor Division is only supported between dual numbers")
 
@@ -393,3 +386,75 @@ class Dual:
         real = np.tanh(self.real)
         dual = self.dual/(np.cosh(self.real))**2
         return Dual(real, dual)
+    
+#%%
+'''
+The following class is designed to perform numerical differentiation.
+'''
+class num_diff:
+    '''
+    In this class there are four different functions, first order numericall differentiation with
+    forward, central and backward difference and one function to compute second order derivative numerically.
+    '''
+    def __init__(self, f, x, h):
+        '''
+        Initialising input parameters;
+        f is the input function we aim to differentiate,
+        x is/are the value/s at which the function is differentiated,
+        h is the step size required for numerical differentiation. In general h<<0 provides accurate results, but if h is too small
+        we lose rather than gaining accuracy.
+        '''
+        self.f = f
+        self.x = x
+        self.h = h
+
+    def first_forward(self):
+        '''
+        Implementing first order numerical differenitaion forward difference.
+        '''
+        if self.h==0:
+            '''
+            h cannot be zero or negative, otherwise one gets an undefined answer, hence:
+            '''
+            raise ZeroDivisionError('Division by zero is undefined')
+        elif self.h<0:
+            raise TypeError('Step size input must be a positive real number')
+        else:
+            f_dash = (self.f(self.x + self.h) - self.f(self.x))/self.h
+            return f_dash
+    
+    def first_backwards(self):
+        '''
+        Implementing first order numerical differentiation backward difference.
+        '''
+        if self.h==0:
+            raise ZeroDivisionError('Division by zero is undefined')
+        elif self.h<0:
+            raise TypeError('Step size input must be a positive real number')
+        else: 
+            f_dash = (self.f(self.x) - self.f(self.x-self.h)) / self.h
+            return f_dash
+    
+    def first_central(self):
+        '''
+        Implementing fisrt order numerical differentiation central difference.
+        '''
+        if self.h==0:
+            raise ZeroDivisionError('Division by zero is undefined')
+        elif self.h<0:
+            raise TypeError('Step size input must be a positive real number')
+        else: 
+            f_dash = (self.f(self.x + self.h) - self.f(self.x - self.h))/(2*self.h)
+            return f_dash
+    
+    def second_order(self):
+        '''
+        Implementing second order numerical differentiation.
+        '''
+        if self.h==0:
+            raise ZeroDivisionError('Division by zero is undefined')
+        elif self.h<0:
+            raise TypeError('Step size input must be a positive real number')
+        else: 
+            f_double_dash = (self.f(self.x + self.h) - 2*self.f(self.x) + self.f(self.x - self.h))/self.h**2 
+            return f_double_dash
