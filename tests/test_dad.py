@@ -2,12 +2,18 @@ from dual_autodiff import Dual
 import numpy as np
 
 '''
-Here it is not required to define a class for our test.py file,
-the reason why I am using a class, is because I want to add TestDual to __init__.py, so that the user can run tests on
-Jupyter Notebook.
+Test For Dual Automatic Differentiation.
+
+This python files allows us to test all the functions within the Dual class.
+
+Using a class for our test python file, allows us to add TestDual to __init__.py, so that the user can run tests on
+Jupyter Notebook direclty.
 '''
 
 class TestDual: 
+    '''
+    As methioned already, TestDual calss contains a series of test funtions for the Dual class.
+    '''
     def test_dual(self):
         '''
         Testing if the Dual class is working correctly, here x is a dual number.
@@ -440,3 +446,64 @@ class TestDual:
         '''
 
         assert round(f_x.dual,5)==round(analytical(3),5)
+
+
+    
+    def test_partial_der(self):
+        '''
+        In the Class dual, there is a function designed to compute partila derivatives using dual numbers
+        namely partial_derivative.
+
+        In the Jupyter NoteBook, we have defined the function fj(ai + εbi) = f(ai) + εbj δf(ai)δxj.
+
+        Lets test the partial_derivative, with f(x,y,z) = x*y + x*z.cos() + y.sin() evaluated at x,y,z=1,-1,2
+        '''
+
+        
+        def fj(x,y,z):
+            '''
+            Defining the function we want to differentiate
+            ''' 
+            return x*y + x*z.cos() + y.sin()    
+        
+        d = Dual(1,0) # this will be used to call partial detivatives
+        x,y,z=Dual(1,0),Dual(-1,0),Dual(2,0) # points at which we want to evaluate the derivative 
+        '''
+        Patial deriavtives evaluated at x=1, y=-1 and z=2, with respeact to each variable
+        '''
+        x_partial = d.partial_derivative(0,fj,x,y,z)
+        y_partial = d.partial_derivative(1,fj,x,y,z)
+        z_partial = d.partial_derivative(2,fj,x,y,z)
+
+        '''
+        Defing our set of analytical derivatives to compare results to.
+        '''
+        def analytical_x(y,z):
+            '''
+            analytical partial derivative with respect to x
+            '''
+            return y + np.cos(z)
+        
+        def analytical_y(x,y):
+            '''
+            analytical partial derivative with respect to y
+            '''
+            return x + np.cos(y)
+        
+        def analytical_z(x,z):
+            '''
+            analytical partial derivative with respect to z
+            '''
+            return -x*np.sin(z)
+        
+        '''
+        Testing
+        '''
+
+        assert x_partial==analytical_x(y.real,z.real)
+        assert y_partial==analytical_y(x.real,y.real)
+        assert z_partial==analytical_z(x.real,z.real)
+
+
+
+
