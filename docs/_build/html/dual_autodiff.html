@@ -1,0 +1,589 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Automatic Differentiation Using Dual Numbers &mdash; Automatic Differentiation with Dual Numbers Project beta documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
+      <link rel="stylesheet" type="text/css" href="_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f0d2c090"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Automatic Differentiation with Dual Numbers Project
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Automatic Differentiation Using Dual Numbers</a><ul>
+<li><a class="reference internal" href="#Introduction">Introduction</a></li>
+<li><a class="reference internal" href="#Background">Background</a><ul>
+<li><a class="reference internal" href="#Dual-Numbers">Dual Numbers</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Set-Up">Set Up</a></li>
+<li><a class="reference internal" href="#Automatic-Differentiation-In-1D">Automatic Differentiation In 1D</a></li>
+<li><a class="reference internal" href="#Automatic-Differentiation-In-Higher-Dimensions">Automatic Differentiation In Higher Dimensions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Automatic Differentiation with Dual Numbers Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Automatic Differentiation Using Dual Numbers</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/dual_autodiff.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Automatic-Differentiation-Using-Dual-Numbers">
+<h1>Automatic Differentiation Using Dual Numbers<a class="headerlink" href="#Automatic-Differentiation-Using-Dual-Numbers" title="Link to this heading"></a></h1>
+<section id="Introduction">
+<h2>Introduction<a class="headerlink" href="#Introduction" title="Link to this heading"></a></h2>
+<p>This Jupyter Notebook is designed as a guide to illustrate how to use the dual_autodiff package, a Python package created to perform automatic differentiations using dual numbers. Firstly, a brief introduction on the concepts of dual numbers and automatic differentiations, then some examples on how to use the package. The package contains all trigonometric and hyperbolic functions, furthermore the exponential and logarithmic functions. The only dependency in the package is numpy, for more
+infromation on numpy see <a class="reference external" href="https://numpy.org/">link</a>, make sure all the packages required in dual_autodiff are also installed</p>
+<p>TO-DO: - KEEP AN EYE ON THE RED TEXTS (NEED MODIFICATION) - add a set up section that expains how to create a virtual enviroment and install the package using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">.</span></code> - ADD ANOTHER CLASS CALLED DERIVATIVE TO COMPUTE THE NUMERICAL DERIVATIVE (maybe not required in numpy you have gradient which computes the derivative, scipy.misc has derivative and more) - ADD A PLOTTING OPTION TO CLASS DUAL SO THAT IT COMPUTES THE DUAL WITH A RANGE OF VALUES INSTEAD OF SIGLE OPINTS, E.G.
+<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">np.linspace()</span></code> as input</p>
+</section>
+<section id="Background">
+<h2>Background<a class="headerlink" href="#Background" title="Link to this heading"></a></h2>
+<section id="Dual-Numbers">
+<h3>Dual Numbers<a class="headerlink" href="#Dual-Numbers" title="Link to this heading"></a></h3>
+</section>
+</section>
+<section id="Set-Up">
+<h2>Set Up<a class="headerlink" href="#Set-Up" title="Link to this heading"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">Dual</span>
+<span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">NumDiff</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dual_autodiff</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Dual(real = 2, dual = 1)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">sin</span><span class="p">()</span><span class="o">.</span><span class="n">dual</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+-0.4161468365471424
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># choose 1 for dual so we obtain the derivative</span>
+<span class="n">f_x</span>  <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">sin</span><span class="p">()</span><span class="o">.</span><span class="n">log</span><span class="p">()</span> <span class="o">+</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">.</span><span class="n">cos</span><span class="p">()</span> <span class="c1"># log(sin(x)) + x**2cos(x)</span>
+
+<span class="n">derivative_at_x_real</span> <span class="o">=</span> <span class="n">f_x</span><span class="o">.</span><span class="n">dual</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">derivative_at_x_real</span><span class="p">)</span>
+<br/><br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+-1.9612372705533612
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">NumDiff</span> <span class="k">as</span> <span class="n">nd</span> <span class="c1"># numerical differentiation</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">y_der</span> <span class="o">=</span> <span class="n">nd</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">dy</span> <span class="o">=</span> <span class="n">y_der</span><span class="o">.</span><span class="n">first_central</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+4.000000000000001
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK 5</span>
+
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interactive</span>
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">plot_with_parameters</span><span class="p">(</span><span class="n">h</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">+</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">df_true</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="c1"># Dual derivative</span>
+    <span class="n">x_space</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="n">x_space</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># set dual part equal to 1</span>
+    <span class="n">f_dual</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">sin</span><span class="p">()</span><span class="o">.</span><span class="n">log</span><span class="p">()</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="o">.</span><span class="n">cos</span><span class="p">()</span>
+    <span class="n">df_dual</span> <span class="o">=</span> <span class="n">f_dual</span><span class="o">.</span><span class="n">dual</span> <span class="c1"># take the dual part of f to find its derivative at x.real=1.5</span>
+
+<span class="c1"># Analytical derivative</span>
+    <span class="n">true_der</span> <span class="o">=</span> <span class="n">df_true</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
+
+    <span class="c1"># Calculate f(t) for these parameters</span>
+    <span class="n">ndf</span> <span class="o">=</span> <span class="n">NumDiff</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="c1"># x=1.5</span>
+    <span class="n">ndf_for</span> <span class="o">=</span> <span class="n">ndf</span><span class="o">.</span><span class="n">first_forward</span><span class="p">()</span> <span class="c1"># forward difference</span>
+    <span class="n">ndf_cen</span> <span class="o">=</span> <span class="n">ndf</span><span class="o">.</span><span class="n">first_central</span><span class="p">()</span> <span class="c1"># central difference</span>
+    <span class="n">ndf_bac</span> <span class="o">=</span> <span class="n">ndf</span><span class="o">.</span><span class="n">first_backwards</span><span class="p">()</span> <span class="c1"># backward difference</span>
+
+    <span class="c1"># Plot the function</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_space</span><span class="p">,</span> <span class="n">true_der</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;First Order Analytical&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_space</span><span class="p">,</span> <span class="n">df_dual</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Automatic Differentiation&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;:&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_space</span><span class="p">,</span> <span class="n">ndf_cen</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;First Order Numerical Central&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_space</span><span class="p">,</span> <span class="n">ndf_for</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;First Order Numerical Forward&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_space</span><span class="p">,</span> <span class="n">ndf_bac</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;First Order Numerical Backward&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\frac</span><span class="si">{df}{dx}</span><span class="s1"> = cot(x) +  2xcos(x) - x^2sin(x)$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Numerical vs Analytical&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Create interactive widget</span>
+<span class="n">interactive_plot</span> <span class="o">=</span> <span class="n">interactive</span><span class="p">(</span>
+    <span class="n">plot_with_parameters</span><span class="p">,</span>
+    <span class="n">h</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">),</span> <span class="nb">max</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">0.1</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">interactive_plot</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "385a162aaba14516b46eb0136b23b6e4", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">Dual</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">y</span><span class="o">=</span><span class="n">Dual</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">n</span><span class="o">=</span><span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">//</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">((((</span><span class="mi">8</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="o">-</span><span class="mi">2</span><span class="p">))</span> <span class="o">//</span> <span class="p">(</span><span class="mi">4</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">//</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Dual(real = 0, dual = 1)
+2
+Dual(real = 1, dual = 3)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">f_x</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">tanh</span><span class="p">()</span><span class="o">.</span><span class="n">cosh</span><span class="p">())</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">x</span><span class="o">.</span><span class="n">sinh</span><span class="p">()</span><span class="o">.</span><span class="n">sin</span><span class="p">()</span><span class="o">.</span><span class="n">exp</span><span class="p">()</span><span class="o">.</span><span class="n">tan</span><span class="p">()</span> <span class="o">+</span> <span class="n">x</span><span class="o">.</span><span class="n">log</span><span class="p">()</span><span class="o">.</span><span class="n">cos</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f_x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Dual(real = 3.461624963063523, dual = -7.012115744346404)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tests</span> <span class="kn">import</span> <span class="n">TestDual</span>
+<span class="kn">from</span> <span class="nn">tests</span> <span class="kn">import</span> <span class="n">NumDiff</span>
+<span class="kn">import</span> <span class="nn">ipytest</span>
+
+<span class="n">TestDual</span><span class="p">,</span> <span class="n">NumDiff</span>
+<span class="n">ipytest</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-bold">======================================= test session starts ========================================</span>
+platform linux -- Python 3.12.3, pytest-8.3.3, pluggy-1.5.0
+rootdir: /root/Document/Python_Script/dual_autodiff
+configfile: pyproject.toml
+collected 19 items
+
+t_e1326bfc2f7c4f9da696a18f225b0c26.py <span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">                                    [100%]</span>
+
+<span class="ansi-green-fg">======================================== </span><span class="ansi-green-intense-fg ansi-bold">19 passed</span><span class="ansi-green-fg"> in 0.10s</span><span class="ansi-green-fg"> ========================================</span>
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;ExitCode.OK: 0&gt;
+</pre></div></div>
+</div>
+</section>
+<section id="Automatic-Differentiation-In-1D">
+<h2>Automatic Differentiation In 1D<a class="headerlink" href="#Automatic-Differentiation-In-1D" title="Link to this heading"></a></h2>
+<p>Add text here!</p>
+<p>For a function <span class="math notranslate nohighlight">\(f(x)\)</span>, whose domain are dual numbers, i.e. <span class="math notranslate nohighlight">\(a + \epsilon b\)</span>, where both <span class="math notranslate nohighlight">\(a,b \in \R\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[f(a + \epsilon b) = f(x)|_{x=a} + \epsilon b f'(x)|_{x=a}\]</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Automatic-Differentiation-In-Higher-Dimensions">
+<h2>Automatic Differentiation In Higher Dimensions<a class="headerlink" href="#Automatic-Differentiation-In-Higher-Dimensions" title="Link to this heading"></a></h2>
+<p>We have seen how automatic differentiation using dual numbers is utilised in one dimension, but can we extend this into higher dimensions? The answer is yes. One can compute first order partial derivatives with respect to each variable for a high dimensional function.</p>
+<p>Consider the function <span class="math notranslate nohighlight">\(f(\vec{x})\)</span>, where <span class="math notranslate nohighlight">\(\vec{x} = (x_1, x_2,...,x_n)^T\)</span>, whose domain <span class="math notranslate nohighlight">\(\vec{a} + \epsilon \vec{b}\)</span>, where <span class="math notranslate nohighlight">\(\vec{a} = (a_1, a_2,...,a_n)^T\)</span> and <span class="math notranslate nohighlight">\(\vec{b} = (b_1, b_2,...,b_n)^T\)</span>, then we can extend the one dimensional model to higher dimensions as follow:</p>
+<div class="math notranslate nohighlight">
+\[f(\vec{a} + \epsilon \vec{b}) = f(\vec{x})|_{\vec{x}=\vec{a}} + \epsilon \sum^n_{i=1} b_i \frac{\partial f(\vec{x})}{\partial x_i}|_{\vec{x} = \vec{a}}\]</div>
+<p>If we set all <span class="math notranslate nohighlight">\(b_i=1\)</span> then the dual part of <span class="math notranslate nohighlight">\(f(\vec{a} + \epsilon \vec{b})\)</span> will be the sum of partial derivatives evaluated at <span class="math notranslate nohighlight">\(\vec{x} = \vec{a}\)</span>, but what if one wants to perform the partial derivative with repsect to a single valriable? The answer this question rather simple, we need to elimina the unwanted partial derivatives.</p>
+<p>Let us define a new function <span class="math notranslate nohighlight">\(f_j(\vec{x})\)</span>, such that:</p>
+<div class="math notranslate nohighlight">
+\[f_j(\vec{a} + \epsilon \vec{b}) = f(\vec{x})|_{\vec{x}=\vec{a}} + \epsilon \sum^n_{i=1} \delta_{ij} b_i \frac{\partial f(\vec{x})}{\partial x_i}|_{\vec{x} = \vec{a}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\delta_{ij}\)</span> is the kronecker delta, such that;</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\delta_{ij} =
+\begin{cases}
+0 &amp; \text{when } i \neq j \\
+1 &amp; \text{when } i = j\\
+\end{cases}\end{split}\]</div>
+<p>And <span class="math notranslate nohighlight">\(\vec{b} = [1,1,1,...,1]^T\)</span>, <span class="math notranslate nohighlight">\(\vec{a}\)</span> is the collection of point where the partial derivative of <span class="math notranslate nohighlight">\(f(\vec{x})\)</span> is evaluated at. One can simplify the above equation into:</p>
+<div class="math notranslate nohighlight">
+\[f_j(\vec{a} + \epsilon \vec{b}) = f(\vec{x})|_{\vec{x}=\vec{a}} + \epsilon b_j \frac{\partial f(\vec{x})}{\partial x_j}|_{\vec{x} = \vec{a}}\]</div>
+<p>The index <span class="math notranslate nohighlight">\(j\)</span> is the albitrary choice of the variable we want to differentiate for, e.g. if one wants to compute the partial derivative of <span class="math notranslate nohighlight">\(f(\vec{x})\)</span> with respect to <span class="math notranslate nohighlight">\(x_2\)</span> then set <span class="math notranslate nohighlight">\(j=2\)</span>, here we will see how:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">Dual</span>
+
+<span class="k">def</span> <span class="nf">f1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span>
+
+<span class="n">dual</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span><span class="mi">3</span>
+
+<span class="n">partial</span> <span class="o">=</span> <span class="n">dual</span><span class="o">.</span><span class="n">partial_derivative</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">f1</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">partial</span><span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2
+</pre></div></div>
+</div>
+<p><span class="math notranslate nohighlight">\(\sech{a}\)</span> <span class="math notranslate nohighlight">\(sina\)</span> <span class="math notranslate nohighlight">\(e^{a}\)</span></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">Dual</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">exp_x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">tanh</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;tanh(x) = </span><span class="si">{</span><span class="n">exp_x</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+tanh(x) = Dual(real = 0.9640275800758169, dual = 0.4239049491189868)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">x</span><span class="o">*</span><span class="n">z</span><span class="o">.</span><span class="n">cos</span><span class="p">()</span> <span class="o">+</span> <span class="n">y</span><span class="o">.</span><span class="n">sin</span><span class="p">()</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="o">=</span><span class="n">Dual</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">Dual</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">Dual</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">x_partial</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">partial_derivative</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">f2</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+<span class="n">y_partial</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">partial_derivative</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">f2</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+<span class="n">z_partial</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">partial_derivative</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">f2</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Partial derivaive of f with respect to x, at x,y,z=1,-1,2 is </span><span class="si">{</span><span class="n">x_partial</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Partial derivaive of f with respect to y, at x,y,z=1,-1,2 is </span><span class="si">{</span><span class="n">y_partial</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Partial derivaive of f with respect to z, at x,y,z=1,-1,2 is </span><span class="si">{</span><span class="n">z_partial</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Partial derivaive of f with respect to x, at x,y,z=1,-1,2 is -1.4161468365471424
+Partial derivaive of f with respect to y, at x,y,z=1,-1,2 is 1.5403023058681398
+Partial derivaive of f with respect to z, at x,y,z=1,-1,2 is -0.9092974268256817
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">Dual</span>
+<span class="kn">import</span> <span class="nn">dual_autodiff</span> <span class="k">as</span> <span class="nn">df</span>
+
+<span class="k">def</span> <span class="nf">f1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span>
+
+<span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+
+<span class="n">df_dx</span> <span class="o">=</span> <span class="n">f1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_dx</span><span class="o">.</span><span class="n">dual</span><span class="p">)</span>
+<br/><br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+3
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">NumDiff</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">derivative</span> <span class="o">=</span> <span class="n">NumDiff</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="n">h</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">derivative</span><span class="o">.</span><span class="n">first_forward</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Forward difference of f(x) at the point x0 = </span><span class="si">{</span><span class="n">x0</span><span class="si">}</span><span class="s1">, with stepsize h = </span><span class="si">{</span><span class="n">h</span><span class="si">}</span><span class="s1">, is </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Forward difference of f(x) at the point x0 = 2, with stepsize h = 0.01, is 0.5987105016421079
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">derivative</span><span class="o">.</span><span class="n">first_backwards</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Backward difference of f(x) at the point x0 = </span><span class="si">{</span><span class="n">x0</span><span class="si">}</span><span class="s1">, with stepsize h = </span><span class="si">{</span><span class="n">h</span><span class="si">}</span><span class="s1">, is </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Backward difference of f(x) at the point x0 = 2, with stepsize h = 0.01, is 0.5892372009922209
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">derivative</span><span class="o">.</span><span class="n">first_central</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Central difference of f(x) at the point x0 = </span><span class="si">{</span><span class="n">x0</span><span class="si">}</span><span class="s1">, with stepsize h = </span><span class="si">{</span><span class="n">h</span><span class="si">}</span><span class="s1">, is </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Central difference of f(x) at the point x0 = 2, with stepsize h = 0.01, is 0.5939738513171644
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">derivative</span><span class="o">.</span><span class="n">second_order</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Second derivative of f(x) at the point x0 = </span><span class="si">{</span><span class="n">x0</span><span class="si">}</span><span class="s1">, with stepsize h = </span><span class="si">{</span><span class="n">h</span><span class="si">}</span><span class="s1">, is </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;need to update&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Second derivative of f(x) at the point x0 = 2, with stepsize h = 0.01, is 0.9473300649887051
+need to update
+</pre></div></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Matteo Mancini.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
