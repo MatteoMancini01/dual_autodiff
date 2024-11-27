@@ -45,7 +45,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 3,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -55,7 +55,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 32,
+   "execution_count": 4,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -64,7 +64,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 33,
+   "execution_count": 5,
    "metadata": {},
    "outputs": [
     {
@@ -82,7 +82,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 34,
+   "execution_count": 6,
    "metadata": {},
    "outputs": [
     {
@@ -91,7 +91,7 @@
        "-0.4161468365471424"
       ]
      },
-     "execution_count": 34,
+     "execution_count": 6,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -102,7 +102,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 35,
+   "execution_count": 7,
    "metadata": {},
    "outputs": [
     {
@@ -124,7 +124,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 8,
    "metadata": {},
    "outputs": [
     {
@@ -153,13 +153,13 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 9,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "application/vnd.jupyter.widget-view+json": {
-       "model_id": "385a162aaba14516b46eb0136b23b6e4",
+       "model_id": "2d569415dee34d24b58ec3308633e309",
        "version_major": 2,
        "version_minor": 0
       },
@@ -178,6 +178,7 @@
     "import ipywidgets as widgets\n",
     "import matplotlib.pyplot as plt\n",
     "import numpy as np\n",
+    "from dual_autodiff import NumDiff\n",
     "\n",
     "def plot_with_parameters(h): \n",
     "\n",
@@ -200,7 +201,7 @@
     "    ndf = NumDiff(f, x.real, h) # x=1.5 \n",
     "    ndf_for = ndf.first_forward() # forward difference\n",
     "    ndf_cen = ndf.first_central() # central difference\n",
-    "    ndf_bac = ndf.first_backwards() # backward difference\n",
+    "    ndf_bac = ndf.first_backward() # backward difference\n",
     "\n",
     "    # Plot the function\n",
     "    plt.figure(figsize=(10, 6))\n",
@@ -226,7 +227,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 27,
+   "execution_count": 10,
    "metadata": {},
    "outputs": [
     {
@@ -251,7 +252,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 28,
+   "execution_count": 11,
    "metadata": {},
    "outputs": [
     {
@@ -270,7 +271,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 3,
+   "execution_count": 12,
    "metadata": {},
    "outputs": [
     {
@@ -283,9 +284,9 @@
       "configfile: pyproject.toml\n",
       "collected 19 items\n",
       "\n",
-      "t_e1326bfc2f7c4f9da696a18f225b0c26.py \u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m                                    [100%]\u001b[0m\n",
+      "t_f5fd0521e0c742d590159284179a5076.py \u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m                                    [100%]\u001b[0m\n",
       "\n",
-      "\u001b[32m======================================== \u001b[32m\u001b[1m19 passed\u001b[0m\u001b[32m in 0.10s\u001b[0m\u001b[32m ========================================\u001b[0m\n"
+      "\u001b[32m======================================== \u001b[32m\u001b[1m19 passed\u001b[0m\u001b[32m in 0.06s\u001b[0m\u001b[32m ========================================\u001b[0m\n"
      ]
     },
     {
@@ -294,7 +295,7 @@
        "<ExitCode.OK: 0>"
       ]
      },
-     "execution_count": 3,
+     "execution_count": 12,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -367,7 +368,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 13,
    "metadata": {},
    "outputs": [
     {
@@ -400,7 +401,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 13,
+   "execution_count": 14,
    "metadata": {},
    "outputs": [
     {
@@ -420,7 +421,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 18,
+   "execution_count": 15,
    "metadata": {},
    "outputs": [
     {
@@ -452,7 +453,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 18,
+   "execution_count": 16,
    "metadata": {},
    "outputs": [
     {
@@ -480,7 +481,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 24,
+   "execution_count": 17,
    "metadata": {},
    "outputs": [
     {
@@ -506,7 +507,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 25,
+   "execution_count": 18,
    "metadata": {},
    "outputs": [
     {
@@ -518,13 +519,13 @@
     }
    ],
    "source": [
-    "result = derivative.first_backwards()\n",
+    "result = derivative.first_backward()\n",
     "print(f'Backward difference of f(x) at the point x0 = {x0}, with stepsize h = {h}, is {result}')"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 27,
+   "execution_count": 19,
    "metadata": {},
    "outputs": [
     {
@@ -542,7 +543,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 29,
+   "execution_count": 20,
    "metadata": {},
    "outputs": [
     {
@@ -558,6 +559,27 @@
     "result = derivative.second_order()\n",
     "print(f'Second derivative of f(x) at the point x0 = {x0}, with stepsize h = {h}, is {result}')\n",
     "print('need to update')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Dual(real = -1020, dual = -7)\n"
+     ]
+    }
+   ],
+   "source": [
+    "from dual_autodiff import Dual\n",
+    "\n",
+    "x, y, z, m = Dual(2,1), Dual(-10,2), Dual(-1,-1), Dual(999,0)\n",
+    "\n",
+    "print(x*y - m + z)"
    ]
   }
  ],

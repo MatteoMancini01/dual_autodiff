@@ -42,6 +42,17 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 html_theme = 'sphinx_rtd_theme'
 
 
+html_theme_options = {
+    'navigation_depth': 4,  # Depth of sidebar navigation
+    'collapse_navigation': False,  # Keep all navigation expanded
+    'display_version': True,  # Display project version
+    'sticky_navigation': True,  # Keep navigation visible during scrolling
+    'style_nav_header_background': '#2980B9',  # Custom header color (optional)
+    'github_url': 'https://github.com/MatteoMancini01/dual_autodiff',  
+}
+
+
+
 master_doc = 'index'
 
 highlight_language = 'python3'

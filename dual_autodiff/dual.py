@@ -243,8 +243,8 @@ class Dual:
             >>> from dual_autodiff import Dual
             >>> x = Dual(2,1)
             >>> n = 3
-            >>> print(f'x - n = {x-n}')
-            x - n = Dual(real=-1, dual=1)
+            >>> print(f'x*n = {x*n}')
+            x*n = Dual(real=6, dual=3)
 
             '''
             real = self.real*other
@@ -454,62 +454,126 @@ class Dual:
 
     '''
     Implementing Reverse Addition, Subtraction, Multiplication and Division Operators.
+
+    This is very important to ensure consistency, symmetry and flexibility in computation!
     '''
     def __radd__(self, other):
         '''
-        Implementing reverse addidion, before we had Dual(a,b) + n.
-        Adding a daul number to a real number, e.g. n + Dual(a,b) = Dual(n+a,b).
+        Implementing reverse addidion, before we had `Dual(a,b) + n`.
+        Adding a daul number to a real number, e.g. `n + Dual(a,b)`.
+
+        Follow the same procedure as before.
+
         '''
         if isinstance(other,(int, float)):
+
+            '''
+            Parameters:
+                other: at this instance is of the form input `int` or `float` number.
+
+            Returns:
+                str: `Dual(real=<real>, dual=<dual>)`: output is the sum of a dual and a real number.
+
+            Example:
+                >>> from dual_autodiff import Dual
+                >>> x = Dual(2,1)
+                >>> n = 3
+                >>> print(f'n + x = {n+x}')
+                n + x = Dual(real=5, dual=1)
+            '''
+
             real = other + self.real
             dual = self.dual
             return Dual(real, dual)
         else:
-            raise TypeError("Reversed addition is only supported with real numbers.")
+            raise TypeError("Addition is only supported with real numbers.")
     
     
     def __rsub__(self,other):
         '''
-        Implementing reverse subtraction
+        Implementing reverse subtraction.
         '''
         if isinstance(other,(int, float)):
+
             '''
-            Subtracting a dual number from a real number, e.g. n-Dual(a,b) = Dual(n-a,-b)
+            Subtracting a dual number from a real number.
+
+            Parameters:
+                other: at this instance other is of the form `int` or `float`.
+            
+            Returns:
+                str: `Dual(real=<real>, dual=<dual>)`: output is the subtraction between a real and dual number.
+
+            Example:
+            >>> from dual_autodiff import Dual
+            >>> x = Dual(2,1)
+            >>> n = 3
+            >>> print(f'n - x = {n-x}')
+            n - x = Dual(real=1, dual=-1)
             '''
+
             real = other - self.real 
             dual = -self.dual
             return Dual(real, dual)
         else:
-            raise TypeError("Reversed subtraction is only supported with real numbers.")
+            raise TypeError("Subtraction is only supported with real numbers.")
     
     
     
     def __rmul__(self,other):
         '''
-        Implementing reverse Multiplication
+        Implementing reverse Multiplication.
         '''
         if isinstance(other,(int, float)):
+
             '''
-            Multipling a real number by a dual number, e.g. n*Dual(a,b) = Dual(n*a,n*b)
+            Parameters:
+            other: at this instance other is of the form `int` or `float`.
+            
+            Returns:
+                str: `Dual(real=<real>, dual=<dual>)`: output is the product between a dual number and a real.
+
+            Example:
+                >>> from dual_autodiff import Dual
+                >>> x = Dual(2,1)
+                >>> n = 3
+                >>> print(f'n*x = {n*x}')
+                x*n = Dual(real=6, dual=3)
             '''
+            
             real = other*self.real
             dual = other*self.dual
             return Dual(real, dual)
         else:
-            raise TypeError("Reversed multiplication is only supported with real numbers")
+            raise TypeError("Multiplication is only supported with real numbers")
     
         
     def __rpow__(self,n):
         '''
         Implementing reverse power.
+
+        Evaluating a real number to the power of a daul numner.
+        One can follow a similar procedure as before.
+        To evaluate $n^{(c + \epsilon d)}$ where $n$ is a real number, set $n = (a + \epsilon b)$ where $a=n$ and $b=0$, plug this into
+        the previus expression for dual to the power of a dual, then $n^{(c + \epsilon d)} = n^c (1 + \epsilon log(n)d)$.
+
         '''
         if isinstance(n, (int, float)):
             '''
-            Evaluating a real number to the power of a daul numner.
-            One can follow a similar procedure as before.
-            To evaluate n**Dual(c,d) where n is a real number, set n = Dual(a,b) where a=n and b=0, plug this into
-            the previus expression for dual to the power of a dual, then n**Dual(c,d) = n**c*Dual(1, numpy.log(n)*d).
+            Parameters:
+                n: at this instance other is of the form `int` or `float`.
+            
+            Returns:
+                str: `Dual(real=<real>, dual=<dual>)`: output is the a dual number evaluated at the power of a real number.
+
+            Example:
+            >>> from dual_autodiff import Dual
+            >>> x = Dual(2,1)
+            >>> n = 3
+            >>> print(f'n**x = {n**x}')
+            n**x = Dual(real=9, dual=9.887510598012987)
             '''
+            
             real = n**self.real
             dual = (n**self.real)*(np.log(n)*self.dual)
             return Dual(real, dual)
@@ -529,7 +593,21 @@ class Dual:
             if self.real==0:
                 raise ZeroDivisionError("Division by zero is undefined")
             '''
-            Evaluation; n/Dual(a,b) = (n/a)*Dual(1, -b/a)
+            Evaluation: $\frac{n}{a + \epsilon b} = \frac{n}{a}(\left 1 - \epsilon \frac{b}{a}\right)$
+
+            Parameters:
+                other: at this instance other is of the form `int` or `float`.
+            
+            Returns:
+                str: `Dual(real=<real>, dual=<dual>)`: output is the dividing a real number by a dual numbers.
+
+            Example:
+            >>> from dual_autodiff import Dual
+            >>> x = Dual(2,1)
+            >>> n = 4
+            >>> print(f'n/x = {n/x}')
+            n/x = Dual(real = 2.0, dual = -1.0)
+
             '''
             real = other/self.real
             dual = (-other*self.dual)/(self.real**2)
@@ -549,12 +627,29 @@ class Dual:
             '''
             if self.real==0:
                 raise ZeroDivisionError("Division by zero is undefined") 
+            
+            '''
+            Evaluation; $n//(a + \epsilon b) = n//a(\left 1 - \epsilon b//a\right)$
+            
+            Parameters:
+                other: at this instance other is of the form `int` or `float`.
+            
+            Returns:
+                str: `Dual(real=<real>, dual=<dual>)`: output is the dividing a real number by a dual numbers.
+
+            Example:
+            >>> from dual_autodiff import Dual
+            >>> x = Dual(2,1)
+            >>> n = 4
+            >>> print(f'n//x = {n//x}')
+            n//x = Dual(real = 2, dual = -1)
+            '''
             real = other//self.real
             dual = (-other*self.dual)//(self.real**2)
             return Dual(real, dual) 
        
         else: 
-            raise TypeError("Reversed division is only supported with real numbers.")
+            raise TypeError("Floor division is only supported with real numbers.")
 
 
     '''
@@ -566,9 +661,19 @@ class Dual:
 
     def exp(self):
         '''
-        For the exponential evaluated at x, where x = a + ε*b;
-        real part: f(a) = exp(a)
-        dual part: b*f'(a) = b*exp(a)
+        For the exponential evaluated at $x$, where $x = a + \epsilon b$;
+        real part: $f(a) = e^a$
+        dual part: $bf'(a) = be^a$
+
+        Returns:
+            str: `Dual(real=<real>, dual=<dual>)`
+
+        Example:
+            >>> from dual_autodiff import Dual
+            >>> x = Dual(2,3)
+            >>> exp_x = x.exp()
+            >>> print(f'exp(x) = {exp_x}')
+            exp(x) = Dual(real = 7.38905609893065, dual = 22.16716829679195)
         '''
         real = np.exp(self.real)
         dual = self.dual*real
@@ -576,9 +681,19 @@ class Dual:
 
     def sin(self):
         '''
-        For the sine function evaluated at x, where x = a + ε*b;
-        real part: sin(a)
-        dual part: b*cos(a)
+        For the sine function evaluated at $x$, where $x = a + \epsilon b$;
+        real part: $f(a) = \sin{a}$
+        dual part: $bf'(a) = b\cos{a}$
+
+        Returns:
+            str: `Dual(real=<real>, dual=<dual>)`
+        
+        Example:
+            >>> from dual_autodiff import Dual
+            >>> x = Dual(2,1)
+            >>> sin_x = x.sin()
+            >>> print(f'sin(x) = {sin_x}')
+            sin(x) = Dual(real = 0.9092974268256817, dual = -0.4161468365471424)
         '''
         real = np.sin(self.real)
         dual = self.dual*np.cos(self.real)
@@ -586,9 +701,19 @@ class Dual:
     
     def cos(self):
         '''
-        For the cosine function evaluated at x, where x = a + ε*b;
-        real part: cos(a)
-        dual part: - b*sin(a)
+        For the cosine function evaluated $x$, where $x = a + \epsilon b$;
+        real part: $f(a) = \cos{a}$
+        dual part: $bf'(a) = -b\sin{a}$
+
+        Returns:
+            str: `Dual(real=<real>, dual=<dual>)`
+
+        Example:
+            >>> from dual_autodiff import Dual
+            >>> x = Dual(2,1)
+            >>> cos_x = x.cos()
+            >>> print(f'cos(x) = {cos_x}')
+            cos(x) = Dual(real = -0.4161468365471424, dual = -0.9092974268256817)
         '''
         real = np.cos(self.real)
         dual = -self.dual*np.sin(self.real)
@@ -596,9 +721,19 @@ class Dual:
     
     def tan(self):
         '''
-        For the tan function evaluated at x, where x = a + ε*b;
-        real part: tan(a)
-        dual part: b*sec(a)**2
+        For the tan function evaluated at $x$, where $x = a + \epsilon b$;
+        real part: $f(a) = \tan{a}$
+        dual part: $bf'(a) = b\sec^2{a}$
+
+        Returns:
+            str: `Dual(real=<real>, dual=<dual>)`
+
+        Example:
+            >>> from dual_autodiff import Dual
+            >>> x = Dual(2,6)
+            >>> tan_x = x.tan()
+            >>> print(f'tan(x) = {tan_x}')
+            tan(x) = Dual(real = -2.185039863261519, dual = 34.6463952242515)
         '''
         real = np.tan(self.real)
         dual = self.dual/(np.cos(self.real))**2
@@ -606,9 +741,19 @@ class Dual:
     
     def log(self):
         '''
-        For the logarithmic function evaluated at x, where x = a + ε*b;
-        real part: log(a)
-        dual part: b/a
+        For the logarithmic function evaluated at $x$, where $x = a + \epsilon b$;
+        real part: $f(a) = \log({a})$
+        dual part: $bf'(a) =\frac{b}{a}}$
+
+        Returns:
+            str: `Dual(real=<real>, dual=<dual>)`
+
+        Example:
+            >>> from dual_autodiff import Dual
+            >>> x = Dual(2,6)
+            >>> log_x = x.log()
+            >>> print(f'log(x) = {log_x}')
+            log(x) = Dual(real = 0.6931471805599453, dual = 3.0)
         '''        
         real = np.log(self.real)
         dual = self.dual/self.real
@@ -617,9 +762,19 @@ class Dual:
 
     def sinh(self):
         '''
-        For the sinh function evaluated at x, where x = a + ε*b;
-        real part: sinh(a)
-        dual part: b*cosh(a)
+        For the sinh function evaluated at $x$, where $x = a + \epsilon b$;
+        real part: $f(a) = \sinh{a}$
+        dual part: $bf'(a) =b\cosh{a}}$
+
+        Returns:
+            str: `Dual(real=<real>, dual=<dual>)`
+
+        Example:
+            >>> from dual_autodiff import Dual
+            >>> x = Dual(2,6)
+            >>> sinh_x = x.sinh()
+            >>> print(f'sinh(x) = {sinh_x}')
+            sinh(x) = Dual(real = 3.626860407847019, dual = 22.57317414650179)
         '''
         real = np.sinh(self.real)
         dual = self.dual*np.cosh(self.real)
@@ -627,9 +782,19 @@ class Dual:
 
     def cosh(self):
         '''
-        For the cosh function evaluated at x, where x = a + ε*b;
-        real part: cosh(a)
-        dual part: b*sinh(a)
+        For the cosh function evaluated at $x$, where $x = a + \epsilon b$;
+        real part: $f(a) = \cosh{a}$
+        dual part: $bf'(a) =b\sinh{a}}$
+
+        Returns:
+            str: `Dual(real=<real>, dual=<dual>)`
+
+        Example:
+            >>> from dual_autodiff import Dual
+            >>> x = Dual(2,6)
+            >>> cosh_x = x.cosh()
+            >>> print(f'cosh(x) = {cosh_x}')
+            cosh(x) = Dual(real = 3.7621956910836314, dual = 21.761162447082114)
         '''
         real = np.cosh(self.real)
         dual = self.dual*np.sinh(self.real)
@@ -637,9 +802,19 @@ class Dual:
     
     def tanh(self):
         '''
-        For the tanh function evaluated at x, where x = a + ε*b;
-        real part: tanh(a)
-        dual part: b/cosh(a)**2
+        For the tanh function evaluated at $x$, where $x = a + \epsilon b$;
+        real part: $f(a) = \tanh{a}$
+        dual part: $bf'(a) =\frac{b}{\cosh^2{a}}$
+
+        Returns:
+            str: `Dual(real=<real>, dual=<dual>)`
+
+        Example:
+            >>> from dual_autodiff import Dual
+            >>> x = Dual(2,6)
+            >>> tanh_x = x.tanh()
+            >>> print(f'tanh(x) = {tanh_x}')
+            tanh(x) = Dual(real = 0.9640275800758169, dual = 0.4239049491189868
         '''
         real = np.tanh(self.real)
         dual = self.dual/(np.cosh(self.real))**2
@@ -649,16 +824,34 @@ class Dual:
         '''
         Computes the partial derivative of a function using automatic differentiation with dual numbers.
 
-        Arguments:
-        var_index: The index of the variable to differentiate with respect to.
-        func: The function to differentiate.
-        *args: The values at which the function is differentiated.
+        Parameters:
+            var_index: The index of the variable to differentiate with respect to.
+            func: The function to differentiate.
+            *args: The values at which the function is differentiated.
 
         Returns:
-        The partial derivative of the function with respect to the variable at `var_index`.
+            The partial derivative of the function with respect to the variable at `var_index`.
+
+        Example:
+        Computing first order partial derivatives of the function $f(x,y,z) = xy + x\cos{z} + \sin{y}$ at the point $(1,-1,2)$
+        with respect of each variable
+
+            >>> from dual_autodiff import Dual
+            >>> def f(x,y,z):
+            >>>     return x*y + x*z.cos() + y.sin() # define the function to differentiate
+            >>> d = Dual(1,0) # chose any numbers for real and dual part
+            >>> x,y,z = Dual(1,0),Dual(-1,0),Dual(2,0) # always set the dual part equal to zero when assining values to variables
+            >>> x_partial = d.partial_derivative(0,f,x,y,z) # index 0 for x
+            >>> x_partial = d.partial_derivative(1,f,x,y,z) # index 1 for y
+            >>> x_partial = d.partial_derivative(2,f,x,y,z) # index 2 for z
+            >>> print(f"Partial derivaive of f with respect to x, at x,y,z=1,-1,2 is {x_partial}")
+            >>> print(f"Partial derivaive of f with respect to y, at x,y,z=1,-1,2 is {x_partial}")
+            >>> print(f"Partial derivaive of f with respect to z, at x,y,z=1,-1,2 is {x_partial}")
+            Partial derivaive of f with respect to x, at x,y,z=1,-1,2 is -1.4161468365471424
+            Partial derivaive of f with respect to y, at x,y,z=1,-1,2 is 1.5403023058681398
+            Partial derivaive of f with respect to z, at x,y,z=1,-1,2 is -0.9092974268256817
         '''
-        # Convert the arguments to a list to allow modifications
-        variables = list(args)
+        variables = list(args) # convert args into a list
 
         # Replace the variable at var_index with a Dual number
         variables[var_index] = Dual(args[var_index].real, 1)  # Assign a dual component of 1

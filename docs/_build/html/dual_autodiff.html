@@ -23,14 +23,16 @@
       <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Solutions" href="Solutions.html" />
+    <link rel="prev" title="dual_autodiff package" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
 
           
           
@@ -45,26 +47,27 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">Automatic Differentiation Using Dual Numbers</a><ul>
-<li><a class="reference internal" href="#Introduction">Introduction</a></li>
-<li><a class="reference internal" href="#Background">Background</a><ul>
-<li><a class="reference internal" href="#Dual-Numbers">Dual Numbers</a></li>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Automatic Differentiation Using Dual Numbers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Background">Background</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Dual-Numbers">Dual Numbers</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#Set-Up">Set Up</a></li>
-<li><a class="reference internal" href="#Automatic-Differentiation-In-1D">Automatic Differentiation In 1D</a></li>
-<li><a class="reference internal" href="#Automatic-Differentiation-In-Higher-Dimensions">Automatic Differentiation In Higher Dimensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Set-Up">Set Up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Automatic-Differentiation-In-1D">Automatic Differentiation In 1D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Automatic-Differentiation-In-Higher-Dimensions">Automatic Differentiation In Higher Dimensions</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="Solutions.html">Solutions</a></li>
 </ul>
-</div>
+
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">Automatic Differentiation with Dual Numbers Project</a>
       </nav>
@@ -102,7 +105,7 @@ infromation on numpy see <a class="reference external" href="https://numpy.org/"
 <section id="Set-Up">
 <h2>Set Up<a class="headerlink" href="#Set-Up" title="Link to this heading"></a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">Dual</span>
@@ -111,7 +114,7 @@ infromation on numpy see <a class="reference external" href="https://numpy.org/"
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dual_autodiff</span>
@@ -119,7 +122,7 @@ infromation on numpy see <a class="reference external" href="https://numpy.org/"
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
@@ -136,7 +139,7 @@ Dual(real = 2, dual = 1)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">sin</span><span class="p">()</span><span class="o">.</span><span class="n">dual</span>
@@ -144,7 +147,7 @@ Dual(real = 2, dual = 1)
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -153,7 +156,7 @@ Dual(real = 2, dual = 1)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># choose 1 for dual so we obtain the derivative</span>
@@ -173,7 +176,7 @@ Dual(real = 2, dual = 1)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">NumDiff</span> <span class="k">as</span> <span class="n">nd</span> <span class="c1"># numerical differentiation</span>
@@ -196,7 +199,7 @@ Dual(real = 2, dual = 1)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TASK 5</span>
@@ -205,6 +208,7 @@ Dual(real = 2, dual = 1)
 <span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">NumDiff</span>
 
 <span class="k">def</span> <span class="nf">plot_with_parameters</span><span class="p">(</span><span class="n">h</span><span class="p">):</span>
 
@@ -227,7 +231,7 @@ Dual(real = 2, dual = 1)
     <span class="n">ndf</span> <span class="o">=</span> <span class="n">NumDiff</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="c1"># x=1.5</span>
     <span class="n">ndf_for</span> <span class="o">=</span> <span class="n">ndf</span><span class="o">.</span><span class="n">first_forward</span><span class="p">()</span> <span class="c1"># forward difference</span>
     <span class="n">ndf_cen</span> <span class="o">=</span> <span class="n">ndf</span><span class="o">.</span><span class="n">first_central</span><span class="p">()</span> <span class="c1"># central difference</span>
-    <span class="n">ndf_bac</span> <span class="o">=</span> <span class="n">ndf</span><span class="o">.</span><span class="n">first_backwards</span><span class="p">()</span> <span class="c1"># backward difference</span>
+    <span class="n">ndf_bac</span> <span class="o">=</span> <span class="n">ndf</span><span class="o">.</span><span class="n">first_backward</span><span class="p">()</span> <span class="c1"># backward difference</span>
 
     <span class="c1"># Plot the function</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
@@ -256,10 +260,10 @@ Dual(real = 2, dual = 1)
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "385a162aaba14516b46eb0136b23b6e4", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "2d569415dee34d24b58ec3308633e309", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">Dual</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
@@ -283,7 +287,7 @@ Dual(real = 1, dual = 3)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
@@ -301,7 +305,7 @@ Dual(real = 3.461624963063523, dual = -7.012115744346404)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tests</span> <span class="kn">import</span> <span class="n">TestDual</span>
@@ -324,13 +328,13 @@ rootdir: /root/Document/Python_Script/dual_autodiff
 configfile: pyproject.toml
 collected 19 items
 
-t_e1326bfc2f7c4f9da696a18f225b0c26.py <span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">                                    [100%]</span>
+t_f5fd0521e0c742d590159284179a5076.py <span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">.</span><span class="ansi-green-fg">                                    [100%]</span>
 
-<span class="ansi-green-fg">======================================== </span><span class="ansi-green-intense-fg ansi-bold">19 passed</span><span class="ansi-green-fg"> in 0.10s</span><span class="ansi-green-fg"> ========================================</span>
+<span class="ansi-green-fg">======================================== </span><span class="ansi-green-intense-fg ansi-bold">19 passed</span><span class="ansi-green-fg"> in 0.06s</span><span class="ansi-green-fg"> ========================================</span>
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -376,7 +380,7 @@ t_e1326bfc2f7c4f9da696a18f225b0c26.py <span class="ansi-green-fg">.</span><span 
 \[f_j(\vec{a} + \epsilon \vec{b}) = f(\vec{x})|_{\vec{x}=\vec{a}} + \epsilon b_j \frac{\partial f(\vec{x})}{\partial x_j}|_{\vec{x} = \vec{a}}\]</div>
 <p>The index <span class="math notranslate nohighlight">\(j\)</span> is the albitrary choice of the variable we want to differentiate for, e.g. if one wants to compute the partial derivative of <span class="math notranslate nohighlight">\(f(\vec{x})\)</span> with respect to <span class="math notranslate nohighlight">\(x_2\)</span> then set <span class="math notranslate nohighlight">\(j=2\)</span>, here we will see how:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">Dual</span>
@@ -402,7 +406,7 @@ t_e1326bfc2f7c4f9da696a18f225b0c26.py <span class="ansi-green-fg">.</span><span 
 </div>
 <p><span class="math notranslate nohighlight">\(\sech{a}\)</span> <span class="math notranslate nohighlight">\(sina\)</span> <span class="math notranslate nohighlight">\(e^{a}\)</span></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">Dual</span>
@@ -421,7 +425,7 @@ tanh(x) = Dual(real = 0.9640275800758169, dual = 0.4239049491189868)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">):</span>
@@ -452,7 +456,7 @@ Partial derivaive of f with respect to z, at x,y,z=1,-1,2 is -0.9092974268256817
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">Dual</span>
@@ -478,7 +482,7 @@ Partial derivaive of f with respect to z, at x,y,z=1,-1,2 is -0.9092974268256817
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">NumDiff</span>
@@ -503,10 +507,10 @@ Forward difference of f(x) at the point x0 = 2, with stepsize h = 0.01, is 0.598
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">derivative</span><span class="o">.</span><span class="n">first_backwards</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">derivative</span><span class="o">.</span><span class="n">first_backward</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Backward difference of f(x) at the point x0 = </span><span class="si">{</span><span class="n">x0</span><span class="si">}</span><span class="s1">, with stepsize h = </span><span class="si">{</span><span class="n">h</span><span class="si">}</span><span class="s1">, is </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -520,7 +524,7 @@ Backward difference of f(x) at the point x0 = 2, with stepsize h = 0.01, is 0.58
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">derivative</span><span class="o">.</span><span class="n">first_central</span><span class="p">()</span>
@@ -537,7 +541,7 @@ Central difference of f(x) at the point x0 = 2, with stepsize h = 0.01, is 0.593
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">derivative</span><span class="o">.</span><span class="n">second_order</span><span class="p">()</span>
@@ -555,13 +559,36 @@ Second derivative of f(x) at the point x0 = 2, with stepsize h = 0.01, is 0.9473
 need to update
 </pre></div></div>
 </div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">Dual</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">Dual</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">Dual</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">999</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span> <span class="o">-</span> <span class="n">m</span> <span class="o">+</span> <span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Dual(real = -1020, dual = -7)
+</pre></div></div>
+</div>
 </section>
 </section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="dual_autodiff package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Solutions.html" class="btn btn-neutral float-right" title="Solutions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

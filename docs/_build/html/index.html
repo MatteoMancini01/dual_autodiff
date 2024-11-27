@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>&lt;no title&gt; &mdash; Automatic Differentiation with Dual Numbers Project beta documentation</title>
+  <title>dual_autodiff package &mdash; Automatic Differentiation with Dual Numbers Project beta documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
@@ -18,16 +18,19 @@
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Automatic Differentiation Using Dual Numbers" href="dual_autodiff.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
 
           
           
@@ -42,15 +45,27 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <!-- Local TOC -->
-              <div class="local-toc"><ul class="simple">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dual_autodiff.html">Automatic Differentiation Using Dual Numbers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dual_autodiff.html#Introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dual_autodiff.html#Background">Background</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dual_autodiff.html#Dual-Numbers">Dual Numbers</a></li>
 </ul>
-</div>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dual_autodiff.html#Set-Up">Set Up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dual_autodiff.html#Automatic-Differentiation-In-1D">Automatic Differentiation In 1D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dual_autodiff.html#Automatic-Differentiation-In-Higher-Dimensions">Automatic Differentiation In Higher Dimensions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Solutions.html">Solutions</a></li>
+</ul>
+
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="#">Automatic Differentiation with Dual Numbers Project</a>
       </nav>
@@ -60,7 +75,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">&lt;no title&gt;</li>
+      <li class="breadcrumb-item active">dual_autodiff package</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -70,11 +85,33 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
+  <section id="dual-autodiff-package">
+<h1>dual_autodiff package<a class="headerlink" href="#dual-autodiff-package" title="Link to this heading"></a></h1>
+<a class="reference external image-reference" href="https://github.com/MatteoMancini01/dual_autodiff"><img alt="GitHub stars" src="https://img.shields.io/github/stars/borisbolliet/dual_autodiff?style=social" />
+</a>
+<p><em>Author</em>: Matteo Mancini</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dual_autodiff.html">Automatic Differentiation Using Dual Numbers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dual_autodiff.html#Introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dual_autodiff.html#Background">Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dual_autodiff.html#Set-Up">Set Up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dual_autodiff.html#Automatic-Differentiation-In-1D">Automatic Differentiation In 1D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dual_autodiff.html#Automatic-Differentiation-In-Higher-Dimensions">Automatic Differentiation In Higher Dimensions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Solutions.html">Solutions</a></li>
+</ul>
+</div>
+</section>
+
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="dual_autodiff.html" class="btn btn-neutral float-right" title="Automatic Differentiation Using Dual Numbers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
