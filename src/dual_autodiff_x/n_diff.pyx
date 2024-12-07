@@ -1,16 +1,18 @@
 '''
 The following class is designed to perform numerical differentiation.
 '''
+
 cdef class NumDiff:
     '''
     In this class there are four different functions, first order numericall differentiation with
     forward, central and backward difference and one function to compute second order derivative numerically.
     '''
-    # Declare attributes for Cython optimization
-    cdef object f  # Function object (can’t type explicitly in Cython)
-    cdef double x, h  # Numerical input (double for optimization)
 
-    def __init__(self, f, x, h):
+    cdef object f  # Keep the function generic (can accept Python functions)
+    cdef double h  # Step size for differentiation
+    cdef object x
+
+    def __init__(self, f, x, double h):
         '''
         Initialising input.
 
@@ -21,8 +23,8 @@ cdef class NumDiff:
               we lose rather than gaining accuracy.
         '''
         self.f = f
-        self.x = x
         self.h = h
+        self.x = x
 
     def first_forward(self):
         '''

@@ -1507,8 +1507,8 @@ struct __pyx_obj_15dual_autodiff_x_4dual_Dual;
  */
 struct __pyx_obj_15dual_autodiff_x_4dual_Dual {
   PyObject_HEAD
-  double real;
-  double dual;
+  PyObject *real;
+  PyObject *dual;
 };
 
 /* #### Code section: utility_code_proto ### */
@@ -2329,7 +2329,7 @@ static const char __pyx_k_Subtraction_is_only_supported_be[] = "Subtraction is o
 static const char __pyx_k_Subtraction_is_only_supported_wi[] = "Subtraction is only supported with real numbers.";
 static const char __pyx_k_Multiplication_is_only_supported_2[] = "Multiplication is only supported with real numbers";
 /* #### Code section: decls ### */
-static int __pyx_pf_15dual_autodiff_x_4dual_4Dual___init__(struct __pyx_obj_15dual_autodiff_x_4dual_Dual *__pyx_v_self, double __pyx_v_real, double __pyx_v_dual); /* proto */
+static int __pyx_pf_15dual_autodiff_x_4dual_4Dual___init__(struct __pyx_obj_15dual_autodiff_x_4dual_Dual *__pyx_v_self, PyObject *__pyx_v_real, PyObject *__pyx_v_dual); /* proto */
 static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_4real___get__(struct __pyx_obj_15dual_autodiff_x_4dual_Dual *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_4dual___get__(struct __pyx_obj_15dual_autodiff_x_4dual_Dual *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_2__repr__(struct __pyx_obj_15dual_autodiff_x_4dual_Dual *__pyx_v_self); /* proto */
@@ -3087,9 +3087,9 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 /* #### Code section: module_code ### */
 
 /* "dual_autodiff_x/dual.pyx":18
- *     cdef double dual
+ *     cdef object dual
  * 
- *     def __init__(self, double real, double dual):             # <<<<<<<<<<<<<<
+ *     def __init__(self, real, dual):             # <<<<<<<<<<<<<<
  *         """
  *         Initialises dual numbers with a real and dual part.
  */
@@ -3101,8 +3101,8 @@ PyDoc_STRVAR(__pyx_doc_15dual_autodiff_x_4dual_4Dual___init__, "\n        Initia
 struct wrapperbase __pyx_wrapperbase_15dual_autodiff_x_4dual_4Dual___init__;
 #endif
 static int __pyx_pw_15dual_autodiff_x_4dual_4Dual_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  double __pyx_v_real;
-  double __pyx_v_dual;
+  PyObject *__pyx_v_real = 0;
+  PyObject *__pyx_v_dual = 0;
   CYTHON_UNUSED Py_ssize_t __pyx_nargs;
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject* values[2] = {0,0};
@@ -3160,8 +3160,8 @@ static int __pyx_pw_15dual_autodiff_x_4dual_4Dual_1__init__(PyObject *__pyx_v_se
       values[0] = __Pyx_Arg_VARARGS(__pyx_args, 0);
       values[1] = __Pyx_Arg_VARARGS(__pyx_args, 1);
     }
-    __pyx_v_real = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_real == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 18, __pyx_L3_error)
-    __pyx_v_dual = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_dual == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 18, __pyx_L3_error)
+    __pyx_v_real = values[0];
+    __pyx_v_dual = values[1];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
@@ -3192,8 +3192,10 @@ static int __pyx_pw_15dual_autodiff_x_4dual_4Dual_1__init__(PyObject *__pyx_v_se
   return __pyx_r;
 }
 
-static int __pyx_pf_15dual_autodiff_x_4dual_4Dual___init__(struct __pyx_obj_15dual_autodiff_x_4dual_Dual *__pyx_v_self, double __pyx_v_real, double __pyx_v_dual) {
+static int __pyx_pf_15dual_autodiff_x_4dual_4Dual___init__(struct __pyx_obj_15dual_autodiff_x_4dual_Dual *__pyx_v_self, PyObject *__pyx_v_real, PyObject *__pyx_v_dual) {
   int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__init__", 1);
 
   /* "dual_autodiff_x/dual.pyx":34
  *             dual (int or float): input dual part
@@ -3202,6 +3204,10 @@ static int __pyx_pf_15dual_autodiff_x_4dual_4Dual___init__(struct __pyx_obj_15du
  *         self.dual = dual
  * 
  */
+  __Pyx_INCREF(__pyx_v_real);
+  __Pyx_GIVEREF(__pyx_v_real);
+  __Pyx_GOTREF(__pyx_v_self->real);
+  __Pyx_DECREF(__pyx_v_self->real);
   __pyx_v_self->real = __pyx_v_real;
 
   /* "dual_autodiff_x/dual.pyx":35
@@ -3211,18 +3217,23 @@ static int __pyx_pf_15dual_autodiff_x_4dual_4Dual___init__(struct __pyx_obj_15du
  * 
  *     @property
  */
+  __Pyx_INCREF(__pyx_v_dual);
+  __Pyx_GIVEREF(__pyx_v_dual);
+  __Pyx_GOTREF(__pyx_v_self->dual);
+  __Pyx_DECREF(__pyx_v_self->dual);
   __pyx_v_self->dual = __pyx_v_dual;
 
   /* "dual_autodiff_x/dual.pyx":18
- *     cdef double dual
+ *     cdef object dual
  * 
- *     def __init__(self, double real, double dual):             # <<<<<<<<<<<<<<
+ *     def __init__(self, real, dual):             # <<<<<<<<<<<<<<
  *         """
  *         Initialises dual numbers with a real and dual part.
  */
 
   /* function exit code */
   __pyx_r = 0;
+  __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
@@ -3252,10 +3263,6 @@ static PyObject *__pyx_pw_15dual_autodiff_x_4dual_4Dual_4real_1__get__(PyObject 
 static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_4real___get__(struct __pyx_obj_15dual_autodiff_x_4dual_Dual *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 1);
 
   /* "dual_autodiff_x/dual.pyx":39
@@ -3266,10 +3273,8 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_4real___get__(struct __p
  *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 39, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
+  __Pyx_INCREF(__pyx_v_self->real);
+  __pyx_r = __pyx_v_self->real;
   goto __pyx_L0;
 
   /* "dual_autodiff_x/dual.pyx":37
@@ -3281,10 +3286,6 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_4real___get__(struct __p
  */
 
   /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("dual_autodiff_x.dual.Dual.real.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -3317,10 +3318,6 @@ static PyObject *__pyx_pw_15dual_autodiff_x_4dual_4Dual_4dual_1__get__(PyObject 
 static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_4dual___get__(struct __pyx_obj_15dual_autodiff_x_4dual_Dual *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 1);
 
   /* "dual_autodiff_x/dual.pyx":43
@@ -3331,10 +3328,8 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_4dual___get__(struct __p
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->dual); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
+  __Pyx_INCREF(__pyx_v_self->dual);
+  __pyx_r = __pyx_v_self->dual;
   goto __pyx_L0;
 
   /* "dual_autodiff_x/dual.pyx":41
@@ -3346,10 +3341,6 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_4dual___get__(struct __p
  */
 
   /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("dual_autodiff_x.dual.Dual.dual.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -3390,7 +3381,6 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_2__repr__(struct __pyx_o
   Py_ssize_t __pyx_t_2;
   Py_UCS4 __pyx_t_3;
   PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -3412,25 +3402,19 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_2__repr__(struct __pyx_o
   __pyx_t_2 += 12;
   __Pyx_GIVEREF(__pyx_kp_u_Dual_real);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_kp_u_Dual_real);
-  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 68, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_v_self->real, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 68, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 68, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) : __pyx_t_3;
-  __pyx_t_2 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_5);
-  __Pyx_GIVEREF(__pyx_t_5);
-  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_5);
-  __pyx_t_5 = 0;
+  __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_3;
+  __pyx_t_2 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_4);
+  __Pyx_GIVEREF(__pyx_t_4);
+  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_4);
+  __pyx_t_4 = 0;
   __Pyx_INCREF(__pyx_kp_u_dual_2);
   __pyx_t_2 += 9;
   __Pyx_GIVEREF(__pyx_kp_u_dual_2);
   PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_kp_u_dual_2);
-  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_self->dual); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 68, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_5, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 68, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_v_self->dual, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 68, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_3;
   __pyx_t_2 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_4);
@@ -3459,7 +3443,6 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_2__repr__(struct __pyx_o
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
   __Pyx_AddTraceback("dual_autodiff_x.dual.Dual.__repr__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -3514,9 +3497,9 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_4__neg__(struct __pyx_ob
  *     '''
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble((-__pyx_v_self->real)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Negative(__pyx_v_self->real); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyFloat_FromDouble((-__pyx_v_self->dual)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 87, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Negative(__pyx_v_self->dual); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -3585,15 +3568,13 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_6__add__(struct __pyx_ob
   PyObject *__pyx_v_real_part = NULL;
   PyObject *__pyx_v_dual_part = NULL;
   PyObject *__pyx_v_real = NULL;
-  double __pyx_v_dual;
+  PyObject *__pyx_v_dual = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
   PyObject *__pyx_t_2 = NULL;
   PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  int __pyx_t_5;
-  double __pyx_t_6;
+  int __pyx_t_4;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -3616,16 +3597,13 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_6__add__(struct __pyx_ob
  *             dual_part = self.dual + other.dual
  *             return Dual(real_part, dual_part)
  */
-    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 119, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_real); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 119, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_real); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 119, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Add(__pyx_v_self->real, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 119, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 119, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_v_real_part = __pyx_t_4;
-    __pyx_t_4 = 0;
+    __pyx_v_real_part = __pyx_t_3;
+    __pyx_t_3 = 0;
 
     /* "dual_autodiff_x/dual.pyx":120
  *             '''
@@ -3634,13 +3612,10 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_6__add__(struct __pyx_ob
  *             return Dual(real_part, dual_part)
  * 
  */
-    __pyx_t_4 = PyFloat_FromDouble(__pyx_v_self->dual); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 120, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_dual); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 120, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = PyNumber_Add(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 120, __pyx_L1_error)
+    __pyx_t_2 = PyNumber_Add(__pyx_v_self->dual, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 120, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_v_dual_part = __pyx_t_2;
     __pyx_t_2 = 0;
@@ -3684,14 +3659,14 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_6__add__(struct __pyx_ob
  *             '''
  *             Adding a dual number to a real number.
  */
-  __pyx_t_5 = PyInt_Check(__pyx_v_other); 
-  if (!__pyx_t_5) {
+  __pyx_t_4 = PyInt_Check(__pyx_v_other); 
+  if (!__pyx_t_4) {
   } else {
-    __pyx_t_1 = __pyx_t_5;
+    __pyx_t_1 = __pyx_t_4;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_5 = PyFloat_Check(__pyx_v_other); 
-  __pyx_t_1 = __pyx_t_5;
+  __pyx_t_4 = PyFloat_Check(__pyx_v_other); 
+  __pyx_t_1 = __pyx_t_4;
   __pyx_L4_bool_binop_done:;
   if (likely(__pyx_t_1)) {
 
@@ -3702,13 +3677,10 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_6__add__(struct __pyx_ob
  *             dual = self.dual
  *             return Dual(real, dual)
  */
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 140, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Add(__pyx_v_self->real, __pyx_v_other); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 140, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = PyNumber_Add(__pyx_t_3, __pyx_v_other); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 140, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_v_real = __pyx_t_2;
-    __pyx_t_2 = 0;
+    __pyx_v_real = __pyx_t_3;
+    __pyx_t_3 = 0;
 
     /* "dual_autodiff_x/dual.pyx":141
  *             '''
@@ -3717,8 +3689,10 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_6__add__(struct __pyx_ob
  *             return Dual(real, dual)
  *         else:
  */
-    __pyx_t_6 = __pyx_v_self->dual;
-    __pyx_v_dual = __pyx_t_6;
+    __pyx_t_3 = __pyx_v_self->dual;
+    __Pyx_INCREF(__pyx_t_3);
+    __pyx_v_dual = __pyx_t_3;
+    __pyx_t_3 = 0;
 
     /* "dual_autodiff_x/dual.pyx":142
  *             real = self.real + other
@@ -3728,16 +3702,14 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_6__add__(struct __pyx_ob
  *             '''
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_dual); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 142, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 142, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_v_real);
     __Pyx_GIVEREF(__pyx_v_real);
     if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_real)) __PYX_ERR(0, 142, __pyx_L1_error);
-    __Pyx_GIVEREF(__pyx_t_2);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_2)) __PYX_ERR(0, 142, __pyx_L1_error);
-    __pyx_t_2 = 0;
+    __Pyx_INCREF(__pyx_v_dual);
+    __Pyx_GIVEREF(__pyx_v_dual);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_dual)) __PYX_ERR(0, 142, __pyx_L1_error);
     __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 142, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -3789,13 +3761,13 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_6__add__(struct __pyx_ob
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
   __Pyx_AddTraceback("dual_autodiff_x.dual.Dual.__add__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_real_part);
   __Pyx_XDECREF(__pyx_v_dual_part);
   __Pyx_XDECREF(__pyx_v_real);
+  __Pyx_XDECREF(__pyx_v_dual);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
@@ -3836,8 +3808,7 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_8__sub__(struct __pyx_ob
   int __pyx_t_1;
   PyObject *__pyx_t_2 = NULL;
   PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  int __pyx_t_5;
+  int __pyx_t_4;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -3860,16 +3831,13 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_8__sub__(struct __pyx_ob
  *             dual = self.dual - other.dual
  *             return Dual(real, dual)
  */
-    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 180, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_real); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 180, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_real); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 180, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Subtract(__pyx_v_self->real, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 180, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PyNumber_Subtract(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 180, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_v_real = __pyx_t_4;
-    __pyx_t_4 = 0;
+    __pyx_v_real = __pyx_t_3;
+    __pyx_t_3 = 0;
 
     /* "dual_autodiff_x/dual.pyx":181
  *             '''
@@ -3878,13 +3846,10 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_8__sub__(struct __pyx_ob
  *             return Dual(real, dual)
  * 
  */
-    __pyx_t_4 = PyFloat_FromDouble(__pyx_v_self->dual); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 181, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_dual); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 181, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = PyNumber_Subtract(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 181, __pyx_L1_error)
+    __pyx_t_2 = PyNumber_Subtract(__pyx_v_self->dual, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 181, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_v_dual = __pyx_t_2;
     __pyx_t_2 = 0;
@@ -3928,14 +3893,14 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_8__sub__(struct __pyx_ob
  *             '''
  *             Subtracting a real number from a dual number.
  */
-  __pyx_t_5 = PyInt_Check(__pyx_v_other); 
-  if (!__pyx_t_5) {
+  __pyx_t_4 = PyInt_Check(__pyx_v_other); 
+  if (!__pyx_t_4) {
   } else {
-    __pyx_t_1 = __pyx_t_5;
+    __pyx_t_1 = __pyx_t_4;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_5 = PyFloat_Check(__pyx_v_other); 
-  __pyx_t_1 = __pyx_t_5;
+  __pyx_t_4 = PyFloat_Check(__pyx_v_other); 
+  __pyx_t_1 = __pyx_t_4;
   __pyx_L4_bool_binop_done:;
   if (likely(__pyx_t_1)) {
 
@@ -3946,13 +3911,10 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_8__sub__(struct __pyx_ob
  *             dual = self.dual
  *             return Dual(real, dual)
  */
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 202, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Subtract(__pyx_v_self->real, __pyx_v_other); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 202, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = PyNumber_Subtract(__pyx_t_3, __pyx_v_other); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 202, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_v_real = __pyx_t_2;
-    __pyx_t_2 = 0;
+    __pyx_v_real = __pyx_t_3;
+    __pyx_t_3 = 0;
 
     /* "dual_autodiff_x/dual.pyx":203
  *             '''
@@ -3961,10 +3923,10 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_8__sub__(struct __pyx_ob
  *             return Dual(real, dual)
  *         else:
  */
-    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->dual); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 203, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_v_dual = __pyx_t_2;
-    __pyx_t_2 = 0;
+    __pyx_t_3 = __pyx_v_self->dual;
+    __Pyx_INCREF(__pyx_t_3);
+    __pyx_v_dual = __pyx_t_3;
+    __pyx_t_3 = 0;
 
     /* "dual_autodiff_x/dual.pyx":204
  *             real = self.real - other
@@ -3974,19 +3936,19 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_8__sub__(struct __pyx_ob
  *             '''
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 204, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 204, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_v_real);
     __Pyx_GIVEREF(__pyx_v_real);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_real)) __PYX_ERR(0, 204, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_real)) __PYX_ERR(0, 204, __pyx_L1_error);
     __Pyx_INCREF(__pyx_v_dual);
     __Pyx_GIVEREF(__pyx_v_dual);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_dual)) __PYX_ERR(0, 204, __pyx_L1_error);
-    __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 204, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_r = __pyx_t_3;
-    __pyx_t_3 = 0;
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_dual)) __PYX_ERR(0, 204, __pyx_L1_error);
+    __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 204, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_r = __pyx_t_2;
+    __pyx_t_2 = 0;
     goto __pyx_L0;
 
     /* "dual_autodiff_x/dual.pyx":184
@@ -4014,10 +3976,10 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_8__sub__(struct __pyx_ob
  * 
  * 
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 210, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_Raise(__pyx_t_3, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 210, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_Raise(__pyx_t_2, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __PYX_ERR(0, 210, __pyx_L1_error)
   }
 
@@ -4033,7 +3995,6 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_8__sub__(struct __pyx_ob
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
   __Pyx_AddTraceback("dual_autodiff_x.dual.Dual.__sub__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -4080,8 +4041,7 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_10__mul__(struct __pyx_o
   PyObject *__pyx_t_2 = NULL;
   PyObject *__pyx_t_3 = NULL;
   PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  int __pyx_t_6;
+  int __pyx_t_5;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -4104,16 +4064,13 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_10__mul__(struct __pyx_o
  *             dual = self.real*other.dual + self.dual*other.real
  *             return Dual(real, dual)
  */
-    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 238, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_real); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 238, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_real); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 238, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Multiply(__pyx_v_self->real, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 238, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PyNumber_Multiply(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 238, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_v_real = __pyx_t_4;
-    __pyx_t_4 = 0;
+    __pyx_v_real = __pyx_t_3;
+    __pyx_t_3 = 0;
 
     /* "dual_autodiff_x/dual.pyx":239
  *             '''
@@ -4122,28 +4079,22 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_10__mul__(struct __pyx_o
  *             return Dual(real, dual)
  * 
  */
-    __pyx_t_4 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 239, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_dual); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 239, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = PyNumber_Multiply(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 239, __pyx_L1_error)
+    __pyx_t_2 = PyNumber_Multiply(__pyx_v_self->real, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 239, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->dual); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 239, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_real); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 239, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_real); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 239, __pyx_L1_error)
+    __pyx_t_4 = PyNumber_Multiply(__pyx_v_self->dual, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 239, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = PyNumber_Multiply(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 239, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyNumber_Add(__pyx_t_2, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 239, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 239, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_v_dual = __pyx_t_4;
-    __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_v_dual = __pyx_t_3;
+    __pyx_t_3 = 0;
 
     /* "dual_autodiff_x/dual.pyx":240
  *             real = self.real*other.real
@@ -4153,19 +4104,19 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_10__mul__(struct __pyx_o
  *         elif isinstance(other,(int, float)):
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 240, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 240, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_v_real);
     __Pyx_GIVEREF(__pyx_v_real);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_real)) __PYX_ERR(0, 240, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_real)) __PYX_ERR(0, 240, __pyx_L1_error);
     __Pyx_INCREF(__pyx_v_dual);
     __Pyx_GIVEREF(__pyx_v_dual);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_dual)) __PYX_ERR(0, 240, __pyx_L1_error);
-    __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 240, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_r = __pyx_t_5;
-    __pyx_t_5 = 0;
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_dual)) __PYX_ERR(0, 240, __pyx_L1_error);
+    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 240, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_r = __pyx_t_4;
+    __pyx_t_4 = 0;
     goto __pyx_L0;
 
     /* "dual_autodiff_x/dual.pyx":221
@@ -4184,14 +4135,14 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_10__mul__(struct __pyx_o
  *             '''
  *             Multiplication between a dual and real number.
  */
-  __pyx_t_6 = PyInt_Check(__pyx_v_other); 
-  if (!__pyx_t_6) {
+  __pyx_t_5 = PyInt_Check(__pyx_v_other); 
+  if (!__pyx_t_5) {
   } else {
-    __pyx_t_1 = __pyx_t_6;
+    __pyx_t_1 = __pyx_t_5;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_6 = PyFloat_Check(__pyx_v_other); 
-  __pyx_t_1 = __pyx_t_6;
+  __pyx_t_5 = PyFloat_Check(__pyx_v_other); 
+  __pyx_t_1 = __pyx_t_5;
   __pyx_L4_bool_binop_done:;
   if (likely(__pyx_t_1)) {
 
@@ -4202,11 +4153,8 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_10__mul__(struct __pyx_o
  *             dual = self.dual*other
  *             return Dual(real, dual)
  */
-    __pyx_t_5 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 260, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_4 = PyNumber_Multiply(__pyx_t_5, __pyx_v_other); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 260, __pyx_L1_error)
+    __pyx_t_4 = PyNumber_Multiply(__pyx_v_self->real, __pyx_v_other); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 260, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_v_real = __pyx_t_4;
     __pyx_t_4 = 0;
 
@@ -4217,13 +4165,10 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_10__mul__(struct __pyx_o
  *             return Dual(real, dual)
  *         else:
  */
-    __pyx_t_4 = PyFloat_FromDouble(__pyx_v_self->dual); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 261, __pyx_L1_error)
+    __pyx_t_4 = PyNumber_Multiply(__pyx_v_self->dual, __pyx_v_other); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 261, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = PyNumber_Multiply(__pyx_t_4, __pyx_v_other); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 261, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_v_dual = __pyx_t_5;
-    __pyx_t_5 = 0;
+    __pyx_v_dual = __pyx_t_4;
+    __pyx_t_4 = 0;
 
     /* "dual_autodiff_x/dual.pyx":262
  *             real = self.real*other
@@ -4233,19 +4178,19 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_10__mul__(struct __pyx_o
  *             '''
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 262, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 262, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
     __Pyx_INCREF(__pyx_v_real);
     __Pyx_GIVEREF(__pyx_v_real);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_real)) __PYX_ERR(0, 262, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_real)) __PYX_ERR(0, 262, __pyx_L1_error);
     __Pyx_INCREF(__pyx_v_dual);
     __Pyx_GIVEREF(__pyx_v_dual);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_v_dual)) __PYX_ERR(0, 262, __pyx_L1_error);
-    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 262, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_r = __pyx_t_4;
-    __pyx_t_4 = 0;
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_dual)) __PYX_ERR(0, 262, __pyx_L1_error);
+    __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 262, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_r = __pyx_t_3;
+    __pyx_t_3 = 0;
     goto __pyx_L0;
 
     /* "dual_autodiff_x/dual.pyx":242
@@ -4273,10 +4218,10 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_10__mul__(struct __pyx_o
  * 
  * 
  */
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 268, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_Raise(__pyx_t_4, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 268, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_Raise(__pyx_t_3, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __PYX_ERR(0, 268, __pyx_L1_error)
   }
 
@@ -4293,7 +4238,6 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_10__mul__(struct __pyx_o
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
   __Pyx_AddTraceback("dual_autodiff_x.dual.Dual.__mul__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -4354,8 +4298,7 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_12__pow__(struct __pyx_o
   PyObject *__pyx_t_5 = NULL;
   PyObject *__pyx_t_6 = NULL;
   PyObject *__pyx_t_7 = NULL;
-  PyObject *__pyx_t_8 = NULL;
-  unsigned int __pyx_t_9;
+  unsigned int __pyx_t_8;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -4386,13 +4329,10 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_12__pow__(struct __pyx_o
  *             dual = n*(self.real**(n-1))*self.dual
  *             return Dual(real, dual)
  */
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 303, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Power(__pyx_v_self->real, __pyx_v_n, Py_None); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 303, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PyNumber_Power(__pyx_t_3, __pyx_v_n, Py_None); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 303, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_v_real = __pyx_t_4;
-    __pyx_t_4 = 0;
+    __pyx_v_real = __pyx_t_3;
+    __pyx_t_3 = 0;
 
     /* "dual_autodiff_x/dual.pyx":304
  *             '''
@@ -4401,23 +4341,17 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_12__pow__(struct __pyx_o
  *             return Dual(real, dual)
  * 
  */
-    __pyx_t_4 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 304, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_3 = __Pyx_PyInt_SubtractObjC(__pyx_v_n, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 304, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = PyNumber_Power(__pyx_t_4, __pyx_t_3, Py_None); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 304, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyNumber_Multiply(__pyx_v_n, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 304, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = PyFloat_FromDouble(__pyx_v_self->dual); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 304, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_4 = PyNumber_Multiply(__pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 304, __pyx_L1_error)
+    __pyx_t_4 = PyNumber_Power(__pyx_v_self->real, __pyx_t_3, Py_None); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 304, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_3 = PyNumber_Multiply(__pyx_v_n, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 304, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = PyNumber_Multiply(__pyx_t_3, __pyx_v_self->dual); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 304, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_v_dual = __pyx_t_4;
     __pyx_t_4 = 0;
 
@@ -4437,11 +4371,11 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_12__pow__(struct __pyx_o
     __Pyx_INCREF(__pyx_v_dual);
     __Pyx_GIVEREF(__pyx_v_dual);
     if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_dual)) __PYX_ERR(0, 305, __pyx_L1_error);
-    __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 305, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 305, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_r = __pyx_t_5;
-    __pyx_t_5 = 0;
+    __pyx_r = __pyx_t_3;
+    __pyx_t_3 = 0;
     goto __pyx_L0;
 
     /* "dual_autodiff_x/dual.pyx":281
@@ -4470,16 +4404,13 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_12__pow__(struct __pyx_o
  *             dual = (self.real**n.real)*((n.real*self.dual)/self.real + np.log(self.real)*n.dual)
  *             return Dual(real, dual)
  */
-    __pyx_t_5 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 329, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_n, __pyx_n_s_real); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 329, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = PyNumber_Power(__pyx_t_5, __pyx_t_4, Py_None); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 329, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_n, __pyx_n_s_real); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 329, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_v_real = __pyx_t_3;
-    __pyx_t_3 = 0;
+    __pyx_t_4 = PyNumber_Power(__pyx_v_self->real, __pyx_t_3, Py_None); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 329, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_v_real = __pyx_t_4;
+    __pyx_t_4 = 0;
 
     /* "dual_autodiff_x/dual.pyx":330
  *             '''
@@ -4488,71 +4419,59 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_12__pow__(struct __pyx_o
  *             return Dual(real, dual)
  * 
  */
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 330, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_n, __pyx_n_s_real); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 330, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = PyNumber_Power(__pyx_t_3, __pyx_t_4, Py_None); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 330, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Power(__pyx_v_self->real, __pyx_t_4, Py_None); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 330, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_n, __pyx_n_s_real); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 330, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_5 = PyNumber_Multiply(__pyx_t_4, __pyx_v_self->dual); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 330, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_n, __pyx_n_s_real); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 330, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyNumber_Divide(__pyx_t_5, __pyx_v_self->real); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 330, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->dual); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 330, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_6 = PyNumber_Multiply(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 330, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 330, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyNumber_Divide(__pyx_t_6, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 330, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 330, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_log); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 330, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 330, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_8 = NULL;
-    __pyx_t_9 = 0;
+    __pyx_t_6 = NULL;
+    __pyx_t_8 = 0;
     #if CYTHON_UNPACK_METHODS
     if (unlikely(PyMethod_Check(__pyx_t_7))) {
-      __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_7);
-      if (likely(__pyx_t_8)) {
+      __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_7);
+      if (likely(__pyx_t_6)) {
         PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_7);
-        __Pyx_INCREF(__pyx_t_8);
+        __Pyx_INCREF(__pyx_t_6);
         __Pyx_INCREF(function);
         __Pyx_DECREF_SET(__pyx_t_7, function);
-        __pyx_t_9 = 1;
+        __pyx_t_8 = 1;
       }
     }
     #endif
     {
-      PyObject *__pyx_callargs[2] = {__pyx_t_8, __pyx_t_6};
-      __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_7, __pyx_callargs+1-__pyx_t_9, 1+__pyx_t_9);
-      __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 330, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_3);
+      PyObject *__pyx_callargs[2] = {__pyx_t_6, __pyx_v_self->real};
+      __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_7, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
+      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 330, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
     __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_n, __pyx_n_s_dual); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 330, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_6 = PyNumber_Multiply(__pyx_t_3, __pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 330, __pyx_L1_error)
+    __pyx_t_6 = PyNumber_Multiply(__pyx_t_5, __pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 330, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_7 = PyNumber_Add(__pyx_t_4, __pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 330, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = PyNumber_Multiply(__pyx_t_5, __pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 330, __pyx_L1_error)
+    __pyx_t_6 = PyNumber_Multiply(__pyx_t_3, __pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 330, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_v_dual = __pyx_t_6;
     __pyx_t_6 = 0;
@@ -4627,7 +4546,6 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_12__pow__(struct __pyx_o
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_XDECREF(__pyx_t_8);
   __Pyx_AddTraceback("dual_autodiff_x.dual.Dual.__pow__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -4674,8 +4592,7 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_14__truediv__(struct __p
   PyObject *__pyx_t_2 = NULL;
   PyObject *__pyx_t_3 = NULL;
   PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  int __pyx_t_6;
+  int __pyx_t_5;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -4698,16 +4615,13 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_14__truediv__(struct __p
  *             dual = (other.real*self.dual - self.real*other.dual)/(other.real**2)
  *             return Dual(real, dual)
  */
-    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 370, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_real); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 370, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_real); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 370, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyNumber_Divide(__pyx_v_self->real, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 370, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyNumber_Divide(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 370, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_v_real = __pyx_t_4;
-    __pyx_t_4 = 0;
+    __pyx_v_real = __pyx_t_3;
+    __pyx_t_3 = 0;
 
     /* "dual_autodiff_x/dual.pyx":371
  *             '''
@@ -4716,37 +4630,31 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_14__truediv__(struct __p
  *             return Dual(real, dual)
  * 
  */
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_real); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 371, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_2 = PyNumber_Multiply(__pyx_t_3, __pyx_v_self->dual); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 371, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_dual); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 371, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_4 = PyNumber_Multiply(__pyx_v_self->real, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 371, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = PyNumber_Subtract(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 371, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_real); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 371, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->dual); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 371, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = PyNumber_Multiply(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 371, __pyx_L1_error)
+    __pyx_t_2 = PyNumber_Power(__pyx_t_4, __pyx_int_2, Py_None); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 371, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 371, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_dual); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 371, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyNumber_Divide(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 371, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = PyNumber_Multiply(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 371, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyNumber_Subtract(__pyx_t_2, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 371, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_real); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 371, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_2 = PyNumber_Power(__pyx_t_5, __pyx_int_2, Py_None); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 371, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyNumber_Divide(__pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 371, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_v_dual = __pyx_t_5;
-    __pyx_t_5 = 0;
+    __pyx_v_dual = __pyx_t_4;
+    __pyx_t_4 = 0;
 
     /* "dual_autodiff_x/dual.pyx":372
  *             real = (self.real)/(other.real)
@@ -4756,17 +4664,17 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_14__truediv__(struct __p
  * 
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 372, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 372, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
     __Pyx_INCREF(__pyx_v_real);
     __Pyx_GIVEREF(__pyx_v_real);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_real)) __PYX_ERR(0, 372, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_real)) __PYX_ERR(0, 372, __pyx_L1_error);
     __Pyx_INCREF(__pyx_v_dual);
     __Pyx_GIVEREF(__pyx_v_dual);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_v_dual)) __PYX_ERR(0, 372, __pyx_L1_error);
-    __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 372, __pyx_L1_error)
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_dual)) __PYX_ERR(0, 372, __pyx_L1_error);
+    __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_4, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 372, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = 0;
     goto __pyx_L0;
@@ -4787,14 +4695,14 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_14__truediv__(struct __p
  *             '''
  *             Division of a dual number by a real number.
  */
-  __pyx_t_6 = PyInt_Check(__pyx_v_other); 
-  if (!__pyx_t_6) {
+  __pyx_t_5 = PyInt_Check(__pyx_v_other); 
+  if (!__pyx_t_5) {
   } else {
-    __pyx_t_1 = __pyx_t_6;
+    __pyx_t_1 = __pyx_t_5;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_6 = PyFloat_Check(__pyx_v_other); 
-  __pyx_t_1 = __pyx_t_6;
+  __pyx_t_5 = PyFloat_Check(__pyx_v_other); 
+  __pyx_t_1 = __pyx_t_5;
   __pyx_L4_bool_binop_done:;
   if (likely(__pyx_t_1)) {
 
@@ -4837,13 +4745,10 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_14__truediv__(struct __p
  *             dual = self.dual/other
  *             return Dual(real, dual)
  */
-    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 401, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_v_self->real, __pyx_v_other); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 401, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_5 = __Pyx_PyNumber_Divide(__pyx_t_2, __pyx_v_other); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 401, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_v_real = __pyx_t_5;
-    __pyx_t_5 = 0;
+    __pyx_v_real = __pyx_t_2;
+    __pyx_t_2 = 0;
 
     /* "dual_autodiff_x/dual.pyx":402
  *             '''
@@ -4852,11 +4757,8 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_14__truediv__(struct __p
  *             return Dual(real, dual)
  *         else:
  */
-    __pyx_t_5 = PyFloat_FromDouble(__pyx_v_self->dual); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 402, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_5, __pyx_v_other); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 402, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_v_self->dual, __pyx_v_other); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 402, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_v_dual = __pyx_t_2;
     __pyx_t_2 = 0;
 
@@ -4876,11 +4778,11 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_14__truediv__(struct __p
     __Pyx_INCREF(__pyx_v_dual);
     __Pyx_GIVEREF(__pyx_v_dual);
     if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_dual)) __PYX_ERR(0, 403, __pyx_L1_error);
-    __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_2, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 403, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_2, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 403, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_r = __pyx_t_5;
-    __pyx_t_5 = 0;
+    __pyx_r = __pyx_t_4;
+    __pyx_t_4 = 0;
     goto __pyx_L0;
 
     /* "dual_autodiff_x/dual.pyx":375
@@ -4908,10 +4810,10 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_14__truediv__(struct __p
  * 
  * 
  */
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 409, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_Raise(__pyx_t_5, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 409, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_Raise(__pyx_t_4, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __PYX_ERR(0, 409, __pyx_L1_error)
   }
 
@@ -4928,7 +4830,6 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_14__truediv__(struct __p
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
   __Pyx_AddTraceback("dual_autodiff_x.dual.Dual.__truediv__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -4975,8 +4876,7 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_16__floordiv__(struct __
   PyObject *__pyx_t_2 = NULL;
   PyObject *__pyx_t_3 = NULL;
   PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  int __pyx_t_6;
+  int __pyx_t_5;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -4999,16 +4899,13 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_16__floordiv__(struct __
  *             dual = (other.real*self.dual - self.real*other.dual)//(other.real**2)
  *             return Dual(real, dual)
  */
-    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 436, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_real); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 436, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_real); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 436, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_FloorDivide(__pyx_v_self->real, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 436, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PyNumber_FloorDivide(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 436, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_v_real = __pyx_t_4;
-    __pyx_t_4 = 0;
+    __pyx_v_real = __pyx_t_3;
+    __pyx_t_3 = 0;
 
     /* "dual_autodiff_x/dual.pyx":437
  *             '''
@@ -5017,37 +4914,31 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_16__floordiv__(struct __
  *             return Dual(real, dual)
  * 
  */
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_real); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 437, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_2 = PyNumber_Multiply(__pyx_t_3, __pyx_v_self->dual); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 437, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_dual); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 437, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_4 = PyNumber_Multiply(__pyx_v_self->real, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 437, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = PyNumber_Subtract(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 437, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_real); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 437, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->dual); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 437, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = PyNumber_Multiply(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 437, __pyx_L1_error)
+    __pyx_t_2 = PyNumber_Power(__pyx_t_4, __pyx_int_2, Py_None); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 437, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 437, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_dual); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 437, __pyx_L1_error)
+    __pyx_t_4 = PyNumber_FloorDivide(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 437, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = PyNumber_Multiply(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 437, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyNumber_Subtract(__pyx_t_2, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 437, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_real); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 437, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_2 = PyNumber_Power(__pyx_t_5, __pyx_int_2, Py_None); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 437, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = PyNumber_FloorDivide(__pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 437, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_v_dual = __pyx_t_5;
-    __pyx_t_5 = 0;
+    __pyx_v_dual = __pyx_t_4;
+    __pyx_t_4 = 0;
 
     /* "dual_autodiff_x/dual.pyx":438
  *             real = (self.real)//(other.real)
@@ -5057,17 +4948,17 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_16__floordiv__(struct __
  *         elif isinstance(other,(int, float)):
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 438, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 438, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
     __Pyx_INCREF(__pyx_v_real);
     __Pyx_GIVEREF(__pyx_v_real);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_real)) __PYX_ERR(0, 438, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_real)) __PYX_ERR(0, 438, __pyx_L1_error);
     __Pyx_INCREF(__pyx_v_dual);
     __Pyx_GIVEREF(__pyx_v_dual);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_v_dual)) __PYX_ERR(0, 438, __pyx_L1_error);
-    __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 438, __pyx_L1_error)
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_dual)) __PYX_ERR(0, 438, __pyx_L1_error);
+    __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_4, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 438, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = 0;
     goto __pyx_L0;
@@ -5088,14 +4979,14 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_16__floordiv__(struct __
  *             '''
  *             Dual number divided by a real number.
  */
-  __pyx_t_6 = PyInt_Check(__pyx_v_other); 
-  if (!__pyx_t_6) {
+  __pyx_t_5 = PyInt_Check(__pyx_v_other); 
+  if (!__pyx_t_5) {
   } else {
-    __pyx_t_1 = __pyx_t_6;
+    __pyx_t_1 = __pyx_t_5;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_6 = PyFloat_Check(__pyx_v_other); 
-  __pyx_t_1 = __pyx_t_6;
+  __pyx_t_5 = PyFloat_Check(__pyx_v_other); 
+  __pyx_t_1 = __pyx_t_5;
   __pyx_L4_bool_binop_done:;
   if (likely(__pyx_t_1)) {
 
@@ -5138,13 +5029,10 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_16__floordiv__(struct __
  *             dual = self.dual//other
  *             return Dual(real, dual)
  */
-    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 459, __pyx_L1_error)
+    __pyx_t_2 = PyNumber_FloorDivide(__pyx_v_self->real, __pyx_v_other); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 459, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_5 = PyNumber_FloorDivide(__pyx_t_2, __pyx_v_other); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 459, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_v_real = __pyx_t_5;
-    __pyx_t_5 = 0;
+    __pyx_v_real = __pyx_t_2;
+    __pyx_t_2 = 0;
 
     /* "dual_autodiff_x/dual.pyx":460
  *                 raise ZeroDivisionError("Division by zero is undefined")
@@ -5153,11 +5041,8 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_16__floordiv__(struct __
  *             return Dual(real, dual)
  *         else:
  */
-    __pyx_t_5 = PyFloat_FromDouble(__pyx_v_self->dual); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 460, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_2 = PyNumber_FloorDivide(__pyx_t_5, __pyx_v_other); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 460, __pyx_L1_error)
+    __pyx_t_2 = PyNumber_FloorDivide(__pyx_v_self->dual, __pyx_v_other); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 460, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_v_dual = __pyx_t_2;
     __pyx_t_2 = 0;
 
@@ -5177,11 +5062,11 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_16__floordiv__(struct __
     __Pyx_INCREF(__pyx_v_dual);
     __Pyx_GIVEREF(__pyx_v_dual);
     if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_dual)) __PYX_ERR(0, 461, __pyx_L1_error);
-    __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_2, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 461, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_2, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 461, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_r = __pyx_t_5;
-    __pyx_t_5 = 0;
+    __pyx_r = __pyx_t_4;
+    __pyx_t_4 = 0;
     goto __pyx_L0;
 
     /* "dual_autodiff_x/dual.pyx":440
@@ -5201,10 +5086,10 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_16__floordiv__(struct __
  *     '''
  */
   /*else*/ {
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 463, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_Raise(__pyx_t_5, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 463, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_Raise(__pyx_t_4, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __PYX_ERR(0, 463, __pyx_L1_error)
   }
 
@@ -5221,7 +5106,6 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_16__floordiv__(struct __
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
   __Pyx_AddTraceback("dual_autodiff_x.dual.Dual.__floordiv__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -5261,14 +5145,13 @@ static PyObject *__pyx_pw_15dual_autodiff_x_4dual_4Dual_19__radd__(PyObject *__p
 
 static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_18__radd__(struct __pyx_obj_15dual_autodiff_x_4dual_Dual *__pyx_v_self, PyObject *__pyx_v_other) {
   PyObject *__pyx_v_real = NULL;
-  double __pyx_v_dual;
+  PyObject *__pyx_v_dual = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
   int __pyx_t_2;
   PyObject *__pyx_t_3 = NULL;
   PyObject *__pyx_t_4 = NULL;
-  double __pyx_t_5;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -5299,13 +5182,10 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_18__radd__(struct __pyx_
  *             dual = self.dual
  *             return Dual(real, dual)
  */
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 495, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Add(__pyx_v_other, __pyx_v_self->real); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 495, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PyNumber_Add(__pyx_v_other, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 495, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_v_real = __pyx_t_4;
-    __pyx_t_4 = 0;
+    __pyx_v_real = __pyx_t_3;
+    __pyx_t_3 = 0;
 
     /* "dual_autodiff_x/dual.pyx":496
  * 
@@ -5314,8 +5194,10 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_18__radd__(struct __pyx_
  *             return Dual(real, dual)
  *         else:
  */
-    __pyx_t_5 = __pyx_v_self->dual;
-    __pyx_v_dual = __pyx_t_5;
+    __pyx_t_3 = __pyx_v_self->dual;
+    __Pyx_INCREF(__pyx_t_3);
+    __pyx_v_dual = __pyx_t_3;
+    __pyx_t_3 = 0;
 
     /* "dual_autodiff_x/dual.pyx":497
  *             real = other + self.real
@@ -5325,16 +5207,14 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_18__radd__(struct __pyx_
  *             raise TypeError("Addition is only supported with real numbers.")
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_4 = PyFloat_FromDouble(__pyx_v_dual); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 497, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 497, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_v_real);
     __Pyx_GIVEREF(__pyx_v_real);
     if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_real)) __PYX_ERR(0, 497, __pyx_L1_error);
-    __Pyx_GIVEREF(__pyx_t_4);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_4)) __PYX_ERR(0, 497, __pyx_L1_error);
-    __pyx_t_4 = 0;
+    __Pyx_INCREF(__pyx_v_dual);
+    __Pyx_GIVEREF(__pyx_v_dual);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_dual)) __PYX_ERR(0, 497, __pyx_L1_error);
     __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 497, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -5382,6 +5262,7 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_18__radd__(struct __pyx_
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_real);
+  __Pyx_XDECREF(__pyx_v_dual);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
@@ -5416,7 +5297,7 @@ static PyObject *__pyx_pw_15dual_autodiff_x_4dual_4Dual_21__rsub__(PyObject *__p
 
 static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_20__rsub__(struct __pyx_obj_15dual_autodiff_x_4dual_Dual *__pyx_v_self, PyObject *__pyx_v_other) {
   PyObject *__pyx_v_real = NULL;
-  double __pyx_v_dual;
+  PyObject *__pyx_v_dual = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -5453,13 +5334,10 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_20__rsub__(struct __pyx_
  *             dual = -self.dual
  *             return Dual(real, dual)
  */
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 525, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Subtract(__pyx_v_other, __pyx_v_self->real); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 525, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PyNumber_Subtract(__pyx_v_other, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 525, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_v_real = __pyx_t_4;
-    __pyx_t_4 = 0;
+    __pyx_v_real = __pyx_t_3;
+    __pyx_t_3 = 0;
 
     /* "dual_autodiff_x/dual.pyx":526
  * 
@@ -5468,7 +5346,10 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_20__rsub__(struct __pyx_
  *             return Dual(real, dual)
  *         else:
  */
-    __pyx_v_dual = (-__pyx_v_self->dual);
+    __pyx_t_3 = PyNumber_Negative(__pyx_v_self->dual); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 526, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_v_dual = __pyx_t_3;
+    __pyx_t_3 = 0;
 
     /* "dual_autodiff_x/dual.pyx":527
  *             real = other - self.real
@@ -5478,16 +5359,14 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_20__rsub__(struct __pyx_
  *             raise TypeError("Subtraction is only supported with real numbers.")
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_4 = PyFloat_FromDouble(__pyx_v_dual); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 527, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 527, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_v_real);
     __Pyx_GIVEREF(__pyx_v_real);
     if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_real)) __PYX_ERR(0, 527, __pyx_L1_error);
-    __Pyx_GIVEREF(__pyx_t_4);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_4)) __PYX_ERR(0, 527, __pyx_L1_error);
-    __pyx_t_4 = 0;
+    __Pyx_INCREF(__pyx_v_dual);
+    __Pyx_GIVEREF(__pyx_v_dual);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_dual)) __PYX_ERR(0, 527, __pyx_L1_error);
     __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 527, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -5535,6 +5414,7 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_20__rsub__(struct __pyx_
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_real);
+  __Pyx_XDECREF(__pyx_v_dual);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
@@ -5606,13 +5486,10 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_22__rmul__(struct __pyx_
  *             dual = other*self.dual
  *             return Dual(real, dual)
  */
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 554, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Multiply(__pyx_v_other, __pyx_v_self->real); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 554, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PyNumber_Multiply(__pyx_v_other, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 554, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_v_real = __pyx_t_4;
-    __pyx_t_4 = 0;
+    __pyx_v_real = __pyx_t_3;
+    __pyx_t_3 = 0;
 
     /* "dual_autodiff_x/dual.pyx":555
  * 
@@ -5621,11 +5498,8 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_22__rmul__(struct __pyx_
  *             return Dual(real, dual)
  *         else:
  */
-    __pyx_t_4 = PyFloat_FromDouble(__pyx_v_self->dual); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 555, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = PyNumber_Multiply(__pyx_v_other, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 555, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Multiply(__pyx_v_other, __pyx_v_self->dual); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 555, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_v_dual = __pyx_t_3;
     __pyx_t_3 = 0;
 
@@ -5778,13 +5652,10 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_24__rpow__(struct __pyx_
  *             dual = (n**self.real)*(np.log(n)*self.dual)
  *             return Dual(real, dual)
  */
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 587, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Power(__pyx_v_n, __pyx_v_self->real, Py_None); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 587, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PyNumber_Power(__pyx_v_n, __pyx_t_3, Py_None); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 587, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_v_real = __pyx_t_4;
-    __pyx_t_4 = 0;
+    __pyx_v_real = __pyx_t_3;
+    __pyx_t_3 = 0;
 
     /* "dual_autodiff_x/dual.pyx":588
  * 
@@ -5793,11 +5664,8 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_24__rpow__(struct __pyx_
  *             return Dual(real, dual)
  *         else:
  */
-    __pyx_t_4 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 588, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = PyNumber_Power(__pyx_v_n, __pyx_t_4, Py_None); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 588, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Power(__pyx_v_n, __pyx_v_self->real, Py_None); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 588, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 588, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_log); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 588, __pyx_L1_error)
@@ -5825,18 +5693,15 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_24__rpow__(struct __pyx_
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
-    __pyx_t_6 = PyFloat_FromDouble(__pyx_v_self->dual); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 588, __pyx_L1_error)
+    __pyx_t_6 = PyNumber_Multiply(__pyx_t_4, __pyx_v_self->dual); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 588, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_5 = PyNumber_Multiply(__pyx_t_4, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 588, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = PyNumber_Multiply(__pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 588, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_4 = PyNumber_Multiply(__pyx_t_3, __pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 588, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_v_dual = __pyx_t_6;
-    __pyx_t_6 = 0;
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __pyx_v_dual = __pyx_t_4;
+    __pyx_t_4 = 0;
 
     /* "dual_autodiff_x/dual.pyx":589
  *             real = n**self.real
@@ -5846,19 +5711,19 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_24__rpow__(struct __pyx_
  *             raise TypeError('Power only supports Dual or real numbers as inputs')
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 589, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 589, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
     __Pyx_INCREF(__pyx_v_real);
     __Pyx_GIVEREF(__pyx_v_real);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_v_real)) __PYX_ERR(0, 589, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_real)) __PYX_ERR(0, 589, __pyx_L1_error);
     __Pyx_INCREF(__pyx_v_dual);
     __Pyx_GIVEREF(__pyx_v_dual);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_v_dual)) __PYX_ERR(0, 589, __pyx_L1_error);
-    __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_6, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 589, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_r = __pyx_t_5;
-    __pyx_t_5 = 0;
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_dual)) __PYX_ERR(0, 589, __pyx_L1_error);
+    __pyx_t_6 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_4, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 589, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_r = __pyx_t_6;
+    __pyx_t_6 = 0;
     goto __pyx_L0;
 
     /* "dual_autodiff_x/dual.pyx":571
@@ -5878,10 +5743,10 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_24__rpow__(struct __pyx_
  * 
  */
   /*else*/ {
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 591, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_Raise(__pyx_t_5, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 591, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_Raise(__pyx_t_6, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __PYX_ERR(0, 591, __pyx_L1_error)
   }
 
@@ -5976,7 +5841,7 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_26__rtruediv__(struct __
  *                 raise ZeroDivisionError("Division by zero is undefined")
  *             '''
  */
-    __pyx_t_1 = (__pyx_v_self->real == 0.0);
+    __pyx_t_1 = (__Pyx_PyInt_BoolEqObjC(__pyx_v_self->real, __pyx_int_0, 0, 0)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 603, __pyx_L1_error)
     if (unlikely(__pyx_t_1)) {
 
       /* "dual_autodiff_x/dual.pyx":604
@@ -6008,13 +5873,10 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_26__rtruediv__(struct __
  *             dual = (-other*self.dual)/(self.real**2)
  *             return Dual(real, dual)
  */
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 622, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyNumber_Divide(__pyx_v_other, __pyx_v_self->real); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 622, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyNumber_Divide(__pyx_v_other, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 622, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_v_real = __pyx_t_4;
-    __pyx_t_4 = 0;
+    __pyx_v_real = __pyx_t_3;
+    __pyx_t_3 = 0;
 
     /* "dual_autodiff_x/dual.pyx":623
  *             '''
@@ -6023,22 +5885,19 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_26__rtruediv__(struct __
  *             return Dual(real, dual)
  * 
  */
-    __pyx_t_4 = PyNumber_Negative(__pyx_v_other); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 623, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->dual); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 623, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Negative(__pyx_v_other); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 623, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = PyNumber_Multiply(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 623, __pyx_L1_error)
+    __pyx_t_4 = PyNumber_Multiply(__pyx_t_3, __pyx_v_self->dual); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 623, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = PyNumber_Power(__pyx_v_self->real, __pyx_int_2, Py_None); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 623, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_5 = __Pyx_PyNumber_Divide(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 623, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyFloat_FromDouble(pow(__pyx_v_self->real, 2.0)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 623, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyNumber_Divide(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 623, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_v_dual = __pyx_t_4;
-    __pyx_t_4 = 0;
+    __pyx_v_dual = __pyx_t_5;
+    __pyx_t_5 = 0;
 
     /* "dual_autodiff_x/dual.pyx":624
  *             real = other/self.real
@@ -6048,17 +5907,17 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_26__rtruediv__(struct __
  *         else:
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 624, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 624, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
     __Pyx_INCREF(__pyx_v_real);
     __Pyx_GIVEREF(__pyx_v_real);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_real)) __PYX_ERR(0, 624, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_real)) __PYX_ERR(0, 624, __pyx_L1_error);
     __Pyx_INCREF(__pyx_v_dual);
     __Pyx_GIVEREF(__pyx_v_dual);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_dual)) __PYX_ERR(0, 624, __pyx_L1_error);
-    __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 624, __pyx_L1_error)
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_v_dual)) __PYX_ERR(0, 624, __pyx_L1_error);
+    __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 624, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_r = __pyx_t_3;
     __pyx_t_3 = 0;
     goto __pyx_L0;
@@ -6177,7 +6036,7 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_28__rfloordiv__(struct _
  *                 raise ZeroDivisionError("Division by zero is undefined")
  * 
  */
-    __pyx_t_1 = (__pyx_v_self->real == 0.0);
+    __pyx_t_1 = (__Pyx_PyInt_BoolEqObjC(__pyx_v_self->real, __pyx_int_0, 0, 0)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 638, __pyx_L1_error)
     if (unlikely(__pyx_t_1)) {
 
       /* "dual_autodiff_x/dual.pyx":639
@@ -6209,13 +6068,10 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_28__rfloordiv__(struct _
  *             dual = (-other*self.dual)//(self.real**2)
  *             return Dual(real, dual)
  */
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 657, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_FloorDivide(__pyx_v_other, __pyx_v_self->real); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 657, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PyNumber_FloorDivide(__pyx_v_other, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 657, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_v_real = __pyx_t_4;
-    __pyx_t_4 = 0;
+    __pyx_v_real = __pyx_t_3;
+    __pyx_t_3 = 0;
 
     /* "dual_autodiff_x/dual.pyx":658
  *             '''
@@ -6224,22 +6080,19 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_28__rfloordiv__(struct _
  *             return Dual(real, dual)
  * 
  */
-    __pyx_t_4 = PyNumber_Negative(__pyx_v_other); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 658, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->dual); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 658, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Negative(__pyx_v_other); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 658, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = PyNumber_Multiply(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 658, __pyx_L1_error)
+    __pyx_t_4 = PyNumber_Multiply(__pyx_t_3, __pyx_v_self->dual); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 658, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = PyNumber_Power(__pyx_v_self->real, __pyx_int_2, Py_None); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 658, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_5 = PyNumber_FloorDivide(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 658, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyFloat_FromDouble(pow(__pyx_v_self->real, 2.0)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 658, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PyNumber_FloorDivide(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 658, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_v_dual = __pyx_t_4;
-    __pyx_t_4 = 0;
+    __pyx_v_dual = __pyx_t_5;
+    __pyx_t_5 = 0;
 
     /* "dual_autodiff_x/dual.pyx":659
  *             real = other//self.real
@@ -6249,17 +6102,17 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_28__rfloordiv__(struct _
  *         else:
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 659, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 659, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
     __Pyx_INCREF(__pyx_v_real);
     __Pyx_GIVEREF(__pyx_v_real);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_real)) __PYX_ERR(0, 659, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_real)) __PYX_ERR(0, 659, __pyx_L1_error);
     __Pyx_INCREF(__pyx_v_dual);
     __Pyx_GIVEREF(__pyx_v_dual);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_dual)) __PYX_ERR(0, 659, __pyx_L1_error);
-    __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 659, __pyx_L1_error)
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_v_dual)) __PYX_ERR(0, 659, __pyx_L1_error);
+    __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 659, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_r = __pyx_t_3;
     __pyx_t_3 = 0;
     goto __pyx_L0;
@@ -6369,8 +6222,7 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_30exp(struct __pyx_obj_1
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
   PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  unsigned int __pyx_t_5;
+  unsigned int __pyx_t_4;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -6388,27 +6240,24 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_30exp(struct __pyx_obj_1
   __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_exp); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 688, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 688, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = NULL;
-  __pyx_t_5 = 0;
+  __pyx_t_2 = NULL;
+  __pyx_t_4 = 0;
   #if CYTHON_UNPACK_METHODS
   if (unlikely(PyMethod_Check(__pyx_t_3))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
-    if (likely(__pyx_t_4)) {
+    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_2)) {
       PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-      __Pyx_INCREF(__pyx_t_4);
+      __Pyx_INCREF(__pyx_t_2);
       __Pyx_INCREF(function);
       __Pyx_DECREF_SET(__pyx_t_3, function);
-      __pyx_t_5 = 1;
+      __pyx_t_4 = 1;
     }
   }
   #endif
   {
-    PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_t_2};
-    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_v_self->real};
+    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
+    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 688, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -6423,13 +6272,10 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_30exp(struct __pyx_obj_1
  *         return Dual(real, dual)
  * 
  */
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->dual); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 689, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Multiply(__pyx_v_self->dual, __pyx_v_real); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 689, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyNumber_Multiply(__pyx_t_1, __pyx_v_real); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 689, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_dual = __pyx_t_3;
-  __pyx_t_3 = 0;
+  __pyx_v_dual = __pyx_t_1;
+  __pyx_t_1 = 0;
 
   /* "dual_autodiff_x/dual.pyx":690
  *         real = np.exp(self.real)
@@ -6439,19 +6285,19 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_30exp(struct __pyx_obj_1
  *     def sin(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 690, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 690, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_real);
   __Pyx_GIVEREF(__pyx_v_real);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_real)) __PYX_ERR(0, 690, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_real)) __PYX_ERR(0, 690, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_dual);
   __Pyx_GIVEREF(__pyx_v_dual);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_dual)) __PYX_ERR(0, 690, __pyx_L1_error);
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 690, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_dual)) __PYX_ERR(0, 690, __pyx_L1_error);
+  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_1, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 690, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_r = __pyx_t_3;
+  __pyx_t_3 = 0;
   goto __pyx_L0;
 
   /* "dual_autodiff_x/dual.pyx":672
@@ -6467,7 +6313,6 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_30exp(struct __pyx_obj_1
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
   __Pyx_AddTraceback("dual_autodiff_x.dual.Dual.exp", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -6536,9 +6381,7 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_32sin(struct __pyx_obj_1
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
   PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  unsigned int __pyx_t_5;
-  PyObject *__pyx_t_6 = NULL;
+  unsigned int __pyx_t_4;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -6556,27 +6399,24 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_32sin(struct __pyx_obj_1
   __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_sin); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 708, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 708, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = NULL;
-  __pyx_t_5 = 0;
+  __pyx_t_2 = NULL;
+  __pyx_t_4 = 0;
   #if CYTHON_UNPACK_METHODS
   if (unlikely(PyMethod_Check(__pyx_t_3))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
-    if (likely(__pyx_t_4)) {
+    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_2)) {
       PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-      __Pyx_INCREF(__pyx_t_4);
+      __Pyx_INCREF(__pyx_t_2);
       __Pyx_INCREF(function);
       __Pyx_DECREF_SET(__pyx_t_3, function);
-      __pyx_t_5 = 1;
+      __pyx_t_4 = 1;
     }
   }
   #endif
   {
-    PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_t_2};
-    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_v_self->real};
+    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
+    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 708, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -6591,44 +6431,38 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_32sin(struct __pyx_obj_1
  *         return Dual(real, dual)
  * 
  */
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->dual); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 709, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 709, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 709, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_cos); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 709, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_cos); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 709, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 709, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_6 = NULL;
-  __pyx_t_5 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = NULL;
+  __pyx_t_4 = 0;
   #if CYTHON_UNPACK_METHODS
-  if (unlikely(PyMethod_Check(__pyx_t_4))) {
-    __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_4);
-    if (likely(__pyx_t_6)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-      __Pyx_INCREF(__pyx_t_6);
+  if (unlikely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_3);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_4, function);
-      __pyx_t_5 = 1;
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+      __pyx_t_4 = 1;
     }
   }
   #endif
   {
-    PyObject *__pyx_callargs[2] = {__pyx_t_6, __pyx_t_2};
-    __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
-    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+    PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_self->real};
+    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 709, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 709, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
-  __pyx_t_4 = PyNumber_Multiply(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 709, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_2 = PyNumber_Multiply(__pyx_v_self->dual, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 709, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_v_dual = __pyx_t_4;
-  __pyx_t_4 = 0;
+  __pyx_v_dual = __pyx_t_2;
+  __pyx_t_2 = 0;
 
   /* "dual_autodiff_x/dual.pyx":710
  *         real = np.sin(self.real)
@@ -6638,19 +6472,19 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_32sin(struct __pyx_obj_1
  *     def cos(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 710, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 710, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_real);
   __Pyx_GIVEREF(__pyx_v_real);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_real)) __PYX_ERR(0, 710, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_real)) __PYX_ERR(0, 710, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_dual);
   __Pyx_GIVEREF(__pyx_v_dual);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_dual)) __PYX_ERR(0, 710, __pyx_L1_error);
-  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 710, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_r = __pyx_t_3;
-  __pyx_t_3 = 0;
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_dual)) __PYX_ERR(0, 710, __pyx_L1_error);
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 710, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
   goto __pyx_L0;
 
   /* "dual_autodiff_x/dual.pyx":692
@@ -6666,8 +6500,6 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_32sin(struct __pyx_obj_1
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_6);
   __Pyx_AddTraceback("dual_autodiff_x.dual.Dual.sin", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -6736,9 +6568,8 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_34cos(struct __pyx_obj_1
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
   PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  unsigned int __pyx_t_5;
-  PyObject *__pyx_t_6 = NULL;
+  unsigned int __pyx_t_4;
+  PyObject *__pyx_t_5 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -6756,27 +6587,24 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_34cos(struct __pyx_obj_1
   __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_cos); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 728, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 728, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = NULL;
-  __pyx_t_5 = 0;
+  __pyx_t_2 = NULL;
+  __pyx_t_4 = 0;
   #if CYTHON_UNPACK_METHODS
   if (unlikely(PyMethod_Check(__pyx_t_3))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
-    if (likely(__pyx_t_4)) {
+    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_2)) {
       PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-      __Pyx_INCREF(__pyx_t_4);
+      __Pyx_INCREF(__pyx_t_2);
       __Pyx_INCREF(function);
       __Pyx_DECREF_SET(__pyx_t_3, function);
-      __pyx_t_5 = 1;
+      __pyx_t_4 = 1;
     }
   }
   #endif
   {
-    PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_t_2};
-    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_v_self->real};
+    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
+    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 728, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -6791,44 +6619,41 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_34cos(struct __pyx_obj_1
  *         return Dual(real, dual)
  * 
  */
-  __pyx_t_1 = PyFloat_FromDouble((-__pyx_v_self->dual)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 729, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Negative(__pyx_v_self->dual); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 729, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 729, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_sin); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 729, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_sin); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 729, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 729, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_6 = NULL;
-  __pyx_t_5 = 0;
+  __pyx_t_2 = NULL;
+  __pyx_t_4 = 0;
   #if CYTHON_UNPACK_METHODS
-  if (unlikely(PyMethod_Check(__pyx_t_4))) {
-    __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_4);
-    if (likely(__pyx_t_6)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-      __Pyx_INCREF(__pyx_t_6);
+  if (unlikely(PyMethod_Check(__pyx_t_5))) {
+    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_5);
+    if (likely(__pyx_t_2)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
+      __Pyx_INCREF(__pyx_t_2);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_4, function);
-      __pyx_t_5 = 1;
+      __Pyx_DECREF_SET(__pyx_t_5, function);
+      __pyx_t_4 = 1;
     }
   }
   #endif
   {
-    PyObject *__pyx_callargs[2] = {__pyx_t_6, __pyx_t_2};
-    __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
-    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_v_self->real};
+    __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
+    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 729, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
-  __pyx_t_4 = PyNumber_Multiply(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 729, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = PyNumber_Multiply(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 729, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_v_dual = __pyx_t_4;
-  __pyx_t_4 = 0;
+  __pyx_v_dual = __pyx_t_5;
+  __pyx_t_5 = 0;
 
   /* "dual_autodiff_x/dual.pyx":730
  *         real = np.cos(self.real)
@@ -6838,17 +6663,17 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_34cos(struct __pyx_obj_1
  *     def tan(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 730, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 730, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
   __Pyx_INCREF(__pyx_v_real);
   __Pyx_GIVEREF(__pyx_v_real);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_real)) __PYX_ERR(0, 730, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_real)) __PYX_ERR(0, 730, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_dual);
   __Pyx_GIVEREF(__pyx_v_dual);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_dual)) __PYX_ERR(0, 730, __pyx_L1_error);
-  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 730, __pyx_L1_error)
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_v_dual)) __PYX_ERR(0, 730, __pyx_L1_error);
+  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 730, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
@@ -6866,8 +6691,7 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_34cos(struct __pyx_obj_1
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_5);
   __Pyx_AddTraceback("dual_autodiff_x.dual.Dual.cos", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -6936,9 +6760,7 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_36tan(struct __pyx_obj_1
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
   PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  unsigned int __pyx_t_5;
-  PyObject *__pyx_t_6 = NULL;
+  unsigned int __pyx_t_4;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -6956,27 +6778,24 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_36tan(struct __pyx_obj_1
   __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_tan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 748, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 748, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = NULL;
-  __pyx_t_5 = 0;
+  __pyx_t_2 = NULL;
+  __pyx_t_4 = 0;
   #if CYTHON_UNPACK_METHODS
   if (unlikely(PyMethod_Check(__pyx_t_3))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
-    if (likely(__pyx_t_4)) {
+    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_2)) {
       PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-      __Pyx_INCREF(__pyx_t_4);
+      __Pyx_INCREF(__pyx_t_2);
       __Pyx_INCREF(function);
       __Pyx_DECREF_SET(__pyx_t_3, function);
-      __pyx_t_5 = 1;
+      __pyx_t_4 = 1;
     }
   }
   #endif
   {
-    PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_t_2};
-    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_v_self->real};
+    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
+    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 748, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -6991,47 +6810,41 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_36tan(struct __pyx_obj_1
  *         return Dual(real, dual)
  * 
  */
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->dual); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 749, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 749, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 749, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_cos); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 749, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_cos); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 749, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 749, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_6 = NULL;
-  __pyx_t_5 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = NULL;
+  __pyx_t_4 = 0;
   #if CYTHON_UNPACK_METHODS
-  if (unlikely(PyMethod_Check(__pyx_t_4))) {
-    __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_4);
-    if (likely(__pyx_t_6)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-      __Pyx_INCREF(__pyx_t_6);
+  if (unlikely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_3);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_4, function);
-      __pyx_t_5 = 1;
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+      __pyx_t_4 = 1;
     }
   }
   #endif
   {
-    PyObject *__pyx_callargs[2] = {__pyx_t_6, __pyx_t_2};
-    __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
-    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+    PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_self->real};
+    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 749, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 749, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
-  __pyx_t_4 = PyNumber_Power(__pyx_t_3, __pyx_int_2, Py_None); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 749, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyNumber_Divide(__pyx_t_1, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 749, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_2 = PyNumber_Power(__pyx_t_1, __pyx_int_2, Py_None); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 749, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_v_dual = __pyx_t_3;
-  __pyx_t_3 = 0;
+  __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_v_self->dual, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 749, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_v_dual = __pyx_t_1;
+  __pyx_t_1 = 0;
 
   /* "dual_autodiff_x/dual.pyx":750
  *         real = np.tan(self.real)
@@ -7041,19 +6854,19 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_36tan(struct __pyx_obj_1
  *     def log(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 750, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 750, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_real);
   __Pyx_GIVEREF(__pyx_v_real);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_real)) __PYX_ERR(0, 750, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_real)) __PYX_ERR(0, 750, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_dual);
   __Pyx_GIVEREF(__pyx_v_dual);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_dual)) __PYX_ERR(0, 750, __pyx_L1_error);
-  __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 750, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_r = __pyx_t_4;
-  __pyx_t_4 = 0;
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_dual)) __PYX_ERR(0, 750, __pyx_L1_error);
+  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 750, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
   goto __pyx_L0;
 
   /* "dual_autodiff_x/dual.pyx":732
@@ -7069,8 +6882,6 @@ static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_36tan(struct __pyx_obj_1
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_6);
   __Pyx_AddTraceback("dual_autodiff_x.dual.Dual.tan", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -7133,14 +6944,13 @@ return __pyx_r;
 
 static PyObject *__pyx_pf_15dual_autodiff_x_4dual_4Dual_38log(struct __pyx_obj_15dual_autodiff_x_4dual_Dual *__pyx_v_self) {
 PyObject *__pyx_v_real = NULL;
-double __pyx_v_dual;
+PyObject *__pyx_v_dual = NULL;
 PyObject *__pyx_r = NULL;
 __Pyx_RefNannyDeclarations
 PyObject *__pyx_t_1 = NULL;
 PyObject *__pyx_t_2 = NULL;
 PyObject *__pyx_t_3 = NULL;
-PyObject *__pyx_t_4 = NULL;
-unsigned int __pyx_t_5;
+unsigned int __pyx_t_4;
 int __pyx_lineno = 0;
 const char *__pyx_filename = NULL;
 int __pyx_clineno = 0;
@@ -7158,27 +6968,24 @@ __Pyx_GOTREF(__pyx_t_2);
 __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_log); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 768, __pyx_L1_error)
 __Pyx_GOTREF(__pyx_t_3);
 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-__pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 768, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_2);
-__pyx_t_4 = NULL;
-__pyx_t_5 = 0;
+__pyx_t_2 = NULL;
+__pyx_t_4 = 0;
 #if CYTHON_UNPACK_METHODS
 if (unlikely(PyMethod_Check(__pyx_t_3))) {
-  __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
-  if (likely(__pyx_t_4)) {
+  __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+  if (likely(__pyx_t_2)) {
     PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-    __Pyx_INCREF(__pyx_t_4);
+    __Pyx_INCREF(__pyx_t_2);
     __Pyx_INCREF(function);
     __Pyx_DECREF_SET(__pyx_t_3, function);
-    __pyx_t_5 = 1;
+    __pyx_t_4 = 1;
   }
 }
 #endif
 {
-  PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_t_2};
-  __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_v_self->real};
+  __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 768, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -7193,11 +7000,10 @@ __pyx_t_1 = 0;
  *         return Dual(real, dual)
  * 
  */
-if (unlikely(__pyx_v_self->real == 0)) {
-  PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-  __PYX_ERR(0, 769, __pyx_L1_error)
-}
-__pyx_v_dual = (__pyx_v_self->dual / __pyx_v_self->real);
+__pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_v_self->dual, __pyx_v_self->real); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 769, __pyx_L1_error)
+__Pyx_GOTREF(__pyx_t_1);
+__pyx_v_dual = __pyx_t_1;
+__pyx_t_1 = 0;
 
 /* "dual_autodiff_x/dual.pyx":770
  *         real = np.log(self.real)
@@ -7207,21 +7013,19 @@ __pyx_v_dual = (__pyx_v_self->dual / __pyx_v_self->real);
  * 
  */
 __Pyx_XDECREF(__pyx_r);
-__pyx_t_1 = PyFloat_FromDouble(__pyx_v_dual); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 770, __pyx_L1_error)
+__pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 770, __pyx_L1_error)
 __Pyx_GOTREF(__pyx_t_1);
-__pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 770, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_3);
 __Pyx_INCREF(__pyx_v_real);
 __Pyx_GIVEREF(__pyx_v_real);
-if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_real)) __PYX_ERR(0, 770, __pyx_L1_error);
-__Pyx_GIVEREF(__pyx_t_1);
-if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_1)) __PYX_ERR(0, 770, __pyx_L1_error);
-__pyx_t_1 = 0;
-__pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 770, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_1);
-__Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-__pyx_r = __pyx_t_1;
-__pyx_t_1 = 0;
+if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_real)) __PYX_ERR(0, 770, __pyx_L1_error);
+__Pyx_INCREF(__pyx_v_dual);
+__Pyx_GIVEREF(__pyx_v_dual);
+if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_dual)) __PYX_ERR(0, 770, __pyx_L1_error);
+__pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_1, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 770, __pyx_L1_error)
+__Pyx_GOTREF(__pyx_t_3);
+__Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+__pyx_r = __pyx_t_3;
+__pyx_t_3 = 0;
 goto __pyx_L0;
 
 /* "dual_autodiff_x/dual.pyx":752
@@ -7237,11 +7041,11 @@ __pyx_L1_error:;
 __Pyx_XDECREF(__pyx_t_1);
 __Pyx_XDECREF(__pyx_t_2);
 __Pyx_XDECREF(__pyx_t_3);
-__Pyx_XDECREF(__pyx_t_4);
 __Pyx_AddTraceback("dual_autodiff_x.dual.Dual.log", __pyx_clineno, __pyx_lineno, __pyx_filename);
 __pyx_r = NULL;
 __pyx_L0:;
 __Pyx_XDECREF(__pyx_v_real);
+__Pyx_XDECREF(__pyx_v_dual);
 __Pyx_XGIVEREF(__pyx_r);
 __Pyx_RefNannyFinishContext();
 return __pyx_r;
@@ -7305,9 +7109,7 @@ __Pyx_RefNannyDeclarations
 PyObject *__pyx_t_1 = NULL;
 PyObject *__pyx_t_2 = NULL;
 PyObject *__pyx_t_3 = NULL;
-PyObject *__pyx_t_4 = NULL;
-unsigned int __pyx_t_5;
-PyObject *__pyx_t_6 = NULL;
+unsigned int __pyx_t_4;
 int __pyx_lineno = 0;
 const char *__pyx_filename = NULL;
 int __pyx_clineno = 0;
@@ -7325,27 +7127,24 @@ __Pyx_GOTREF(__pyx_t_2);
 __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_sinh); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 789, __pyx_L1_error)
 __Pyx_GOTREF(__pyx_t_3);
 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-__pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 789, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_2);
-__pyx_t_4 = NULL;
-__pyx_t_5 = 0;
+__pyx_t_2 = NULL;
+__pyx_t_4 = 0;
 #if CYTHON_UNPACK_METHODS
 if (unlikely(PyMethod_Check(__pyx_t_3))) {
-__pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
-if (likely(__pyx_t_4)) {
+__pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+if (likely(__pyx_t_2)) {
   PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-  __Pyx_INCREF(__pyx_t_4);
+  __Pyx_INCREF(__pyx_t_2);
   __Pyx_INCREF(function);
   __Pyx_DECREF_SET(__pyx_t_3, function);
-  __pyx_t_5 = 1;
+  __pyx_t_4 = 1;
 }
 }
 #endif
 {
-PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_t_2};
-__pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
-__Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-__Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_v_self->real};
+__pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
+__Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
 if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 789, __pyx_L1_error)
 __Pyx_GOTREF(__pyx_t_1);
 __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -7360,44 +7159,38 @@ __pyx_t_1 = 0;
  *         return Dual(real, dual)
  * 
  */
-__pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->dual); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 790, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_1);
-__Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 790, __pyx_L1_error)
+__Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 790, __pyx_L1_error)
+__Pyx_GOTREF(__pyx_t_3);
+__pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_cosh); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 790, __pyx_L1_error)
 __Pyx_GOTREF(__pyx_t_2);
-__pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_cosh); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 790, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_4);
-__Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-__pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 790, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_2);
-__pyx_t_6 = NULL;
-__pyx_t_5 = 0;
+__Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+__pyx_t_3 = NULL;
+__pyx_t_4 = 0;
 #if CYTHON_UNPACK_METHODS
-if (unlikely(PyMethod_Check(__pyx_t_4))) {
-__pyx_t_6 = PyMethod_GET_SELF(__pyx_t_4);
-if (likely(__pyx_t_6)) {
-  PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-  __Pyx_INCREF(__pyx_t_6);
+if (unlikely(PyMethod_Check(__pyx_t_2))) {
+__pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+if (likely(__pyx_t_3)) {
+  PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+  __Pyx_INCREF(__pyx_t_3);
   __Pyx_INCREF(function);
-  __Pyx_DECREF_SET(__pyx_t_4, function);
-  __pyx_t_5 = 1;
+  __Pyx_DECREF_SET(__pyx_t_2, function);
+  __pyx_t_4 = 1;
 }
 }
 #endif
 {
-PyObject *__pyx_callargs[2] = {__pyx_t_6, __pyx_t_2};
-__pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
-__Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_self->real};
+__pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
+__Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 790, __pyx_L1_error)
+__Pyx_GOTREF(__pyx_t_1);
 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 790, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_3);
-__Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 }
-__pyx_t_4 = PyNumber_Multiply(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 790, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_4);
+__pyx_t_2 = PyNumber_Multiply(__pyx_v_self->dual, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 790, __pyx_L1_error)
+__Pyx_GOTREF(__pyx_t_2);
 __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-__Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-__pyx_v_dual = __pyx_t_4;
-__pyx_t_4 = 0;
+__pyx_v_dual = __pyx_t_2;
+__pyx_t_2 = 0;
 
 /* "dual_autodiff_x/dual.pyx":791
  *         real = np.sinh(self.real)
@@ -7407,19 +7200,19 @@ __pyx_t_4 = 0;
  *     def cosh(self):
  */
 __Pyx_XDECREF(__pyx_r);
-__pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 791, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_4);
+__pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 791, __pyx_L1_error)
+__Pyx_GOTREF(__pyx_t_2);
 __Pyx_INCREF(__pyx_v_real);
 __Pyx_GIVEREF(__pyx_v_real);
-if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_real)) __PYX_ERR(0, 791, __pyx_L1_error);
+if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_real)) __PYX_ERR(0, 791, __pyx_L1_error);
 __Pyx_INCREF(__pyx_v_dual);
 __Pyx_GIVEREF(__pyx_v_dual);
-if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_dual)) __PYX_ERR(0, 791, __pyx_L1_error);
-__pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 791, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_3);
-__Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-__pyx_r = __pyx_t_3;
-__pyx_t_3 = 0;
+if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_dual)) __PYX_ERR(0, 791, __pyx_L1_error);
+__pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 791, __pyx_L1_error)
+__Pyx_GOTREF(__pyx_t_1);
+__Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+__pyx_r = __pyx_t_1;
+__pyx_t_1 = 0;
 goto __pyx_L0;
 
 /* "dual_autodiff_x/dual.pyx":773
@@ -7435,8 +7228,6 @@ __pyx_L1_error:;
 __Pyx_XDECREF(__pyx_t_1);
 __Pyx_XDECREF(__pyx_t_2);
 __Pyx_XDECREF(__pyx_t_3);
-__Pyx_XDECREF(__pyx_t_4);
-__Pyx_XDECREF(__pyx_t_6);
 __Pyx_AddTraceback("dual_autodiff_x.dual.Dual.sinh", __pyx_clineno, __pyx_lineno, __pyx_filename);
 __pyx_r = NULL;
 __pyx_L0:;
@@ -7505,9 +7296,7 @@ __Pyx_RefNannyDeclarations
 PyObject *__pyx_t_1 = NULL;
 PyObject *__pyx_t_2 = NULL;
 PyObject *__pyx_t_3 = NULL;
-PyObject *__pyx_t_4 = NULL;
-unsigned int __pyx_t_5;
-PyObject *__pyx_t_6 = NULL;
+unsigned int __pyx_t_4;
 int __pyx_lineno = 0;
 const char *__pyx_filename = NULL;
 int __pyx_clineno = 0;
@@ -7525,27 +7314,24 @@ __Pyx_GOTREF(__pyx_t_2);
 __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_cosh); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 809, __pyx_L1_error)
 __Pyx_GOTREF(__pyx_t_3);
 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-__pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 809, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_2);
-__pyx_t_4 = NULL;
-__pyx_t_5 = 0;
+__pyx_t_2 = NULL;
+__pyx_t_4 = 0;
 #if CYTHON_UNPACK_METHODS
 if (unlikely(PyMethod_Check(__pyx_t_3))) {
-__pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
-if (likely(__pyx_t_4)) {
+__pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+if (likely(__pyx_t_2)) {
 PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-__Pyx_INCREF(__pyx_t_4);
+__Pyx_INCREF(__pyx_t_2);
 __Pyx_INCREF(function);
 __Pyx_DECREF_SET(__pyx_t_3, function);
-__pyx_t_5 = 1;
+__pyx_t_4 = 1;
 }
 }
 #endif
 {
-PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_t_2};
-__pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
-__Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-__Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_v_self->real};
+__pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
+__Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
 if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 809, __pyx_L1_error)
 __Pyx_GOTREF(__pyx_t_1);
 __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -7560,44 +7346,38 @@ __pyx_t_1 = 0;
  *         return Dual(real, dual)
  * 
  */
-__pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->dual); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 810, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_1);
-__Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 810, __pyx_L1_error)
+__Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 810, __pyx_L1_error)
+__Pyx_GOTREF(__pyx_t_3);
+__pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_sinh); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 810, __pyx_L1_error)
 __Pyx_GOTREF(__pyx_t_2);
-__pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_sinh); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 810, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_4);
-__Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-__pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 810, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_2);
-__pyx_t_6 = NULL;
-__pyx_t_5 = 0;
+__Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+__pyx_t_3 = NULL;
+__pyx_t_4 = 0;
 #if CYTHON_UNPACK_METHODS
-if (unlikely(PyMethod_Check(__pyx_t_4))) {
-__pyx_t_6 = PyMethod_GET_SELF(__pyx_t_4);
-if (likely(__pyx_t_6)) {
-PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-__Pyx_INCREF(__pyx_t_6);
+if (unlikely(PyMethod_Check(__pyx_t_2))) {
+__pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+if (likely(__pyx_t_3)) {
+PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+__Pyx_INCREF(__pyx_t_3);
 __Pyx_INCREF(function);
-__Pyx_DECREF_SET(__pyx_t_4, function);
-__pyx_t_5 = 1;
+__Pyx_DECREF_SET(__pyx_t_2, function);
+__pyx_t_4 = 1;
 }
 }
 #endif
 {
-PyObject *__pyx_callargs[2] = {__pyx_t_6, __pyx_t_2};
-__pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
-__Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_self->real};
+__pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
+__Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 810, __pyx_L1_error)
+__Pyx_GOTREF(__pyx_t_1);
 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 810, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_3);
-__Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 }
-__pyx_t_4 = PyNumber_Multiply(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 810, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_4);
+__pyx_t_2 = PyNumber_Multiply(__pyx_v_self->dual, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 810, __pyx_L1_error)
+__Pyx_GOTREF(__pyx_t_2);
 __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-__Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-__pyx_v_dual = __pyx_t_4;
-__pyx_t_4 = 0;
+__pyx_v_dual = __pyx_t_2;
+__pyx_t_2 = 0;
 
 /* "dual_autodiff_x/dual.pyx":811
  *         real = np.cosh(self.real)
@@ -7607,19 +7387,19 @@ __pyx_t_4 = 0;
  *     def tanh(self):
  */
 __Pyx_XDECREF(__pyx_r);
-__pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 811, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_4);
+__pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 811, __pyx_L1_error)
+__Pyx_GOTREF(__pyx_t_2);
 __Pyx_INCREF(__pyx_v_real);
 __Pyx_GIVEREF(__pyx_v_real);
-if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_real)) __PYX_ERR(0, 811, __pyx_L1_error);
+if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_real)) __PYX_ERR(0, 811, __pyx_L1_error);
 __Pyx_INCREF(__pyx_v_dual);
 __Pyx_GIVEREF(__pyx_v_dual);
-if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_dual)) __PYX_ERR(0, 811, __pyx_L1_error);
-__pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 811, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_3);
-__Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-__pyx_r = __pyx_t_3;
-__pyx_t_3 = 0;
+if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_dual)) __PYX_ERR(0, 811, __pyx_L1_error);
+__pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 811, __pyx_L1_error)
+__Pyx_GOTREF(__pyx_t_1);
+__Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+__pyx_r = __pyx_t_1;
+__pyx_t_1 = 0;
 goto __pyx_L0;
 
 /* "dual_autodiff_x/dual.pyx":793
@@ -7635,8 +7415,6 @@ __pyx_L1_error:;
 __Pyx_XDECREF(__pyx_t_1);
 __Pyx_XDECREF(__pyx_t_2);
 __Pyx_XDECREF(__pyx_t_3);
-__Pyx_XDECREF(__pyx_t_4);
-__Pyx_XDECREF(__pyx_t_6);
 __Pyx_AddTraceback("dual_autodiff_x.dual.Dual.cosh", __pyx_clineno, __pyx_lineno, __pyx_filename);
 __pyx_r = NULL;
 __pyx_L0:;
@@ -7705,9 +7483,7 @@ __Pyx_RefNannyDeclarations
 PyObject *__pyx_t_1 = NULL;
 PyObject *__pyx_t_2 = NULL;
 PyObject *__pyx_t_3 = NULL;
-PyObject *__pyx_t_4 = NULL;
-unsigned int __pyx_t_5;
-PyObject *__pyx_t_6 = NULL;
+unsigned int __pyx_t_4;
 int __pyx_lineno = 0;
 const char *__pyx_filename = NULL;
 int __pyx_clineno = 0;
@@ -7725,27 +7501,24 @@ __Pyx_GOTREF(__pyx_t_2);
 __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_tanh); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 829, __pyx_L1_error)
 __Pyx_GOTREF(__pyx_t_3);
 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-__pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 829, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_2);
-__pyx_t_4 = NULL;
-__pyx_t_5 = 0;
+__pyx_t_2 = NULL;
+__pyx_t_4 = 0;
 #if CYTHON_UNPACK_METHODS
 if (unlikely(PyMethod_Check(__pyx_t_3))) {
-__pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
-if (likely(__pyx_t_4)) {
+__pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+if (likely(__pyx_t_2)) {
 PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-__Pyx_INCREF(__pyx_t_4);
+__Pyx_INCREF(__pyx_t_2);
 __Pyx_INCREF(function);
 __Pyx_DECREF_SET(__pyx_t_3, function);
-__pyx_t_5 = 1;
+__pyx_t_4 = 1;
 }
 }
 #endif
 {
-PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_t_2};
-__pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
-__Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-__Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_v_self->real};
+__pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
+__Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
 if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 829, __pyx_L1_error)
 __Pyx_GOTREF(__pyx_t_1);
 __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -7760,47 +7533,41 @@ __pyx_t_1 = 0;
  *         return Dual(real, dual)
  * 
  */
-__pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->dual); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 830, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_1);
-__Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 830, __pyx_L1_error)
+__Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 830, __pyx_L1_error)
+__Pyx_GOTREF(__pyx_t_3);
+__pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_cosh); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 830, __pyx_L1_error)
 __Pyx_GOTREF(__pyx_t_2);
-__pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_cosh); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 830, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_4);
-__Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-__pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 830, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_2);
-__pyx_t_6 = NULL;
-__pyx_t_5 = 0;
+__Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+__pyx_t_3 = NULL;
+__pyx_t_4 = 0;
 #if CYTHON_UNPACK_METHODS
-if (unlikely(PyMethod_Check(__pyx_t_4))) {
-__pyx_t_6 = PyMethod_GET_SELF(__pyx_t_4);
-if (likely(__pyx_t_6)) {
-PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-__Pyx_INCREF(__pyx_t_6);
+if (unlikely(PyMethod_Check(__pyx_t_2))) {
+__pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+if (likely(__pyx_t_3)) {
+PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+__Pyx_INCREF(__pyx_t_3);
 __Pyx_INCREF(function);
-__Pyx_DECREF_SET(__pyx_t_4, function);
-__pyx_t_5 = 1;
+__Pyx_DECREF_SET(__pyx_t_2, function);
+__pyx_t_4 = 1;
 }
 }
 #endif
 {
-PyObject *__pyx_callargs[2] = {__pyx_t_6, __pyx_t_2};
-__pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
-__Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_self->real};
+__pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
+__Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 830, __pyx_L1_error)
+__Pyx_GOTREF(__pyx_t_1);
 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 830, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_3);
-__Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 }
-__pyx_t_4 = PyNumber_Power(__pyx_t_3, __pyx_int_2, Py_None); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 830, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_4);
-__Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-__pyx_t_3 = __Pyx_PyNumber_Divide(__pyx_t_1, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 830, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_3);
+__pyx_t_2 = PyNumber_Power(__pyx_t_1, __pyx_int_2, Py_None); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 830, __pyx_L1_error)
+__Pyx_GOTREF(__pyx_t_2);
 __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-__Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-__pyx_v_dual = __pyx_t_3;
-__pyx_t_3 = 0;
+__pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_v_self->dual, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 830, __pyx_L1_error)
+__Pyx_GOTREF(__pyx_t_1);
+__Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+__pyx_v_dual = __pyx_t_1;
+__pyx_t_1 = 0;
 
 /* "dual_autodiff_x/dual.pyx":831
  *         real = np.tanh(self.real)
@@ -7810,19 +7577,19 @@ __pyx_t_3 = 0;
  *     def partial_derivative(self, var_index, func, *args):
  */
 __Pyx_XDECREF(__pyx_r);
-__pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 831, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_3);
+__pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 831, __pyx_L1_error)
+__Pyx_GOTREF(__pyx_t_1);
 __Pyx_INCREF(__pyx_v_real);
 __Pyx_GIVEREF(__pyx_v_real);
-if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_real)) __PYX_ERR(0, 831, __pyx_L1_error);
+if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_real)) __PYX_ERR(0, 831, __pyx_L1_error);
 __Pyx_INCREF(__pyx_v_dual);
 __Pyx_GIVEREF(__pyx_v_dual);
-if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_dual)) __PYX_ERR(0, 831, __pyx_L1_error);
-__pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 831, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_4);
-__Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-__pyx_r = __pyx_t_4;
-__pyx_t_4 = 0;
+if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_dual)) __PYX_ERR(0, 831, __pyx_L1_error);
+__pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_15dual_autodiff_x_4dual_Dual), __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 831, __pyx_L1_error)
+__Pyx_GOTREF(__pyx_t_2);
+__Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+__pyx_r = __pyx_t_2;
+__pyx_t_2 = 0;
 goto __pyx_L0;
 
 /* "dual_autodiff_x/dual.pyx":813
@@ -7838,8 +7605,6 @@ __pyx_L1_error:;
 __Pyx_XDECREF(__pyx_t_1);
 __Pyx_XDECREF(__pyx_t_2);
 __Pyx_XDECREF(__pyx_t_3);
-__Pyx_XDECREF(__pyx_t_4);
-__Pyx_XDECREF(__pyx_t_6);
 __Pyx_AddTraceback("dual_autodiff_x.dual.Dual.tanh", __pyx_clineno, __pyx_lineno, __pyx_filename);
 __pyx_r = NULL;
 __pyx_L0:;
@@ -8134,9 +7899,10 @@ int __pyx_v_use_setstate;
 PyObject *__pyx_r = NULL;
 __Pyx_RefNannyDeclarations
 PyObject *__pyx_t_1 = NULL;
-PyObject *__pyx_t_2 = NULL;
+int __pyx_t_2;
 PyObject *__pyx_t_3 = NULL;
 int __pyx_t_4;
+PyObject *__pyx_t_5 = NULL;
 int __pyx_lineno = 0;
 const char *__pyx_filename = NULL;
 int __pyx_clineno = 0;
@@ -8149,20 +7915,16 @@ __Pyx_RefNannySetupContext("__reduce_cython__", 1);
  *     _dict = getattr(self, '__dict__', None)
  *     if _dict is not None:
  */
-__pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->dual); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 5, __pyx_L1_error)
+__pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 5, __pyx_L1_error)
 __Pyx_GOTREF(__pyx_t_1);
-__pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->real); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 5, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_2);
-__pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 5, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_3);
-__Pyx_GIVEREF(__pyx_t_1);
-if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1)) __PYX_ERR(1, 5, __pyx_L1_error);
-__Pyx_GIVEREF(__pyx_t_2);
-if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_2)) __PYX_ERR(1, 5, __pyx_L1_error);
+__Pyx_INCREF(__pyx_v_self->dual);
+__Pyx_GIVEREF(__pyx_v_self->dual);
+if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_self->dual)) __PYX_ERR(1, 5, __pyx_L1_error);
+__Pyx_INCREF(__pyx_v_self->real);
+__Pyx_GIVEREF(__pyx_v_self->real);
+if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_self->real)) __PYX_ERR(1, 5, __pyx_L1_error);
+__pyx_v_state = ((PyObject*)__pyx_t_1);
 __pyx_t_1 = 0;
-__pyx_t_2 = 0;
-__pyx_v_state = ((PyObject*)__pyx_t_3);
-__pyx_t_3 = 0;
 
 /* "(tree fragment)":6
  *     cdef bint use_setstate
@@ -8171,10 +7933,10 @@ __pyx_t_3 = 0;
  *     if _dict is not None:
  *         state += (_dict,)
  */
-__pyx_t_3 = __Pyx_GetAttr3(((PyObject *)__pyx_v_self), __pyx_n_s_dict, Py_None); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 6, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_3);
-__pyx_v__dict = __pyx_t_3;
-__pyx_t_3 = 0;
+__pyx_t_1 = __Pyx_GetAttr3(((PyObject *)__pyx_v_self), __pyx_n_s_dict, Py_None); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 6, __pyx_L1_error)
+__Pyx_GOTREF(__pyx_t_1);
+__pyx_v__dict = __pyx_t_1;
+__pyx_t_1 = 0;
 
 /* "(tree fragment)":7
  *     state = (self.dual, self.real)
@@ -8183,8 +7945,8 @@ __pyx_t_3 = 0;
  *         state += (_dict,)
  *         use_setstate = True
  */
-__pyx_t_4 = (__pyx_v__dict != Py_None);
-if (__pyx_t_4) {
+__pyx_t_2 = (__pyx_v__dict != Py_None);
+if (__pyx_t_2) {
 
 /* "(tree fragment)":8
  *     _dict = getattr(self, '__dict__', None)
@@ -8193,23 +7955,23 @@ if (__pyx_t_4) {
  *         use_setstate = True
  *     else:
  */
-__pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 8, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_3);
+__pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 8, __pyx_L1_error)
+__Pyx_GOTREF(__pyx_t_1);
 __Pyx_INCREF(__pyx_v__dict);
 __Pyx_GIVEREF(__pyx_v__dict);
-if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v__dict)) __PYX_ERR(1, 8, __pyx_L1_error);
-__pyx_t_2 = PyNumber_InPlaceAdd(__pyx_v_state, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 8, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_2);
-__Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-__Pyx_DECREF_SET(__pyx_v_state, ((PyObject*)__pyx_t_2));
-__pyx_t_2 = 0;
+if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v__dict)) __PYX_ERR(1, 8, __pyx_L1_error);
+__pyx_t_3 = PyNumber_InPlaceAdd(__pyx_v_state, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 8, __pyx_L1_error)
+__Pyx_GOTREF(__pyx_t_3);
+__Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+__Pyx_DECREF_SET(__pyx_v_state, ((PyObject*)__pyx_t_3));
+__pyx_t_3 = 0;
 
 /* "(tree fragment)":9
  *     if _dict is not None:
  *         state += (_dict,)
  *         use_setstate = True             # <<<<<<<<<<<<<<
  *     else:
- *         use_setstate = False
+ *         use_setstate = self.dual is not None or self.real is not None
  */
 __pyx_v_use_setstate = 1;
 
@@ -8226,18 +7988,27 @@ goto __pyx_L3;
 /* "(tree fragment)":11
  *         use_setstate = True
  *     else:
- *         use_setstate = False             # <<<<<<<<<<<<<<
+ *         use_setstate = self.dual is not None or self.real is not None             # <<<<<<<<<<<<<<
  *     if use_setstate:
  *         return __pyx_unpickle_Dual, (type(self), 0x880f1b0, None), state
  */
 /*else*/ {
-__pyx_v_use_setstate = 0;
+__pyx_t_4 = (__pyx_v_self->dual != Py_None);
+if (!__pyx_t_4) {
+} else {
+__pyx_t_2 = __pyx_t_4;
+goto __pyx_L4_bool_binop_done;
+}
+__pyx_t_4 = (__pyx_v_self->real != Py_None);
+__pyx_t_2 = __pyx_t_4;
+__pyx_L4_bool_binop_done:;
+__pyx_v_use_setstate = __pyx_t_2;
 }
 __pyx_L3:;
 
 /* "(tree fragment)":12
  *     else:
- *         use_setstate = False
+ *         use_setstate = self.dual is not None or self.real is not None
  *     if use_setstate:             # <<<<<<<<<<<<<<
  *         return __pyx_unpickle_Dual, (type(self), 0x880f1b0, None), state
  *     else:
@@ -8245,44 +8016,44 @@ __pyx_L3:;
 if (__pyx_v_use_setstate) {
 
 /* "(tree fragment)":13
- *         use_setstate = False
+ *         use_setstate = self.dual is not None or self.real is not None
  *     if use_setstate:
  *         return __pyx_unpickle_Dual, (type(self), 0x880f1b0, None), state             # <<<<<<<<<<<<<<
  *     else:
  *         return __pyx_unpickle_Dual, (type(self), 0x880f1b0, state)
  */
 __Pyx_XDECREF(__pyx_r);
-__Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_pyx_unpickle_Dual); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 13, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_2);
-__pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 13, __pyx_L1_error)
+__Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_pyx_unpickle_Dual); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 13, __pyx_L1_error)
 __Pyx_GOTREF(__pyx_t_3);
-__Pyx_INCREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-__Pyx_GIVEREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))))) __PYX_ERR(1, 13, __pyx_L1_error);
-__Pyx_INCREF(__pyx_int_142668208);
-__Pyx_GIVEREF(__pyx_int_142668208);
-if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_int_142668208)) __PYX_ERR(1, 13, __pyx_L1_error);
-__Pyx_INCREF(Py_None);
-__Pyx_GIVEREF(Py_None);
-if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 2, Py_None)) __PYX_ERR(1, 13, __pyx_L1_error);
 __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 13, __pyx_L1_error)
 __Pyx_GOTREF(__pyx_t_1);
-__Pyx_GIVEREF(__pyx_t_2);
-if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_2)) __PYX_ERR(1, 13, __pyx_L1_error);
+__Pyx_INCREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
+__Pyx_GIVEREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
+if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))))) __PYX_ERR(1, 13, __pyx_L1_error);
+__Pyx_INCREF(__pyx_int_142668208);
+__Pyx_GIVEREF(__pyx_int_142668208);
+if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_int_142668208)) __PYX_ERR(1, 13, __pyx_L1_error);
+__Pyx_INCREF(Py_None);
+__Pyx_GIVEREF(Py_None);
+if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 2, Py_None)) __PYX_ERR(1, 13, __pyx_L1_error);
+__pyx_t_5 = PyTuple_New(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 13, __pyx_L1_error)
+__Pyx_GOTREF(__pyx_t_5);
 __Pyx_GIVEREF(__pyx_t_3);
-if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_3)) __PYX_ERR(1, 13, __pyx_L1_error);
+if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3)) __PYX_ERR(1, 13, __pyx_L1_error);
+__Pyx_GIVEREF(__pyx_t_1);
+if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_1)) __PYX_ERR(1, 13, __pyx_L1_error);
 __Pyx_INCREF(__pyx_v_state);
 __Pyx_GIVEREF(__pyx_v_state);
-if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_v_state)) __PYX_ERR(1, 13, __pyx_L1_error);
-__pyx_t_2 = 0;
+if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 2, __pyx_v_state)) __PYX_ERR(1, 13, __pyx_L1_error);
 __pyx_t_3 = 0;
-__pyx_r = __pyx_t_1;
 __pyx_t_1 = 0;
+__pyx_r = __pyx_t_5;
+__pyx_t_5 = 0;
 goto __pyx_L0;
 
 /* "(tree fragment)":12
  *     else:
- *         use_setstate = False
+ *         use_setstate = self.dual is not None or self.real is not None
  *     if use_setstate:             # <<<<<<<<<<<<<<
  *         return __pyx_unpickle_Dual, (type(self), 0x880f1b0, None), state
  *     else:
@@ -8298,29 +8069,29 @@ goto __pyx_L0;
  */
 /*else*/ {
 __Pyx_XDECREF(__pyx_r);
-__Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_pyx_unpickle_Dual); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 15, __pyx_L1_error)
+__Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_pyx_unpickle_Dual); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 15, __pyx_L1_error)
+__Pyx_GOTREF(__pyx_t_5);
+__pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 15, __pyx_L1_error)
 __Pyx_GOTREF(__pyx_t_1);
-__pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 15, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_3);
 __Pyx_INCREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
 __Pyx_GIVEREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))))) __PYX_ERR(1, 15, __pyx_L1_error);
+if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))))) __PYX_ERR(1, 15, __pyx_L1_error);
 __Pyx_INCREF(__pyx_int_142668208);
 __Pyx_GIVEREF(__pyx_int_142668208);
-if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_int_142668208)) __PYX_ERR(1, 15, __pyx_L1_error);
+if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_int_142668208)) __PYX_ERR(1, 15, __pyx_L1_error);
 __Pyx_INCREF(__pyx_v_state);
 __Pyx_GIVEREF(__pyx_v_state);
-if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_v_state)) __PYX_ERR(1, 15, __pyx_L1_error);
-__pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 15, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_2);
+if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_v_state)) __PYX_ERR(1, 15, __pyx_L1_error);
+__pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 15, __pyx_L1_error)
+__Pyx_GOTREF(__pyx_t_3);
+__Pyx_GIVEREF(__pyx_t_5);
+if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_5)) __PYX_ERR(1, 15, __pyx_L1_error);
 __Pyx_GIVEREF(__pyx_t_1);
-if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1)) __PYX_ERR(1, 15, __pyx_L1_error);
-__Pyx_GIVEREF(__pyx_t_3);
-if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_3)) __PYX_ERR(1, 15, __pyx_L1_error);
+if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_1)) __PYX_ERR(1, 15, __pyx_L1_error);
+__pyx_t_5 = 0;
 __pyx_t_1 = 0;
+__pyx_r = __pyx_t_3;
 __pyx_t_3 = 0;
-__pyx_r = __pyx_t_2;
-__pyx_t_2 = 0;
 goto __pyx_L0;
 }
 
@@ -8333,8 +8104,8 @@ goto __pyx_L0;
 /* function exit code */
 __pyx_L1_error:;
 __Pyx_XDECREF(__pyx_t_1);
-__Pyx_XDECREF(__pyx_t_2);
 __Pyx_XDECREF(__pyx_t_3);
+__Pyx_XDECREF(__pyx_t_5);
 __Pyx_AddTraceback("dual_autodiff_x.dual.Dual.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
 __pyx_r = NULL;
 __pyx_L0:;
@@ -8804,14 +8575,13 @@ static PyObject *__pyx_f_15dual_autodiff_x_4dual___pyx_unpickle_Dual__set_state(
 PyObject *__pyx_r = NULL;
 __Pyx_RefNannyDeclarations
 PyObject *__pyx_t_1 = NULL;
-double __pyx_t_2;
-int __pyx_t_3;
-Py_ssize_t __pyx_t_4;
-int __pyx_t_5;
+int __pyx_t_2;
+Py_ssize_t __pyx_t_3;
+int __pyx_t_4;
+PyObject *__pyx_t_5 = NULL;
 PyObject *__pyx_t_6 = NULL;
 PyObject *__pyx_t_7 = NULL;
-PyObject *__pyx_t_8 = NULL;
-unsigned int __pyx_t_9;
+unsigned int __pyx_t_8;
 int __pyx_lineno = 0;
 const char *__pyx_filename = NULL;
 int __pyx_clineno = 0;
@@ -8830,18 +8600,22 @@ __PYX_ERR(1, 12, __pyx_L1_error)
 }
 __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
 __Pyx_GOTREF(__pyx_t_1);
-__pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
-__Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-__pyx_v___pyx_result->dual = __pyx_t_2;
+__Pyx_GIVEREF(__pyx_t_1);
+__Pyx_GOTREF(__pyx_v___pyx_result->dual);
+__Pyx_DECREF(__pyx_v___pyx_result->dual);
+__pyx_v___pyx_result->dual = __pyx_t_1;
+__pyx_t_1 = 0;
 if (unlikely(__pyx_v___pyx_state == Py_None)) {
 PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
 __PYX_ERR(1, 12, __pyx_L1_error)
 }
 __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
 __Pyx_GOTREF(__pyx_t_1);
-__pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
-__Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-__pyx_v___pyx_result->real = __pyx_t_2;
+__Pyx_GIVEREF(__pyx_t_1);
+__Pyx_GOTREF(__pyx_v___pyx_result->real);
+__Pyx_DECREF(__pyx_v___pyx_result->real);
+__pyx_v___pyx_result->real = __pyx_t_1;
+__pyx_t_1 = 0;
 
 /* "(tree fragment)":13
  * cdef __pyx_unpickle_Dual__set_state(Dual __pyx_result, tuple __pyx_state):
@@ -8853,56 +8627,56 @@ if (unlikely(__pyx_v___pyx_state == Py_None)) {
 PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
 __PYX_ERR(1, 13, __pyx_L1_error)
 }
-__pyx_t_4 = __Pyx_PyTuple_GET_SIZE(__pyx_v___pyx_state); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(1, 13, __pyx_L1_error)
-__pyx_t_5 = (__pyx_t_4 > 2);
-if (__pyx_t_5) {
+__pyx_t_3 = __Pyx_PyTuple_GET_SIZE(__pyx_v___pyx_state); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(1, 13, __pyx_L1_error)
+__pyx_t_4 = (__pyx_t_3 > 2);
+if (__pyx_t_4) {
 } else {
-__pyx_t_3 = __pyx_t_5;
+__pyx_t_2 = __pyx_t_4;
 goto __pyx_L4_bool_binop_done;
 }
-__pyx_t_5 = __Pyx_HasAttr(((PyObject *)__pyx_v___pyx_result), __pyx_n_s_dict); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(1, 13, __pyx_L1_error)
-__pyx_t_3 = __pyx_t_5;
+__pyx_t_4 = __Pyx_HasAttr(((PyObject *)__pyx_v___pyx_result), __pyx_n_s_dict); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 13, __pyx_L1_error)
+__pyx_t_2 = __pyx_t_4;
 __pyx_L4_bool_binop_done:;
-if (__pyx_t_3) {
+if (__pyx_t_2) {
 
 /* "(tree fragment)":14
  *     __pyx_result.dual = __pyx_state[0]; __pyx_result.real = __pyx_state[1]
  *     if len(__pyx_state) > 2 and hasattr(__pyx_result, '__dict__'):
  *         __pyx_result.__dict__.update(__pyx_state[2])             # <<<<<<<<<<<<<<
  */
-__pyx_t_6 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v___pyx_result), __pyx_n_s_dict); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 14, __pyx_L1_error)
+__pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v___pyx_result), __pyx_n_s_dict); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 14, __pyx_L1_error)
+__Pyx_GOTREF(__pyx_t_5);
+__pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_update); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 14, __pyx_L1_error)
 __Pyx_GOTREF(__pyx_t_6);
-__pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_update); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 14, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_7);
-__Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+__Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 if (unlikely(__pyx_v___pyx_state == Py_None)) {
 PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
 __PYX_ERR(1, 14, __pyx_L1_error)
 }
-__pyx_t_6 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 14, __pyx_L1_error)
-__Pyx_GOTREF(__pyx_t_6);
-__pyx_t_8 = NULL;
-__pyx_t_9 = 0;
+__pyx_t_5 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 14, __pyx_L1_error)
+__Pyx_GOTREF(__pyx_t_5);
+__pyx_t_7 = NULL;
+__pyx_t_8 = 0;
 #if CYTHON_UNPACK_METHODS
-if (likely(PyMethod_Check(__pyx_t_7))) {
-__pyx_t_8 = PyMethod_GET_SELF(__pyx_t_7);
-if (likely(__pyx_t_8)) {
-  PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_7);
-  __Pyx_INCREF(__pyx_t_8);
+if (likely(PyMethod_Check(__pyx_t_6))) {
+__pyx_t_7 = PyMethod_GET_SELF(__pyx_t_6);
+if (likely(__pyx_t_7)) {
+  PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_6);
+  __Pyx_INCREF(__pyx_t_7);
   __Pyx_INCREF(function);
-  __Pyx_DECREF_SET(__pyx_t_7, function);
-  __pyx_t_9 = 1;
+  __Pyx_DECREF_SET(__pyx_t_6, function);
+  __pyx_t_8 = 1;
 }
 }
 #endif
 {
-PyObject *__pyx_callargs[2] = {__pyx_t_8, __pyx_t_6};
-__pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_7, __pyx_callargs+1-__pyx_t_9, 1+__pyx_t_9);
-__Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-__Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+PyObject *__pyx_callargs[2] = {__pyx_t_7, __pyx_t_5};
+__pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
+__Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+__Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 14, __pyx_L1_error)
 __Pyx_GOTREF(__pyx_t_1);
-__Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+__Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 }
 __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
@@ -8927,9 +8701,9 @@ __pyx_r = Py_None; __Pyx_INCREF(Py_None);
 goto __pyx_L0;
 __pyx_L1_error:;
 __Pyx_XDECREF(__pyx_t_1);
+__Pyx_XDECREF(__pyx_t_5);
 __Pyx_XDECREF(__pyx_t_6);
 __Pyx_XDECREF(__pyx_t_7);
-__Pyx_XDECREF(__pyx_t_8);
 __Pyx_AddTraceback("dual_autodiff_x.dual.__pyx_unpickle_Dual__set_state", __pyx_clineno, __pyx_lineno, __pyx_filename);
 __pyx_r = 0;
 __pyx_L0:;
@@ -8939,6 +8713,7 @@ return __pyx_r;
 }
 
 static PyObject *__pyx_tp_new_15dual_autodiff_x_4dual_Dual(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+struct __pyx_obj_15dual_autodiff_x_4dual_Dual *p;
 PyObject *o;
 #if CYTHON_COMPILING_IN_LIMITED_API
 allocfunc alloc_func = (allocfunc)PyType_GetSlot(t, Py_tp_alloc);
@@ -8951,17 +8726,24 @@ o = (PyObject *) PyBaseObject_Type.tp_new(t, __pyx_empty_tuple, 0);
 }
 if (unlikely(!o)) return 0;
 #endif
+p = ((struct __pyx_obj_15dual_autodiff_x_4dual_Dual *)o);
+p->real = Py_None; Py_INCREF(Py_None);
+p->dual = Py_None; Py_INCREF(Py_None);
 return o;
 }
 
 static void __pyx_tp_dealloc_15dual_autodiff_x_4dual_Dual(PyObject *o) {
+struct __pyx_obj_15dual_autodiff_x_4dual_Dual *p = (struct __pyx_obj_15dual_autodiff_x_4dual_Dual *)o;
 #if CYTHON_USE_TP_FINALIZE
-if (unlikely((PY_VERSION_HEX >= 0x03080000 || __Pyx_PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE)) && __Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && (!PyType_IS_GC(Py_TYPE(o)) || !__Pyx_PyObject_GC_IsFinalized(o))) {
+if (unlikely((PY_VERSION_HEX >= 0x03080000 || __Pyx_PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE)) && __Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && !__Pyx_PyObject_GC_IsFinalized(o)) {
 if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_15dual_autodiff_x_4dual_Dual) {
 if (PyObject_CallFinalizerFromDealloc(o)) return;
 }
 }
 #endif
+PyObject_GC_UnTrack(o);
+Py_CLEAR(p->real);
+Py_CLEAR(p->dual);
 #if CYTHON_USE_TYPE_SLOTS || CYTHON_COMPILING_IN_PYPY
 (*Py_TYPE(o)->tp_free)(o);
 #else
@@ -8970,6 +8752,30 @@ freefunc tp_free = (freefunc)PyType_GetSlot(Py_TYPE(o), Py_tp_free);
 if (tp_free) tp_free(o);
 }
 #endif
+}
+
+static int __pyx_tp_traverse_15dual_autodiff_x_4dual_Dual(PyObject *o, visitproc v, void *a) {
+int e;
+struct __pyx_obj_15dual_autodiff_x_4dual_Dual *p = (struct __pyx_obj_15dual_autodiff_x_4dual_Dual *)o;
+if (p->real) {
+e = (*v)(p->real, a); if (e) return e;
+}
+if (p->dual) {
+e = (*v)(p->dual, a); if (e) return e;
+}
+return 0;
+}
+
+static int __pyx_tp_clear_15dual_autodiff_x_4dual_Dual(PyObject *o) {
+PyObject* tmp;
+struct __pyx_obj_15dual_autodiff_x_4dual_Dual *p = (struct __pyx_obj_15dual_autodiff_x_4dual_Dual *)o;
+tmp = ((PyObject*)p->real);
+p->real = Py_None; Py_INCREF(Py_None);
+Py_XDECREF(tmp);
+tmp = ((PyObject*)p->dual);
+p->dual = Py_None; Py_INCREF(Py_None);
+Py_XDECREF(tmp);
+return 0;
 }
 
 static CYTHON_INLINE PyObject *__pyx_nb_add_15dual_autodiff_x_4dual_Dual_maybe_call_slot(PyTypeObject* type, PyObject *left, PyObject *right ) {
@@ -9232,6 +9038,8 @@ static PyType_Slot __pyx_type_15dual_autodiff_x_4dual_Dual_slots[] = {
 {Py_nb_floor_divide, (void *)__pyx_nb_floor_divide_15dual_autodiff_x_4dual_Dual},
 {Py_nb_true_divide, (void *)__pyx_nb_true_divide_15dual_autodiff_x_4dual_Dual},
 {Py_tp_doc, (void *)PyDoc_STR("\n    A class designed for algebraic computation of dual numbers, and automatic differentiation with dual numbers.\n\n    Dual numbers are used for algebraic computations and automatic differentiation, especially in the context of \n    optimization and numerical analysis.\n    ")},
+{Py_tp_traverse, (void *)__pyx_tp_traverse_15dual_autodiff_x_4dual_Dual},
+{Py_tp_clear, (void *)__pyx_tp_clear_15dual_autodiff_x_4dual_Dual},
 {Py_tp_methods, (void *)__pyx_methods_15dual_autodiff_x_4dual_Dual},
 {Py_tp_getset, (void *)__pyx_getsets_15dual_autodiff_x_4dual_Dual},
 {Py_tp_init, (void *)__pyx_pw_15dual_autodiff_x_4dual_4Dual_1__init__},
@@ -9242,7 +9050,7 @@ static PyType_Spec __pyx_type_15dual_autodiff_x_4dual_Dual_spec = {
 "dual_autodiff_x.dual.Dual",
 sizeof(struct __pyx_obj_15dual_autodiff_x_4dual_Dual),
 0,
-Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE,
+Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC,
 __pyx_type_15dual_autodiff_x_4dual_Dual_slots,
 };
 #else
@@ -9339,10 +9147,10 @@ __pyx_pw_15dual_autodiff_x_4dual_4Dual_3__repr__, /*tp_repr*/
 0, /*tp_getattro*/
 0, /*tp_setattro*/
 0, /*tp_as_buffer*/
-Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE, /*tp_flags*/
+Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
 PyDoc_STR("\n    A class designed for algebraic computation of dual numbers, and automatic differentiation with dual numbers.\n\n    Dual numbers are used for algebraic computations and automatic differentiation, especially in the context of \n    optimization and numerical analysis.\n    "), /*tp_doc*/
-0, /*tp_traverse*/
-0, /*tp_clear*/
+__pyx_tp_traverse_15dual_autodiff_x_4dual_Dual, /*tp_traverse*/
+__pyx_tp_clear_15dual_autodiff_x_4dual_Dual, /*tp_clear*/
 0, /*tp_richcompare*/
 0, /*tp_weaklistoffset*/
 0, /*tp_iter*/

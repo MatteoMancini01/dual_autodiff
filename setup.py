@@ -2,6 +2,7 @@ from setuptools import setup, Extension
 from Cython.Build import cythonize
 import sysconfig
 
+
 # Get the include directory for Python
 python_include_dir = sysconfig.get_paths()["include"]
 

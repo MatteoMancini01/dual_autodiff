@@ -12,10 +12,10 @@ cdef class Dual:
     Dual numbers are used for algebraic computations and automatic differentiation, especially in the context of 
     optimization and numerical analysis.
     """
-    cdef double real  # Declare the attributes with Cython types
-    cdef double dual
+    cdef object real  # Declare the attributes with Cython types
+    cdef object dual
 
-    def __init__(self, double real, double dual):
+    def __init__(self, real, dual):
         """
         Initialises dual numbers with a real and dual part.
 

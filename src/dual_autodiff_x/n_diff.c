@@ -1498,9 +1498,9 @@ static const char *__pyx_f[] = {
 /*--- Type declarations ---*/
 struct __pyx_obj_15dual_autodiff_x_6n_diff_NumDiff;
 
-/* "dual_autodiff_x/n_diff.pyx":4
- * The following class is designed to perform numerical differentiation.
+/* "dual_autodiff_x/n_diff.pyx":5
  * '''
+ * 
  * cdef class NumDiff:             # <<<<<<<<<<<<<<
  *     '''
  *     In this class there are four different functions, first order numericall differentiation with
@@ -1508,8 +1508,8 @@ struct __pyx_obj_15dual_autodiff_x_6n_diff_NumDiff;
 struct __pyx_obj_15dual_autodiff_x_6n_diff_NumDiff {
   PyObject_HEAD
   PyObject *f;
-  double x;
   double h;
+  PyObject *x;
 };
 
 /* #### Code section: utility_code_proto ### */
@@ -2234,7 +2234,7 @@ static const char __pyx_k_The_following_class_is_designed[] = "\nThe following c
 static const char __pyx_k_Incompatible_checksums_0x_x_vs_0[] = "Incompatible checksums (0x%x vs (0xac47c78, 0xfa549b0, 0x7a86cfd) = (f, h, x))";
 static const char __pyx_k_Step_size_input_must_be_a_positi[] = "Step size input must be a positive real number";
 /* #### Code section: decls ### */
-static int __pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff___init__(struct __pyx_obj_15dual_autodiff_x_6n_diff_NumDiff *__pyx_v_self, PyObject *__pyx_v_f, PyObject *__pyx_v_x, PyObject *__pyx_v_h); /* proto */
+static int __pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff___init__(struct __pyx_obj_15dual_autodiff_x_6n_diff_NumDiff *__pyx_v_self, PyObject *__pyx_v_f, PyObject *__pyx_v_x, double __pyx_v_h); /* proto */
 static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_2first_forward(struct __pyx_obj_15dual_autodiff_x_6n_diff_NumDiff *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_4first_backward(struct __pyx_obj_15dual_autodiff_x_6n_diff_NumDiff *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_6first_central(struct __pyx_obj_15dual_autodiff_x_6n_diff_NumDiff *__pyx_v_self); /* proto */
@@ -2682,10 +2682,10 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_codeobj__16 __pyx_mstate_global->__pyx_codeobj__16
 /* #### Code section: module_code ### */
 
-/* "dual_autodiff_x/n_diff.pyx":13
- *     cdef double x, h  # Numerical input (double for optimization)
+/* "dual_autodiff_x/n_diff.pyx":15
+ *     cdef object x
  * 
- *     def __init__(self, f, x, h):             # <<<<<<<<<<<<<<
+ *     def __init__(self, f, x, double h):             # <<<<<<<<<<<<<<
  *         '''
  *         Initialising input.
  */
@@ -2699,7 +2699,7 @@ struct wrapperbase __pyx_wrapperbase_15dual_autodiff_x_6n_diff_7NumDiff___init__
 static int __pyx_pw_15dual_autodiff_x_6n_diff_7NumDiff_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_f = 0;
   PyObject *__pyx_v_x = 0;
-  PyObject *__pyx_v_h = 0;
+  double __pyx_v_h;
   CYTHON_UNUSED Py_ssize_t __pyx_nargs;
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject* values[3] = {0,0,0};
@@ -2736,7 +2736,7 @@ static int __pyx_pw_15dual_autodiff_x_6n_diff_7NumDiff_1__init__(PyObject *__pyx
           (void)__Pyx_Arg_NewRef_VARARGS(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 13, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 15, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -2744,9 +2744,9 @@ static int __pyx_pw_15dual_autodiff_x_6n_diff_7NumDiff_1__init__(PyObject *__pyx
           (void)__Pyx_Arg_NewRef_VARARGS(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 13, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 15, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, 1); __PYX_ERR(0, 13, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, 1); __PYX_ERR(0, 15, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -2754,14 +2754,14 @@ static int __pyx_pw_15dual_autodiff_x_6n_diff_7NumDiff_1__init__(PyObject *__pyx
           (void)__Pyx_Arg_NewRef_VARARGS(values[2]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 13, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 15, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, 2); __PYX_ERR(0, 13, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, 2); __PYX_ERR(0, 15, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__init__") < 0)) __PYX_ERR(0, 13, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__init__") < 0)) __PYX_ERR(0, 15, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 3)) {
       goto __pyx_L5_argtuple_error;
@@ -2772,11 +2772,11 @@ static int __pyx_pw_15dual_autodiff_x_6n_diff_7NumDiff_1__init__(PyObject *__pyx
     }
     __pyx_v_f = values[0];
     __pyx_v_x = values[1];
-    __pyx_v_h = values[2];
+    __pyx_v_h = __pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_h == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 15, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 13, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 15, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -2803,21 +2803,17 @@ static int __pyx_pw_15dual_autodiff_x_6n_diff_7NumDiff_1__init__(PyObject *__pyx
   return __pyx_r;
 }
 
-static int __pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff___init__(struct __pyx_obj_15dual_autodiff_x_6n_diff_NumDiff *__pyx_v_self, PyObject *__pyx_v_f, PyObject *__pyx_v_x, PyObject *__pyx_v_h) {
+static int __pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff___init__(struct __pyx_obj_15dual_autodiff_x_6n_diff_NumDiff *__pyx_v_self, PyObject *__pyx_v_f, PyObject *__pyx_v_x, double __pyx_v_h) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
-  double __pyx_t_1;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 1);
 
-  /* "dual_autodiff_x/n_diff.pyx":23
+  /* "dual_autodiff_x/n_diff.pyx":25
  *               we lose rather than gaining accuracy.
  *         '''
  *         self.f = f             # <<<<<<<<<<<<<<
- *         self.x = x
  *         self.h = h
+ *         self.x = x
  */
   __Pyx_INCREF(__pyx_v_f);
   __Pyx_GIVEREF(__pyx_v_f);
@@ -2825,47 +2821,44 @@ static int __pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff___init__(struct __pyx_obj
   __Pyx_DECREF(__pyx_v_self->f);
   __pyx_v_self->f = __pyx_v_f;
 
-  /* "dual_autodiff_x/n_diff.pyx":24
+  /* "dual_autodiff_x/n_diff.pyx":26
  *         '''
  *         self.f = f
- *         self.x = x             # <<<<<<<<<<<<<<
- *         self.h = h
+ *         self.h = h             # <<<<<<<<<<<<<<
+ *         self.x = x
  * 
  */
-  __pyx_t_1 = __pyx_PyFloat_AsDouble(__pyx_v_x); if (unlikely((__pyx_t_1 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 24, __pyx_L1_error)
-  __pyx_v_self->x = __pyx_t_1;
+  __pyx_v_self->h = __pyx_v_h;
 
-  /* "dual_autodiff_x/n_diff.pyx":25
+  /* "dual_autodiff_x/n_diff.pyx":27
  *         self.f = f
- *         self.x = x
- *         self.h = h             # <<<<<<<<<<<<<<
+ *         self.h = h
+ *         self.x = x             # <<<<<<<<<<<<<<
  * 
  *     def first_forward(self):
  */
-  __pyx_t_1 = __pyx_PyFloat_AsDouble(__pyx_v_h); if (unlikely((__pyx_t_1 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 25, __pyx_L1_error)
-  __pyx_v_self->h = __pyx_t_1;
+  __Pyx_INCREF(__pyx_v_x);
+  __Pyx_GIVEREF(__pyx_v_x);
+  __Pyx_GOTREF(__pyx_v_self->x);
+  __Pyx_DECREF(__pyx_v_self->x);
+  __pyx_v_self->x = __pyx_v_x;
 
-  /* "dual_autodiff_x/n_diff.pyx":13
- *     cdef double x, h  # Numerical input (double for optimization)
+  /* "dual_autodiff_x/n_diff.pyx":15
+ *     cdef object x
  * 
- *     def __init__(self, f, x, h):             # <<<<<<<<<<<<<<
+ *     def __init__(self, f, x, double h):             # <<<<<<<<<<<<<<
  *         '''
  *         Initialising input.
  */
 
   /* function exit code */
   __pyx_r = 0;
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("dual_autodiff_x.n_diff.NumDiff.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = -1;
-  __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "dual_autodiff_x/n_diff.pyx":27
- *         self.h = h
+/* "dual_autodiff_x/n_diff.pyx":29
+ *         self.x = x
  * 
  *     def first_forward(self):             # <<<<<<<<<<<<<<
  *         '''
@@ -2924,13 +2917,12 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_2first_forward(stru
   PyObject *__pyx_t_4 = NULL;
   PyObject *__pyx_t_5 = NULL;
   unsigned int __pyx_t_6;
-  PyObject *__pyx_t_7 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("first_forward", 1);
 
-  /* "dual_autodiff_x/n_diff.pyx":31
+  /* "dual_autodiff_x/n_diff.pyx":33
  *         Implementing first order numerical differenitaion forward difference.
  *         '''
  *         if self.h==0:             # <<<<<<<<<<<<<<
@@ -2940,20 +2932,20 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_2first_forward(stru
   __pyx_t_1 = (__pyx_v_self->h == 0.0);
   if (unlikely(__pyx_t_1)) {
 
-    /* "dual_autodiff_x/n_diff.pyx":35
+    /* "dual_autodiff_x/n_diff.pyx":37
  *             h cannot be zero or negative, otherwise one gets an undefined answer, hence:
  *             '''
  *             raise ZeroDivisionError('Division by zero is undefined')             # <<<<<<<<<<<<<<
  *         elif self.h<0:
  *             raise TypeError('Step size input must be a positive real number')
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ZeroDivisionError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 35, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ZeroDivisionError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 35, __pyx_L1_error)
+    __PYX_ERR(0, 37, __pyx_L1_error)
 
-    /* "dual_autodiff_x/n_diff.pyx":31
+    /* "dual_autodiff_x/n_diff.pyx":33
  *         Implementing first order numerical differenitaion forward difference.
  *         '''
  *         if self.h==0:             # <<<<<<<<<<<<<<
@@ -2962,7 +2954,7 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_2first_forward(stru
  */
   }
 
-  /* "dual_autodiff_x/n_diff.pyx":36
+  /* "dual_autodiff_x/n_diff.pyx":38
  *             '''
  *             raise ZeroDivisionError('Division by zero is undefined')
  *         elif self.h<0:             # <<<<<<<<<<<<<<
@@ -2972,20 +2964,20 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_2first_forward(stru
   __pyx_t_1 = (__pyx_v_self->h < 0.0);
   if (unlikely(__pyx_t_1)) {
 
-    /* "dual_autodiff_x/n_diff.pyx":37
+    /* "dual_autodiff_x/n_diff.pyx":39
  *             raise ZeroDivisionError('Division by zero is undefined')
  *         elif self.h<0:
  *             raise TypeError('Step size input must be a positive real number')             # <<<<<<<<<<<<<<
  *         else:
  *             '''
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 39, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 37, __pyx_L1_error)
+    __PYX_ERR(0, 39, __pyx_L1_error)
 
-    /* "dual_autodiff_x/n_diff.pyx":36
+    /* "dual_autodiff_x/n_diff.pyx":38
  *             '''
  *             raise ZeroDivisionError('Division by zero is undefined')
  *         elif self.h<0:             # <<<<<<<<<<<<<<
@@ -2994,7 +2986,7 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_2first_forward(stru
  */
   }
 
-  /* "dual_autodiff_x/n_diff.pyx":39
+  /* "dual_autodiff_x/n_diff.pyx":41
  *             raise TypeError('Step size input must be a positive real number')
  *         else:
  *             '''             # <<<<<<<<<<<<<<
@@ -3003,15 +2995,42 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_2first_forward(stru
  */
   /*else*/ {
 
-    /* "dual_autodiff_x/n_diff.pyx":56
+    /* "dual_autodiff_x/n_diff.pyx":58
  * 
  *             '''
  *             f_dash = (self.f(self.x + self.h) - self.f(self.x))/self.h             # <<<<<<<<<<<<<<
  *             return f_dash
  * 
  */
-    __pyx_t_3 = PyFloat_FromDouble((__pyx_v_self->x + __pyx_v_self->h)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 56, __pyx_L1_error)
+    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->h); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 58, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_4 = PyNumber_Add(__pyx_v_self->x, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_INCREF(__pyx_v_self->f);
+    __pyx_t_3 = __pyx_v_self->f; __pyx_t_5 = NULL;
+    __pyx_t_6 = 0;
+    #if CYTHON_UNPACK_METHODS
+    if (likely(PyMethod_Check(__pyx_t_3))) {
+      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_3);
+      if (likely(__pyx_t_5)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+        __Pyx_INCREF(__pyx_t_5);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_3, function);
+        __pyx_t_6 = 1;
+      }
+    }
+    #endif
+    {
+      PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_t_4};
+      __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
+      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 58, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    }
     __Pyx_INCREF(__pyx_v_self->f);
     __pyx_t_4 = __pyx_v_self->f; __pyx_t_5 = NULL;
     __pyx_t_6 = 0;
@@ -3028,54 +3047,27 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_2first_forward(stru
     }
     #endif
     {
-      PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_t_3};
-      __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
+      PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_v_self->x};
+      __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 56, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 58, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->x); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 56, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_INCREF(__pyx_v_self->f);
-    __pyx_t_5 = __pyx_v_self->f; __pyx_t_7 = NULL;
-    __pyx_t_6 = 0;
-    #if CYTHON_UNPACK_METHODS
-    if (likely(PyMethod_Check(__pyx_t_5))) {
-      __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_5);
-      if (likely(__pyx_t_7)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
-        __Pyx_INCREF(__pyx_t_7);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_5, function);
-        __pyx_t_6 = 1;
-      }
-    }
-    #endif
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_7, __pyx_t_3};
-      __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
-      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 56, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    }
-    __pyx_t_5 = PyNumber_Subtract(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 56, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyFloat_FromDouble(__pyx_v_self->h); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 56, __pyx_L1_error)
+    __pyx_t_4 = PyNumber_Subtract(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 56, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->h); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 58, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_v_f_dash = __pyx_t_2;
     __pyx_t_2 = 0;
 
-    /* "dual_autodiff_x/n_diff.pyx":57
+    /* "dual_autodiff_x/n_diff.pyx":59
  *             '''
  *             f_dash = (self.f(self.x + self.h) - self.f(self.x))/self.h
  *             return f_dash             # <<<<<<<<<<<<<<
@@ -3088,8 +3080,8 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_2first_forward(stru
     goto __pyx_L0;
   }
 
-  /* "dual_autodiff_x/n_diff.pyx":27
- *         self.h = h
+  /* "dual_autodiff_x/n_diff.pyx":29
+ *         self.x = x
  * 
  *     def first_forward(self):             # <<<<<<<<<<<<<<
  *         '''
@@ -3102,7 +3094,6 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_2first_forward(stru
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_7);
   __Pyx_AddTraceback("dual_autodiff_x.n_diff.NumDiff.first_forward", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -3112,7 +3103,7 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_2first_forward(stru
   return __pyx_r;
 }
 
-/* "dual_autodiff_x/n_diff.pyx":59
+/* "dual_autodiff_x/n_diff.pyx":61
  *             return f_dash
  * 
  *     def first_backward(self):             # <<<<<<<<<<<<<<
@@ -3170,15 +3161,15 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_4first_backward(str
   PyObject *__pyx_t_2 = NULL;
   PyObject *__pyx_t_3 = NULL;
   PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  unsigned int __pyx_t_6;
+  unsigned int __pyx_t_5;
+  PyObject *__pyx_t_6 = NULL;
   PyObject *__pyx_t_7 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("first_backward", 1);
 
-  /* "dual_autodiff_x/n_diff.pyx":63
+  /* "dual_autodiff_x/n_diff.pyx":65
  *         Implementing first order numerical differentiation backward difference.
  *         '''
  *         if self.h==0:             # <<<<<<<<<<<<<<
@@ -3188,20 +3179,20 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_4first_backward(str
   __pyx_t_1 = (__pyx_v_self->h == 0.0);
   if (unlikely(__pyx_t_1)) {
 
-    /* "dual_autodiff_x/n_diff.pyx":64
+    /* "dual_autodiff_x/n_diff.pyx":66
  *         '''
  *         if self.h==0:
  *             raise ZeroDivisionError('Division by zero is undefined')             # <<<<<<<<<<<<<<
  *         elif self.h<0:
  *             raise TypeError('Step size input must be a positive real number')
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ZeroDivisionError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 64, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ZeroDivisionError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 66, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 64, __pyx_L1_error)
+    __PYX_ERR(0, 66, __pyx_L1_error)
 
-    /* "dual_autodiff_x/n_diff.pyx":63
+    /* "dual_autodiff_x/n_diff.pyx":65
  *         Implementing first order numerical differentiation backward difference.
  *         '''
  *         if self.h==0:             # <<<<<<<<<<<<<<
@@ -3210,7 +3201,7 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_4first_backward(str
  */
   }
 
-  /* "dual_autodiff_x/n_diff.pyx":65
+  /* "dual_autodiff_x/n_diff.pyx":67
  *         if self.h==0:
  *             raise ZeroDivisionError('Division by zero is undefined')
  *         elif self.h<0:             # <<<<<<<<<<<<<<
@@ -3220,20 +3211,20 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_4first_backward(str
   __pyx_t_1 = (__pyx_v_self->h < 0.0);
   if (unlikely(__pyx_t_1)) {
 
-    /* "dual_autodiff_x/n_diff.pyx":66
+    /* "dual_autodiff_x/n_diff.pyx":68
  *             raise ZeroDivisionError('Division by zero is undefined')
  *         elif self.h<0:
  *             raise TypeError('Step size input must be a positive real number')             # <<<<<<<<<<<<<<
  *         else:
  *             '''
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 66, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 68, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 66, __pyx_L1_error)
+    __PYX_ERR(0, 68, __pyx_L1_error)
 
-    /* "dual_autodiff_x/n_diff.pyx":65
+    /* "dual_autodiff_x/n_diff.pyx":67
  *         if self.h==0:
  *             raise ZeroDivisionError('Division by zero is undefined')
  *         elif self.h<0:             # <<<<<<<<<<<<<<
@@ -3242,7 +3233,7 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_4first_backward(str
  */
   }
 
-  /* "dual_autodiff_x/n_diff.pyx":68
+  /* "dual_autodiff_x/n_diff.pyx":70
  *             raise TypeError('Step size input must be a positive real number')
  *         else:
  *             '''             # <<<<<<<<<<<<<<
@@ -3251,79 +3242,79 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_4first_backward(str
  */
   /*else*/ {
 
-    /* "dual_autodiff_x/n_diff.pyx":84
+    /* "dual_autodiff_x/n_diff.pyx":86
  *                 Backward difference of f(x) at the point x0 = 2, with stepsize h = 0.01, is 0.5892372009922209
  *             '''
  *             f_dash = (self.f(self.x) - self.f(self.x-self.h)) / self.h             # <<<<<<<<<<<<<<
  *             return f_dash
  * 
  */
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->x); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 84, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_v_self->f);
-    __pyx_t_4 = __pyx_v_self->f; __pyx_t_5 = NULL;
-    __pyx_t_6 = 0;
+    __pyx_t_3 = __pyx_v_self->f; __pyx_t_4 = NULL;
+    __pyx_t_5 = 0;
+    #if CYTHON_UNPACK_METHODS
+    if (likely(PyMethod_Check(__pyx_t_3))) {
+      __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
+      if (likely(__pyx_t_4)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+        __Pyx_INCREF(__pyx_t_4);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_3, function);
+        __pyx_t_5 = 1;
+      }
+    }
+    #endif
+    {
+      PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_v_self->x};
+      __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
+      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 86, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    }
+    __pyx_t_4 = PyFloat_FromDouble(__pyx_v_self->h); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 86, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_6 = PyNumber_Subtract(__pyx_v_self->x, __pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 86, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_INCREF(__pyx_v_self->f);
+    __pyx_t_4 = __pyx_v_self->f; __pyx_t_7 = NULL;
+    __pyx_t_5 = 0;
     #if CYTHON_UNPACK_METHODS
     if (likely(PyMethod_Check(__pyx_t_4))) {
-      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
-      if (likely(__pyx_t_5)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-        __Pyx_INCREF(__pyx_t_5);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_4, function);
-        __pyx_t_6 = 1;
-      }
-    }
-    #endif
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_t_3};
-      __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
-      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 84, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    }
-    __pyx_t_3 = PyFloat_FromDouble((__pyx_v_self->x - __pyx_v_self->h)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 84, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_INCREF(__pyx_v_self->f);
-    __pyx_t_5 = __pyx_v_self->f; __pyx_t_7 = NULL;
-    __pyx_t_6 = 0;
-    #if CYTHON_UNPACK_METHODS
-    if (likely(PyMethod_Check(__pyx_t_5))) {
-      __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_5);
+      __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_4);
       if (likely(__pyx_t_7)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
         __Pyx_INCREF(__pyx_t_7);
         __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_5, function);
-        __pyx_t_6 = 1;
+        __Pyx_DECREF_SET(__pyx_t_4, function);
+        __pyx_t_5 = 1;
       }
     }
     #endif
     {
-      PyObject *__pyx_callargs[2] = {__pyx_t_7, __pyx_t_3};
-      __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
+      PyObject *__pyx_callargs[2] = {__pyx_t_7, __pyx_t_6};
+      __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 84, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 86, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
-    __pyx_t_5 = PyNumber_Subtract(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 84, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyFloat_FromDouble(__pyx_v_self->h); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 84, __pyx_L1_error)
+    __pyx_t_4 = PyNumber_Subtract(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 86, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 84, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->h); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 86, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 86, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_v_f_dash = __pyx_t_2;
     __pyx_t_2 = 0;
 
-    /* "dual_autodiff_x/n_diff.pyx":85
+    /* "dual_autodiff_x/n_diff.pyx":87
  *             '''
  *             f_dash = (self.f(self.x) - self.f(self.x-self.h)) / self.h
  *             return f_dash             # <<<<<<<<<<<<<<
@@ -3336,7 +3327,7 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_4first_backward(str
     goto __pyx_L0;
   }
 
-  /* "dual_autodiff_x/n_diff.pyx":59
+  /* "dual_autodiff_x/n_diff.pyx":61
  *             return f_dash
  * 
  *     def first_backward(self):             # <<<<<<<<<<<<<<
@@ -3349,7 +3340,7 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_4first_backward(str
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_AddTraceback("dual_autodiff_x.n_diff.NumDiff.first_backward", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
@@ -3360,7 +3351,7 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_4first_backward(str
   return __pyx_r;
 }
 
-/* "dual_autodiff_x/n_diff.pyx":87
+/* "dual_autodiff_x/n_diff.pyx":89
  *             return f_dash
  * 
  *     def first_central(self):             # <<<<<<<<<<<<<<
@@ -3426,7 +3417,7 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_6first_central(stru
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("first_central", 1);
 
-  /* "dual_autodiff_x/n_diff.pyx":91
+  /* "dual_autodiff_x/n_diff.pyx":93
  *         Implementing fisrt order numerical differentiation central difference.
  *         '''
  *         if self.h==0:             # <<<<<<<<<<<<<<
@@ -3436,20 +3427,20 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_6first_central(stru
   __pyx_t_1 = (__pyx_v_self->h == 0.0);
   if (unlikely(__pyx_t_1)) {
 
-    /* "dual_autodiff_x/n_diff.pyx":92
+    /* "dual_autodiff_x/n_diff.pyx":94
  *         '''
  *         if self.h==0:
  *             raise ZeroDivisionError('Division by zero is undefined')             # <<<<<<<<<<<<<<
  *         elif self.h<0:
  *             raise TypeError('Step size input must be a positive real number')
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ZeroDivisionError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 92, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ZeroDivisionError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 94, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 92, __pyx_L1_error)
+    __PYX_ERR(0, 94, __pyx_L1_error)
 
-    /* "dual_autodiff_x/n_diff.pyx":91
+    /* "dual_autodiff_x/n_diff.pyx":93
  *         Implementing fisrt order numerical differentiation central difference.
  *         '''
  *         if self.h==0:             # <<<<<<<<<<<<<<
@@ -3458,7 +3449,7 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_6first_central(stru
  */
   }
 
-  /* "dual_autodiff_x/n_diff.pyx":93
+  /* "dual_autodiff_x/n_diff.pyx":95
  *         if self.h==0:
  *             raise ZeroDivisionError('Division by zero is undefined')
  *         elif self.h<0:             # <<<<<<<<<<<<<<
@@ -3468,20 +3459,20 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_6first_central(stru
   __pyx_t_1 = (__pyx_v_self->h < 0.0);
   if (unlikely(__pyx_t_1)) {
 
-    /* "dual_autodiff_x/n_diff.pyx":94
+    /* "dual_autodiff_x/n_diff.pyx":96
  *             raise ZeroDivisionError('Division by zero is undefined')
  *         elif self.h<0:
  *             raise TypeError('Step size input must be a positive real number')             # <<<<<<<<<<<<<<
  *         else:
  *             '''
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 94, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 96, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 94, __pyx_L1_error)
+    __PYX_ERR(0, 96, __pyx_L1_error)
 
-    /* "dual_autodiff_x/n_diff.pyx":93
+    /* "dual_autodiff_x/n_diff.pyx":95
  *         if self.h==0:
  *             raise ZeroDivisionError('Division by zero is undefined')
  *         elif self.h<0:             # <<<<<<<<<<<<<<
@@ -3490,7 +3481,7 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_6first_central(stru
  */
   }
 
-  /* "dual_autodiff_x/n_diff.pyx":96
+  /* "dual_autodiff_x/n_diff.pyx":98
  *             raise TypeError('Step size input must be a positive real number')
  *         else:
  *             '''             # <<<<<<<<<<<<<<
@@ -3499,24 +3490,56 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_6first_central(stru
  */
   /*else*/ {
 
-    /* "dual_autodiff_x/n_diff.pyx":112
+    /* "dual_autodiff_x/n_diff.pyx":114
  *                 Central difference of f(x) at the point x0 = 2, with stepsize h = 0.01, is 0.5939738513171644
  *             '''
  *             f_dash = (self.f(self.x + self.h) - self.f(self.x - self.h))/(2*self.h)             # <<<<<<<<<<<<<<
  *             return f_dash
  * 
  */
-    __pyx_t_3 = PyFloat_FromDouble((__pyx_v_self->x + __pyx_v_self->h)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 112, __pyx_L1_error)
+    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->h); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 114, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_4 = PyNumber_Add(__pyx_v_self->x, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 114, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_INCREF(__pyx_v_self->f);
-    __pyx_t_4 = __pyx_v_self->f; __pyx_t_5 = NULL;
+    __pyx_t_3 = __pyx_v_self->f; __pyx_t_5 = NULL;
+    __pyx_t_6 = 0;
+    #if CYTHON_UNPACK_METHODS
+    if (likely(PyMethod_Check(__pyx_t_3))) {
+      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_3);
+      if (likely(__pyx_t_5)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+        __Pyx_INCREF(__pyx_t_5);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_3, function);
+        __pyx_t_6 = 1;
+      }
+    }
+    #endif
+    {
+      PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_t_4};
+      __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
+      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 114, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    }
+    __pyx_t_4 = PyFloat_FromDouble(__pyx_v_self->h); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 114, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_5 = PyNumber_Subtract(__pyx_v_self->x, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 114, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_INCREF(__pyx_v_self->f);
+    __pyx_t_4 = __pyx_v_self->f; __pyx_t_7 = NULL;
     __pyx_t_6 = 0;
     #if CYTHON_UNPACK_METHODS
     if (likely(PyMethod_Check(__pyx_t_4))) {
-      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
-      if (likely(__pyx_t_5)) {
+      __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_4);
+      if (likely(__pyx_t_7)) {
         PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-        __Pyx_INCREF(__pyx_t_5);
+        __Pyx_INCREF(__pyx_t_7);
         __Pyx_INCREF(function);
         __Pyx_DECREF_SET(__pyx_t_4, function);
         __pyx_t_6 = 1;
@@ -3524,54 +3547,28 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_6first_central(stru
     }
     #endif
     {
-      PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_t_3};
-      __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
-      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 112, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
+      PyObject *__pyx_callargs[2] = {__pyx_t_7, __pyx_t_5};
+      __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
+      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 114, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
-    __pyx_t_3 = PyFloat_FromDouble((__pyx_v_self->x - __pyx_v_self->h)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 112, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_INCREF(__pyx_v_self->f);
-    __pyx_t_5 = __pyx_v_self->f; __pyx_t_7 = NULL;
-    __pyx_t_6 = 0;
-    #if CYTHON_UNPACK_METHODS
-    if (likely(PyMethod_Check(__pyx_t_5))) {
-      __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_5);
-      if (likely(__pyx_t_7)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
-        __Pyx_INCREF(__pyx_t_7);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_5, function);
-        __pyx_t_6 = 1;
-      }
-    }
-    #endif
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_7, __pyx_t_3};
-      __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
-      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 112, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    }
-    __pyx_t_5 = PyNumber_Subtract(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 112, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyFloat_FromDouble((2.0 * __pyx_v_self->h)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 112, __pyx_L1_error)
+    __pyx_t_4 = PyNumber_Subtract(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 114, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 112, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = PyFloat_FromDouble((2.0 * __pyx_v_self->h)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 114, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 114, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_v_f_dash = __pyx_t_2;
     __pyx_t_2 = 0;
 
-    /* "dual_autodiff_x/n_diff.pyx":113
+    /* "dual_autodiff_x/n_diff.pyx":115
  *             '''
  *             f_dash = (self.f(self.x + self.h) - self.f(self.x - self.h))/(2*self.h)
  *             return f_dash             # <<<<<<<<<<<<<<
@@ -3584,7 +3581,7 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_6first_central(stru
     goto __pyx_L0;
   }
 
-  /* "dual_autodiff_x/n_diff.pyx":87
+  /* "dual_autodiff_x/n_diff.pyx":89
  *             return f_dash
  * 
  *     def first_central(self):             # <<<<<<<<<<<<<<
@@ -3608,7 +3605,7 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_6first_central(stru
   return __pyx_r;
 }
 
-/* "dual_autodiff_x/n_diff.pyx":115
+/* "dual_autodiff_x/n_diff.pyx":117
  *             return f_dash
  * 
  *     def second_order(self):             # <<<<<<<<<<<<<<
@@ -3674,7 +3671,7 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_8second_order(struc
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("second_order", 1);
 
-  /* "dual_autodiff_x/n_diff.pyx":119
+  /* "dual_autodiff_x/n_diff.pyx":121
  *         Implementing second order numerical differentiation.
  *         '''
  *         if self.h==0:             # <<<<<<<<<<<<<<
@@ -3684,20 +3681,20 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_8second_order(struc
   __pyx_t_1 = (__pyx_v_self->h == 0.0);
   if (unlikely(__pyx_t_1)) {
 
-    /* "dual_autodiff_x/n_diff.pyx":120
+    /* "dual_autodiff_x/n_diff.pyx":122
  *         '''
  *         if self.h==0:
  *             raise ZeroDivisionError('Division by zero is undefined')             # <<<<<<<<<<<<<<
  *         elif self.h<0:
  *             raise TypeError('Step size input must be a positive real number')
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ZeroDivisionError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 120, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ZeroDivisionError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 122, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 120, __pyx_L1_error)
+    __PYX_ERR(0, 122, __pyx_L1_error)
 
-    /* "dual_autodiff_x/n_diff.pyx":119
+    /* "dual_autodiff_x/n_diff.pyx":121
  *         Implementing second order numerical differentiation.
  *         '''
  *         if self.h==0:             # <<<<<<<<<<<<<<
@@ -3706,7 +3703,7 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_8second_order(struc
  */
   }
 
-  /* "dual_autodiff_x/n_diff.pyx":121
+  /* "dual_autodiff_x/n_diff.pyx":123
  *         if self.h==0:
  *             raise ZeroDivisionError('Division by zero is undefined')
  *         elif self.h<0:             # <<<<<<<<<<<<<<
@@ -3716,20 +3713,20 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_8second_order(struc
   __pyx_t_1 = (__pyx_v_self->h < 0.0);
   if (unlikely(__pyx_t_1)) {
 
-    /* "dual_autodiff_x/n_diff.pyx":122
+    /* "dual_autodiff_x/n_diff.pyx":124
  *             raise ZeroDivisionError('Division by zero is undefined')
  *         elif self.h<0:
  *             raise TypeError('Step size input must be a positive real number')             # <<<<<<<<<<<<<<
  *         else:
  *             '''
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 122, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 124, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 122, __pyx_L1_error)
+    __PYX_ERR(0, 124, __pyx_L1_error)
 
-    /* "dual_autodiff_x/n_diff.pyx":121
+    /* "dual_autodiff_x/n_diff.pyx":123
  *         if self.h==0:
  *             raise ZeroDivisionError('Division by zero is undefined')
  *         elif self.h<0:             # <<<<<<<<<<<<<<
@@ -3738,7 +3735,7 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_8second_order(struc
  */
   }
 
-  /* "dual_autodiff_x/n_diff.pyx":124
+  /* "dual_autodiff_x/n_diff.pyx":126
  *             raise TypeError('Step size input must be a positive real number')
  *         else:
  *             '''             # <<<<<<<<<<<<<<
@@ -3747,14 +3744,41 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_8second_order(struc
  */
   /*else*/ {
 
-    /* "dual_autodiff_x/n_diff.pyx":140
+    /* "dual_autodiff_x/n_diff.pyx":142
  *                 Second derivative of f(x) at the point x0 = 2, with stepsize h = 0.01, is 0.9473300649887051
  *             '''
  *             f_double_dash = (self.f(self.x + self.h) - 2*self.f(self.x) + self.f(self.x - self.h))/self.h**2             # <<<<<<<<<<<<<<
  *             return f_double_dash
  */
-    __pyx_t_3 = PyFloat_FromDouble((__pyx_v_self->x + __pyx_v_self->h)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 140, __pyx_L1_error)
+    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->h); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 142, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_4 = PyNumber_Add(__pyx_v_self->x, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 142, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_INCREF(__pyx_v_self->f);
+    __pyx_t_3 = __pyx_v_self->f; __pyx_t_5 = NULL;
+    __pyx_t_6 = 0;
+    #if CYTHON_UNPACK_METHODS
+    if (likely(PyMethod_Check(__pyx_t_3))) {
+      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_3);
+      if (likely(__pyx_t_5)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+        __Pyx_INCREF(__pyx_t_5);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_3, function);
+        __pyx_t_6 = 1;
+      }
+    }
+    #endif
+    {
+      PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_t_4};
+      __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
+      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 142, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    }
     __Pyx_INCREF(__pyx_v_self->f);
     __pyx_t_4 = __pyx_v_self->f; __pyx_t_5 = NULL;
     __pyx_t_6 = 0;
@@ -3771,87 +3795,63 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_8second_order(struc
     }
     #endif
     {
-      PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_t_3};
-      __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
+      PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_v_self->x};
+      __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 140, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 142, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->x); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 140, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_INCREF(__pyx_v_self->f);
-    __pyx_t_5 = __pyx_v_self->f; __pyx_t_7 = NULL;
-    __pyx_t_6 = 0;
-    #if CYTHON_UNPACK_METHODS
-    if (likely(PyMethod_Check(__pyx_t_5))) {
-      __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_5);
-      if (likely(__pyx_t_7)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
-        __Pyx_INCREF(__pyx_t_7);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_5, function);
-        __pyx_t_6 = 1;
-      }
-    }
-    #endif
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_7, __pyx_t_3};
-      __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
-      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 140, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    }
-    __pyx_t_5 = __Pyx_PyInt_MultiplyCObj(__pyx_int_2, __pyx_t_4, 2, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 140, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyNumber_Subtract(__pyx_t_2, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 140, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_2 = PyFloat_FromDouble((__pyx_v_self->x - __pyx_v_self->h)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 140, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_INCREF(__pyx_v_self->f);
-    __pyx_t_3 = __pyx_v_self->f; __pyx_t_7 = NULL;
-    __pyx_t_6 = 0;
-    #if CYTHON_UNPACK_METHODS
-    if (likely(PyMethod_Check(__pyx_t_3))) {
-      __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_3);
-      if (likely(__pyx_t_7)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-        __Pyx_INCREF(__pyx_t_7);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_3, function);
-        __pyx_t_6 = 1;
-      }
-    }
-    #endif
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_7, __pyx_t_2};
-      __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
-      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 140, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_5);
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    }
-    __pyx_t_3 = PyNumber_Add(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 140, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = PyFloat_FromDouble(pow(__pyx_v_self->h, 2.0)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 140, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_4 = __Pyx_PyNumber_Divide(__pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 140, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_MultiplyCObj(__pyx_int_2, __pyx_t_3, 2, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 142, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_v_f_double_dash = __pyx_t_4;
-    __pyx_t_4 = 0;
+    __pyx_t_3 = PyNumber_Subtract(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 142, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->h); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 142, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_5 = PyNumber_Subtract(__pyx_v_self->x, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 142, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_INCREF(__pyx_v_self->f);
+    __pyx_t_2 = __pyx_v_self->f; __pyx_t_7 = NULL;
+    __pyx_t_6 = 0;
+    #if CYTHON_UNPACK_METHODS
+    if (likely(PyMethod_Check(__pyx_t_2))) {
+      __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_2);
+      if (likely(__pyx_t_7)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+        __Pyx_INCREF(__pyx_t_7);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_2, function);
+        __pyx_t_6 = 1;
+      }
+    }
+    #endif
+    {
+      PyObject *__pyx_callargs[2] = {__pyx_t_7, __pyx_t_5};
+      __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
+      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 142, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    }
+    __pyx_t_2 = PyNumber_Add(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 142, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = PyFloat_FromDouble(pow(__pyx_v_self->h, 2.0)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 142, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_3 = __Pyx_PyNumber_Divide(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 142, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_v_f_double_dash = __pyx_t_3;
+    __pyx_t_3 = 0;
 
-    /* "dual_autodiff_x/n_diff.pyx":141
+    /* "dual_autodiff_x/n_diff.pyx":143
  *             '''
  *             f_double_dash = (self.f(self.x + self.h) - 2*self.f(self.x) + self.f(self.x - self.h))/self.h**2
  *             return f_double_dash             # <<<<<<<<<<<<<<
@@ -3862,7 +3862,7 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_8second_order(struc
     goto __pyx_L0;
   }
 
-  /* "dual_autodiff_x/n_diff.pyx":115
+  /* "dual_autodiff_x/n_diff.pyx":117
  *             return f_dash
  * 
  *     def second_order(self):             # <<<<<<<<<<<<<<
@@ -3941,8 +3941,9 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_10__reduce_cython__
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
+  int __pyx_t_3;
   int __pyx_t_4;
+  PyObject *__pyx_t_5 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -3957,21 +3958,19 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_10__reduce_cython__
  */
   __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->h); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->x); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 5, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_self->f);
   __Pyx_GIVEREF(__pyx_v_self->f);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_self->f)) __PYX_ERR(1, 5, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_self->f)) __PYX_ERR(1, 5, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_1);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_1)) __PYX_ERR(1, 5, __pyx_L1_error);
-  __Pyx_GIVEREF(__pyx_t_2);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_t_2)) __PYX_ERR(1, 5, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_1)) __PYX_ERR(1, 5, __pyx_L1_error);
+  __Pyx_INCREF(__pyx_v_self->x);
+  __Pyx_GIVEREF(__pyx_v_self->x);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 2, __pyx_v_self->x)) __PYX_ERR(1, 5, __pyx_L1_error);
   __pyx_t_1 = 0;
+  __pyx_v_state = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
-  __pyx_v_state = ((PyObject*)__pyx_t_3);
-  __pyx_t_3 = 0;
 
   /* "(tree fragment)":6
  *     cdef bint use_setstate
@@ -3980,10 +3979,10 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_10__reduce_cython__
  *     if _dict is not None:
  *         state += (_dict,)
  */
-  __pyx_t_3 = __Pyx_GetAttr3(((PyObject *)__pyx_v_self), __pyx_n_s_dict, Py_None); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 6, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_v__dict = __pyx_t_3;
-  __pyx_t_3 = 0;
+  __pyx_t_2 = __Pyx_GetAttr3(((PyObject *)__pyx_v_self), __pyx_n_s_dict, Py_None); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 6, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_v__dict = __pyx_t_2;
+  __pyx_t_2 = 0;
 
   /* "(tree fragment)":7
  *     state = (self.f, self.h, self.x)
@@ -3992,8 +3991,8 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_10__reduce_cython__
  *         state += (_dict,)
  *         use_setstate = True
  */
-  __pyx_t_4 = (__pyx_v__dict != Py_None);
-  if (__pyx_t_4) {
+  __pyx_t_3 = (__pyx_v__dict != Py_None);
+  if (__pyx_t_3) {
 
     /* "(tree fragment)":8
  *     _dict = getattr(self, '__dict__', None)
@@ -4002,23 +4001,23 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_10__reduce_cython__
  *         use_setstate = True
  *     else:
  */
-    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 8, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 8, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
     __Pyx_INCREF(__pyx_v__dict);
     __Pyx_GIVEREF(__pyx_v__dict);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v__dict)) __PYX_ERR(1, 8, __pyx_L1_error);
-    __pyx_t_2 = PyNumber_InPlaceAdd(__pyx_v_state, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 8, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_DECREF_SET(__pyx_v_state, ((PyObject*)__pyx_t_2));
-    __pyx_t_2 = 0;
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v__dict)) __PYX_ERR(1, 8, __pyx_L1_error);
+    __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_state, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 8, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF_SET(__pyx_v_state, ((PyObject*)__pyx_t_1));
+    __pyx_t_1 = 0;
 
     /* "(tree fragment)":9
  *     if _dict is not None:
  *         state += (_dict,)
  *         use_setstate = True             # <<<<<<<<<<<<<<
  *     else:
- *         use_setstate = self.f is not None
+ *         use_setstate = self.f is not None or self.x is not None
  */
     __pyx_v_use_setstate = 1;
 
@@ -4035,19 +4034,27 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_10__reduce_cython__
   /* "(tree fragment)":11
  *         use_setstate = True
  *     else:
- *         use_setstate = self.f is not None             # <<<<<<<<<<<<<<
+ *         use_setstate = self.f is not None or self.x is not None             # <<<<<<<<<<<<<<
  *     if use_setstate:
  *         return __pyx_unpickle_NumDiff, (type(self), 0xac47c78, None), state
  */
   /*else*/ {
     __pyx_t_4 = (__pyx_v_self->f != Py_None);
-    __pyx_v_use_setstate = __pyx_t_4;
+    if (!__pyx_t_4) {
+    } else {
+      __pyx_t_3 = __pyx_t_4;
+      goto __pyx_L4_bool_binop_done;
+    }
+    __pyx_t_4 = (__pyx_v_self->x != Py_None);
+    __pyx_t_3 = __pyx_t_4;
+    __pyx_L4_bool_binop_done:;
+    __pyx_v_use_setstate = __pyx_t_3;
   }
   __pyx_L3:;
 
   /* "(tree fragment)":12
  *     else:
- *         use_setstate = self.f is not None
+ *         use_setstate = self.f is not None or self.x is not None
  *     if use_setstate:             # <<<<<<<<<<<<<<
  *         return __pyx_unpickle_NumDiff, (type(self), 0xac47c78, None), state
  *     else:
@@ -4055,44 +4062,44 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_10__reduce_cython__
   if (__pyx_v_use_setstate) {
 
     /* "(tree fragment)":13
- *         use_setstate = self.f is not None
+ *         use_setstate = self.f is not None or self.x is not None
  *     if use_setstate:
  *         return __pyx_unpickle_NumDiff, (type(self), 0xac47c78, None), state             # <<<<<<<<<<<<<<
  *     else:
  *         return __pyx_unpickle_NumDiff, (type(self), 0xac47c78, state)
  */
     __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_pyx_unpickle_NumDiff); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 13, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_pyx_unpickle_NumDiff); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_2 = PyTuple_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 13, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 13, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
     __Pyx_GIVEREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))))) __PYX_ERR(1, 13, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))))) __PYX_ERR(1, 13, __pyx_L1_error);
     __Pyx_INCREF(__pyx_int_180649080);
     __Pyx_GIVEREF(__pyx_int_180649080);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_int_180649080)) __PYX_ERR(1, 13, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_int_180649080)) __PYX_ERR(1, 13, __pyx_L1_error);
     __Pyx_INCREF(Py_None);
     __Pyx_GIVEREF(Py_None);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 2, Py_None)) __PYX_ERR(1, 13, __pyx_L1_error);
-    __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 13, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 2, Py_None)) __PYX_ERR(1, 13, __pyx_L1_error);
+    __pyx_t_5 = PyTuple_New(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_GIVEREF(__pyx_t_1);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_1)) __PYX_ERR(1, 13, __pyx_L1_error);
     __Pyx_GIVEREF(__pyx_t_2);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_2)) __PYX_ERR(1, 13, __pyx_L1_error);
-    __Pyx_GIVEREF(__pyx_t_3);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_3)) __PYX_ERR(1, 13, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_2)) __PYX_ERR(1, 13, __pyx_L1_error);
     __Pyx_INCREF(__pyx_v_state);
     __Pyx_GIVEREF(__pyx_v_state);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_v_state)) __PYX_ERR(1, 13, __pyx_L1_error);
-    __pyx_t_2 = 0;
-    __pyx_t_3 = 0;
-    __pyx_r = __pyx_t_1;
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 2, __pyx_v_state)) __PYX_ERR(1, 13, __pyx_L1_error);
     __pyx_t_1 = 0;
+    __pyx_t_2 = 0;
+    __pyx_r = __pyx_t_5;
+    __pyx_t_5 = 0;
     goto __pyx_L0;
 
     /* "(tree fragment)":12
  *     else:
- *         use_setstate = self.f is not None
+ *         use_setstate = self.f is not None or self.x is not None
  *     if use_setstate:             # <<<<<<<<<<<<<<
  *         return __pyx_unpickle_NumDiff, (type(self), 0xac47c78, None), state
  *     else:
@@ -4108,29 +4115,29 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_10__reduce_cython__
  */
   /*else*/ {
     __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_pyx_unpickle_NumDiff); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 15, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 15, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_pyx_unpickle_NumDiff); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 15, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_2 = PyTuple_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 15, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
     __Pyx_INCREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
     __Pyx_GIVEREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))))) __PYX_ERR(1, 15, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))))) __PYX_ERR(1, 15, __pyx_L1_error);
     __Pyx_INCREF(__pyx_int_180649080);
     __Pyx_GIVEREF(__pyx_int_180649080);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_int_180649080)) __PYX_ERR(1, 15, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_int_180649080)) __PYX_ERR(1, 15, __pyx_L1_error);
     __Pyx_INCREF(__pyx_v_state);
     __Pyx_GIVEREF(__pyx_v_state);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_v_state)) __PYX_ERR(1, 15, __pyx_L1_error);
-    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 15, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_GIVEREF(__pyx_t_1);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1)) __PYX_ERR(1, 15, __pyx_L1_error);
-    __Pyx_GIVEREF(__pyx_t_3);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_3)) __PYX_ERR(1, 15, __pyx_L1_error);
-    __pyx_t_1 = 0;
-    __pyx_t_3 = 0;
-    __pyx_r = __pyx_t_2;
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 2, __pyx_v_state)) __PYX_ERR(1, 15, __pyx_L1_error);
+    __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 15, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_GIVEREF(__pyx_t_5);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_5)) __PYX_ERR(1, 15, __pyx_L1_error);
+    __Pyx_GIVEREF(__pyx_t_2);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_2)) __PYX_ERR(1, 15, __pyx_L1_error);
+    __pyx_t_5 = 0;
     __pyx_t_2 = 0;
+    __pyx_r = __pyx_t_1;
+    __pyx_t_1 = 0;
     goto __pyx_L0;
   }
 
@@ -4144,7 +4151,7 @@ static PyObject *__pyx_pf_15dual_autodiff_x_6n_diff_7NumDiff_10__reduce_cython__
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_5);
   __Pyx_AddTraceback("dual_autodiff_x.n_diff.NumDiff.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -4660,9 +4667,11 @@ static PyObject *__pyx_f_15dual_autodiff_x_6n_diff___pyx_unpickle_NumDiff__set_s
   }
   __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v___pyx_result->x = __pyx_t_2;
+  __Pyx_GIVEREF(__pyx_t_1);
+  __Pyx_GOTREF(__pyx_v___pyx_result->x);
+  __Pyx_DECREF(__pyx_v___pyx_result->x);
+  __pyx_v___pyx_result->x = __pyx_t_1;
+  __pyx_t_1 = 0;
 
   /* "(tree fragment)":13
  * cdef __pyx_unpickle_NumDiff__set_state(NumDiff __pyx_result, tuple __pyx_state):
@@ -4775,6 +4784,7 @@ static PyObject *__pyx_tp_new_15dual_autodiff_x_6n_diff_NumDiff(PyTypeObject *t,
   #endif
   p = ((struct __pyx_obj_15dual_autodiff_x_6n_diff_NumDiff *)o);
   p->f = Py_None; Py_INCREF(Py_None);
+  p->x = Py_None; Py_INCREF(Py_None);
   return o;
 }
 
@@ -4789,6 +4799,7 @@ static void __pyx_tp_dealloc_15dual_autodiff_x_6n_diff_NumDiff(PyObject *o) {
   #endif
   PyObject_GC_UnTrack(o);
   Py_CLEAR(p->f);
+  Py_CLEAR(p->x);
   #if CYTHON_USE_TYPE_SLOTS || CYTHON_COMPILING_IN_PYPY
   (*Py_TYPE(o)->tp_free)(o);
   #else
@@ -4805,6 +4816,9 @@ static int __pyx_tp_traverse_15dual_autodiff_x_6n_diff_NumDiff(PyObject *o, visi
   if (p->f) {
     e = (*v)(p->f, a); if (e) return e;
   }
+  if (p->x) {
+    e = (*v)(p->x, a); if (e) return e;
+  }
   return 0;
 }
 
@@ -4813,6 +4827,9 @@ static int __pyx_tp_clear_15dual_autodiff_x_6n_diff_NumDiff(PyObject *o) {
   struct __pyx_obj_15dual_autodiff_x_6n_diff_NumDiff *p = (struct __pyx_obj_15dual_autodiff_x_6n_diff_NumDiff *)o;
   tmp = ((PyObject*)p->f);
   p->f = Py_None; Py_INCREF(Py_None);
+  Py_XDECREF(tmp);
+  tmp = ((PyObject*)p->x);
+  p->x = Py_None; Py_INCREF(Py_None);
   Py_XDECREF(tmp);
   return 0;
 }
@@ -5011,8 +5028,8 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
 }
 /* #### Code section: cached_builtins ### */
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_ZeroDivisionError = __Pyx_GetBuiltinName(__pyx_n_s_ZeroDivisionError); if (!__pyx_builtin_ZeroDivisionError) __PYX_ERR(0, 35, __pyx_L1_error)
-  __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_builtin_ZeroDivisionError = __Pyx_GetBuiltinName(__pyx_n_s_ZeroDivisionError); if (!__pyx_builtin_ZeroDivisionError) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(0, 39, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -5023,25 +5040,25 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "dual_autodiff_x/n_diff.pyx":35
+  /* "dual_autodiff_x/n_diff.pyx":37
  *             h cannot be zero or negative, otherwise one gets an undefined answer, hence:
  *             '''
  *             raise ZeroDivisionError('Division by zero is undefined')             # <<<<<<<<<<<<<<
  *         elif self.h<0:
  *             raise TypeError('Step size input must be a positive real number')
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_u_Division_by_zero_is_undefined); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_u_Division_by_zero_is_undefined); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "dual_autodiff_x/n_diff.pyx":37
+  /* "dual_autodiff_x/n_diff.pyx":39
  *             raise ZeroDivisionError('Division by zero is undefined')
  *         elif self.h<0:
  *             raise TypeError('Step size input must be a positive real number')             # <<<<<<<<<<<<<<
  *         else:
  *             '''
  */
-  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_u_Step_size_input_must_be_a_positi); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_u_Step_size_input_must_be_a_positi); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
@@ -5056,47 +5073,47 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
 
-  /* "dual_autodiff_x/n_diff.pyx":27
- *         self.h = h
+  /* "dual_autodiff_x/n_diff.pyx":29
+ *         self.x = x
  * 
  *     def first_forward(self):             # <<<<<<<<<<<<<<
  *         '''
  *         Implementing first order numerical differenitaion forward difference.
  */
-  __pyx_tuple__5 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_f_dash); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_tuple__5 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_f_dash); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
-  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_dual_autodiff_x_n_diff_pyx, __pyx_n_s_first_forward, 27, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_dual_autodiff_x_n_diff_pyx, __pyx_n_s_first_forward, 29, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(0, 29, __pyx_L1_error)
 
-  /* "dual_autodiff_x/n_diff.pyx":59
+  /* "dual_autodiff_x/n_diff.pyx":61
  *             return f_dash
  * 
  *     def first_backward(self):             # <<<<<<<<<<<<<<
  *         '''
  *         Implementing first order numerical differentiation backward difference.
  */
-  __pyx_codeobj__7 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_dual_autodiff_x_n_diff_pyx, __pyx_n_s_first_backward, 59, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__7)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_codeobj__7 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_dual_autodiff_x_n_diff_pyx, __pyx_n_s_first_backward, 61, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__7)) __PYX_ERR(0, 61, __pyx_L1_error)
 
-  /* "dual_autodiff_x/n_diff.pyx":87
+  /* "dual_autodiff_x/n_diff.pyx":89
  *             return f_dash
  * 
  *     def first_central(self):             # <<<<<<<<<<<<<<
  *         '''
  *         Implementing fisrt order numerical differentiation central difference.
  */
-  __pyx_codeobj__8 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_dual_autodiff_x_n_diff_pyx, __pyx_n_s_first_central, 87, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__8)) __PYX_ERR(0, 87, __pyx_L1_error)
+  __pyx_codeobj__8 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_dual_autodiff_x_n_diff_pyx, __pyx_n_s_first_central, 89, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__8)) __PYX_ERR(0, 89, __pyx_L1_error)
 
-  /* "dual_autodiff_x/n_diff.pyx":115
+  /* "dual_autodiff_x/n_diff.pyx":117
  *             return f_dash
  * 
  *     def second_order(self):             # <<<<<<<<<<<<<<
  *         '''
  *         Implementing second order numerical differentiation.
  */
-  __pyx_tuple__9 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_f_double_dash); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_tuple__9 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_f_double_dash); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 117, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__9);
   __Pyx_GIVEREF(__pyx_tuple__9);
-  __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__9, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_dual_autodiff_x_n_diff_pyx, __pyx_n_s_second_order, 115, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__9, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_dual_autodiff_x_n_diff_pyx, __pyx_n_s_second_order, 117, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) __PYX_ERR(0, 117, __pyx_L1_error)
 
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
@@ -5193,15 +5210,15 @@ static int __Pyx_modinit_type_init_code(void) {
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_ptype_15dual_autodiff_x_6n_diff_NumDiff = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_15dual_autodiff_x_6n_diff_NumDiff_spec, NULL); if (unlikely(!__pyx_ptype_15dual_autodiff_x_6n_diff_NumDiff)) __PYX_ERR(0, 4, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_15dual_autodiff_x_6n_diff_NumDiff_spec, __pyx_ptype_15dual_autodiff_x_6n_diff_NumDiff) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_ptype_15dual_autodiff_x_6n_diff_NumDiff = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_15dual_autodiff_x_6n_diff_NumDiff_spec, NULL); if (unlikely(!__pyx_ptype_15dual_autodiff_x_6n_diff_NumDiff)) __PYX_ERR(0, 5, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_15dual_autodiff_x_6n_diff_NumDiff_spec, __pyx_ptype_15dual_autodiff_x_6n_diff_NumDiff) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
   #else
   __pyx_ptype_15dual_autodiff_x_6n_diff_NumDiff = &__pyx_type_15dual_autodiff_x_6n_diff_NumDiff;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_15dual_autodiff_x_6n_diff_NumDiff) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_15dual_autodiff_x_6n_diff_NumDiff) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
   __pyx_ptype_15dual_autodiff_x_6n_diff_NumDiff->tp_print = 0;
@@ -5213,7 +5230,7 @@ static int __Pyx_modinit_type_init_code(void) {
   #endif
   #if CYTHON_UPDATE_DESCRIPTOR_DOC
   {
-    PyObject *wrapper = PyObject_GetAttrString((PyObject *)__pyx_ptype_15dual_autodiff_x_6n_diff_NumDiff, "__init__"); if (unlikely(!wrapper)) __PYX_ERR(0, 4, __pyx_L1_error)
+    PyObject *wrapper = PyObject_GetAttrString((PyObject *)__pyx_ptype_15dual_autodiff_x_6n_diff_NumDiff, "__init__"); if (unlikely(!wrapper)) __PYX_ERR(0, 5, __pyx_L1_error)
     if (__Pyx_IS_TYPE(wrapper, &PyWrapperDescr_Type)) {
       __pyx_wrapperbase_15dual_autodiff_x_6n_diff_7NumDiff___init__ = *((PyWrapperDescrObject *)wrapper)->d_base;
       __pyx_wrapperbase_15dual_autodiff_x_6n_diff_7NumDiff___init__.doc = __pyx_doc_15dual_autodiff_x_6n_diff_7NumDiff___init__;
@@ -5221,9 +5238,9 @@ static int __Pyx_modinit_type_init_code(void) {
     }
   }
   #endif
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_NumDiff, (PyObject *) __pyx_ptype_15dual_autodiff_x_6n_diff_NumDiff) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_NumDiff, (PyObject *) __pyx_ptype_15dual_autodiff_x_6n_diff_NumDiff) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_15dual_autodiff_x_6n_diff_NumDiff) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_15dual_autodiff_x_6n_diff_NumDiff) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
   #endif
   __Pyx_RefNannyFinishContext();
   return 0;
@@ -5534,55 +5551,55 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "dual_autodiff_x/n_diff.pyx":27
- *         self.h = h
+  /* "dual_autodiff_x/n_diff.pyx":29
+ *         self.x = x
  * 
  *     def first_forward(self):             # <<<<<<<<<<<<<<
  *         '''
  *         Implementing first order numerical differenitaion forward difference.
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_15dual_autodiff_x_6n_diff_7NumDiff_3first_forward, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_NumDiff_first_forward, NULL, __pyx_n_s_dual_autodiff_x_n_diff, __pyx_d, ((PyObject *)__pyx_codeobj__6)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_15dual_autodiff_x_6n_diff_7NumDiff_3first_forward, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_NumDiff_first_forward, NULL, __pyx_n_s_dual_autodiff_x_n_diff, __pyx_d, ((PyObject *)__pyx_codeobj__6)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_15dual_autodiff_x_6n_diff_NumDiff, __pyx_n_s_first_forward, __pyx_t_2) < 0) __PYX_ERR(0, 27, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_15dual_autodiff_x_6n_diff_NumDiff, __pyx_n_s_first_forward, __pyx_t_2) < 0) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_15dual_autodiff_x_6n_diff_NumDiff);
 
-  /* "dual_autodiff_x/n_diff.pyx":59
+  /* "dual_autodiff_x/n_diff.pyx":61
  *             return f_dash
  * 
  *     def first_backward(self):             # <<<<<<<<<<<<<<
  *         '''
  *         Implementing first order numerical differentiation backward difference.
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_15dual_autodiff_x_6n_diff_7NumDiff_5first_backward, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_NumDiff_first_backward, NULL, __pyx_n_s_dual_autodiff_x_n_diff, __pyx_d, ((PyObject *)__pyx_codeobj__7)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_15dual_autodiff_x_6n_diff_7NumDiff_5first_backward, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_NumDiff_first_backward, NULL, __pyx_n_s_dual_autodiff_x_n_diff, __pyx_d, ((PyObject *)__pyx_codeobj__7)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 61, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_15dual_autodiff_x_6n_diff_NumDiff, __pyx_n_s_first_backward, __pyx_t_2) < 0) __PYX_ERR(0, 59, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_15dual_autodiff_x_6n_diff_NumDiff, __pyx_n_s_first_backward, __pyx_t_2) < 0) __PYX_ERR(0, 61, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_15dual_autodiff_x_6n_diff_NumDiff);
 
-  /* "dual_autodiff_x/n_diff.pyx":87
+  /* "dual_autodiff_x/n_diff.pyx":89
  *             return f_dash
  * 
  *     def first_central(self):             # <<<<<<<<<<<<<<
  *         '''
  *         Implementing fisrt order numerical differentiation central difference.
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_15dual_autodiff_x_6n_diff_7NumDiff_7first_central, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_NumDiff_first_central, NULL, __pyx_n_s_dual_autodiff_x_n_diff, __pyx_d, ((PyObject *)__pyx_codeobj__8)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 87, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_15dual_autodiff_x_6n_diff_7NumDiff_7first_central, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_NumDiff_first_central, NULL, __pyx_n_s_dual_autodiff_x_n_diff, __pyx_d, ((PyObject *)__pyx_codeobj__8)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_15dual_autodiff_x_6n_diff_NumDiff, __pyx_n_s_first_central, __pyx_t_2) < 0) __PYX_ERR(0, 87, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_15dual_autodiff_x_6n_diff_NumDiff, __pyx_n_s_first_central, __pyx_t_2) < 0) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_15dual_autodiff_x_6n_diff_NumDiff);
 
-  /* "dual_autodiff_x/n_diff.pyx":115
+  /* "dual_autodiff_x/n_diff.pyx":117
  *             return f_dash
  * 
  *     def second_order(self):             # <<<<<<<<<<<<<<
  *         '''
  *         Implementing second order numerical differentiation.
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_15dual_autodiff_x_6n_diff_7NumDiff_9second_order, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_NumDiff_second_order, NULL, __pyx_n_s_dual_autodiff_x_n_diff, __pyx_d, ((PyObject *)__pyx_codeobj__10)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_15dual_autodiff_x_6n_diff_7NumDiff_9second_order, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_NumDiff_second_order, NULL, __pyx_n_s_dual_autodiff_x_n_diff, __pyx_d, ((PyObject *)__pyx_codeobj__10)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 117, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_15dual_autodiff_x_6n_diff_NumDiff, __pyx_n_s_second_order, __pyx_t_2) < 0) __PYX_ERR(0, 115, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_15dual_autodiff_x_6n_diff_NumDiff, __pyx_n_s_second_order, __pyx_t_2) < 0) __PYX_ERR(0, 117, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_15dual_autodiff_x_6n_diff_NumDiff);
 
