@@ -41,7 +41,7 @@ class TestNumDiff:
             return 1 + np.cos(x)**(-2)
         
         nd = NumDiff(f,x0,h)
-        num_result = nd.first_backwards()
+        num_result = nd.first_forward()
         
         assert round(num_result, 3)==round(f_diff(x0), 3)
 
@@ -91,7 +91,7 @@ class TestNumDiff:
             return 1 + np.cos(x)**(-2)
         
         nd = NumDiff(f,x0,h)
-        num_result = nd.first_backwards()
+        num_result = nd.first_backward()
         
         assert round(num_result, 3)==round(f_diff(x0), 3)
 
