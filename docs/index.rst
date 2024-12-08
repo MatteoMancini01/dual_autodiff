@@ -15,8 +15,13 @@ dual_autodiff package
    :maxdepth: 2
    :caption: Contents:
 
+   pag/introduction
+   pag/quick_start
+   pag/usage
    dual_autodiff
    Solutions
+   pag/api_reference
+
    
 
 .. footer::

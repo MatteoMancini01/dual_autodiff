@@ -1,6 +1,7 @@
 nbsphinx_kernel_name = 'python3'
 
 import sphinx_rtd_theme
+import pylatex
 
 # -- Project information -----------------------------------------------------
 
@@ -21,10 +22,34 @@ extensions = [
 	'nbsphinx',
     'myst_parser',
     'sphinx.ext.autodoc',    # Autodoc extension for extracting docstrings
+    'sphinx.ext.napoleon',
+    'sphinx.ext.autosummary',
 	'sphinx.ext.mathjax',
 	'sphinx_rtd_theme',
     'sphinx_gallery.load_style',  # load CSS for gallery (needs SG >= 0.6)
 ]
+
+# Include examples in documentation
+napoleon_include_examples = True
+
+# Show all docstrings (not just the first line)
+autodoc_docstring_signature = True
+autodoc_default_options = {
+    'members': True,
+    'undoc-members': True,
+    'private-members': False,
+    'show-inheritance': True,
+    'special-members': '__init__',
+}
+
+
+
+mathjax_path = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+
+html_context = {
+    "mathjax_path": "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js",
+}
+
 
 
 

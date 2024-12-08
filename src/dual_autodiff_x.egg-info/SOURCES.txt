@@ -1,0 +1,17 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+src/dual_autodiff_x/__init__.py
+src/dual_autodiff_x/dual.c
+src/dual_autodiff_x/dual.cpython-312-x86_64-linux-gnu.so
+src/dual_autodiff_x/n_diff.c
+src/dual_autodiff_x/n_diff.cpython-312-x86_64-linux-gnu.so
+src/dual_autodiff_x/version.py
+src/dual_autodiff_x.egg-info/PKG-INFO
+src/dual_autodiff_x.egg-info/SOURCES.txt
+src/dual_autodiff_x.egg-info/dependency_links.txt
+src/dual_autodiff_x.egg-info/not-zip-safe
+src/dual_autodiff_x.egg-info/top_level.txt
+tests/test_dad.py
+tests/test_ndiff.py
