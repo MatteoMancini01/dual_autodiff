@@ -1,4 +1,4 @@
-from setuptools import setup, Extension
+from setuptools import setup,find_packages, Extension
 from Cython.Build import cythonize
 import sysconfig
 
@@ -20,11 +20,24 @@ extensions = [
 ]
 
 setup(
-    name="dual_autodiff_x",
+    name="dual_autodiff",
     version="0.1.0",
-    ext_modules=cythonize(extensions, compiler_directives={"language_level": "3"}),
+    description="This is a Python package designed to implement automatic differentiation using dual numbers.",
+    author="Matteo Mancini",
+    author_email="mem97@cam.ac.uk",
+    license="Unilicense",
+    packages=find_packages(where="src"),
     package_dir={"": "src"},
-    packages=["dual_autodiff_x"],
+    ext_modules=cythonize(extensions, compiler_directives={"language_level": "3"}),
+    install_requires=[
+        "numpy>=1.26.4,<2.0.0",
+        "pandas>=2.0.0,<3.0.0",
+        "matplotlib>=3.9.0,<4.0.0",
+    ],
+    extras_require={
+        "notebooks": ["jupyter", "matplotlib", "pandas", "ipywidgets"],
+        "docs": ["sphinx", "myst-parser", "sphinx-rtd-theme", "sphinx.ext.napoleon"],
+    },
     package_data={"dual_autodiff_x": ["*.so", "*.pyd"]},
     exclude_package_data={"dual_autodiff_x": ["*.pyx", "*.py"]},
     zip_safe=False,

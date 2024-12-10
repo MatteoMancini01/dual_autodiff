@@ -19,3 +19,18 @@ Thumbs.db
 # Ignore Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 
+# Build directories and files
+*.egg-info/
+*.egg
+build/
+dist/
+
+# Cython build artifacts
+*.so
+*.pyd
+*.c
+*.cpp
+
+# Python bytecode
+__pycache__/
+*.py[cod]

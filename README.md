@@ -55,7 +55,12 @@ There are two packages containing two libraries each, `dual_autodiff` (pure pyth
 For more instructions on how to use the two packages please use the notebook provided i.e. dual_autodiff.ipynb, furthermore you can access the documentation, where the Jupyter Notebook and detailed explenation with exaples are provided.
 
 #### Access Documentation
-To view the detailed documentation:
+Building documentation; to build the documentation install the required dependencies:
+```bash
+pip install -e .[docs]
+```
+
+Then follow these steps:
 
 1. Navigate to the `docs` directory:
    ```bash
