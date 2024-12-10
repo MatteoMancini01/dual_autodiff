@@ -70,18 +70,14 @@ Then follow these steps:
    cd docs
    ```
 
-2. Install the required dependencies (e.g. `sphinx`) to generate the documentation, make sure yoru virtual environment is activated:
-   ```python
-   pip install -r requirements.txt
-   ```
-3. Building documentation.
+2. Building documentation.
 
    To build documentation run the following commands:
    ```python
    make clean
    make html
    ```
-4. Access documentation.
+3. Access documentation.
 
    To access documentation you can either run
 -    ```python
