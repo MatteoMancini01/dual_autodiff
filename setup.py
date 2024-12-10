@@ -36,7 +36,7 @@ setup(
     ],
     extras_require={
         "notebooks": ["jupyter", "matplotlib", "pandas", "ipywidgets"],
-        "docs": ["sphinx", "myst-parser", "sphinx-rtd-theme", "sphinx.ext.napoleon"],
+        "docs": ["sphinx", "myst-parser", "sphinx-rtd-theme", "sphinx-gallery", "nbsphinx", "pylatex"],
     },
     package_data={"dual_autodiff_x": ["*.so", "*.pyd"]},
     exclude_package_data={"dual_autodiff_x": ["*.pyx", "*.py"]},
