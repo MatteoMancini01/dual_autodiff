@@ -22,6 +22,7 @@ Thumbs.db
 
 # Build directories and files
 *.egg-info/
+src/ *.egg-info/
 *.egg/
 build/
 dist/
