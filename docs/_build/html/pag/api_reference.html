@@ -47,12 +47,24 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">How to use the package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dual_autodiff.html">Automatic Differentiation Using Dual Numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dual_autodiff.html">Automatic Differentiation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Solutions.html">Solutions</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Api Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#dual_autodiff.dual.Dual"><code class="docutils literal notranslate"><span class="pre">Dual</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dual_autodiff.dual.Dual.__add__"><code class="docutils literal notranslate"><span class="pre">Dual.__add__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dual_autodiff.dual.Dual.__floordiv__"><code class="docutils literal notranslate"><span class="pre">Dual.__floordiv__()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dual_autodiff.dual.Dual.__init__"><code class="docutils literal notranslate"><span class="pre">Dual.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dual_autodiff.dual.Dual.__mul__"><code class="docutils literal notranslate"><span class="pre">Dual.__mul__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dual_autodiff.dual.Dual.__neg__"><code class="docutils literal notranslate"><span class="pre">Dual.__neg__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dual_autodiff.dual.Dual.__pow__"><code class="docutils literal notranslate"><span class="pre">Dual.__pow__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dual_autodiff.dual.Dual.__repr__"><code class="docutils literal notranslate"><span class="pre">Dual.__repr__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dual_autodiff.dual.Dual.__rfloordiv__"><code class="docutils literal notranslate"><span class="pre">Dual.__rfloordiv__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dual_autodiff.dual.Dual.__rmul__"><code class="docutils literal notranslate"><span class="pre">Dual.__rmul__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dual_autodiff.dual.Dual.__rpow__"><code class="docutils literal notranslate"><span class="pre">Dual.__rpow__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dual_autodiff.dual.Dual.__rsub__"><code class="docutils literal notranslate"><span class="pre">Dual.__rsub__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dual_autodiff.dual.Dual.__rtruediv__"><code class="docutils literal notranslate"><span class="pre">Dual.__rtruediv__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dual_autodiff.dual.Dual.__sub__"><code class="docutils literal notranslate"><span class="pre">Dual.__sub__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dual_autodiff.dual.Dual.__truediv__"><code class="docutils literal notranslate"><span class="pre">Dual.__truediv__()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dual_autodiff.dual.Dual.cos"><code class="docutils literal notranslate"><span class="pre">Dual.cos()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dual_autodiff.dual.Dual.cosh"><code class="docutils literal notranslate"><span class="pre">Dual.cosh()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dual_autodiff.dual.Dual.exp"><code class="docutils literal notranslate"><span class="pre">Dual.exp()</span></code></a></li>
@@ -111,38 +123,306 @@
 <p>Dual numbers are used for algebraic computations and automatic differentiation, especially in the context of
 optimization and numerical analysis.</p>
 <dl class="py method">
+<dt class="sig sig-object py" id="dual_autodiff.dual.Dual.__add__">
+<span class="sig-name descname"><span class="pre">__add__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dual_autodiff.dual.Dual.__add__" title="Link to this definition"></a></dt>
+<dd><p>Implement addition.</p>
+<p>Computes addition between dual numbers, and real numbers.
+Addition in dual numbers is simple, like in complex numbers, where the real and imaginary parts are added separately,
+dual numbers follow the same principle, real and dual parts of dual numbers are added separately.
+For example, let <em>x = a + εb</em> and <em>y = c + εd</em> then <em>x + y = a + c + ε(b + d)</em>.</p>
+<p>Adding real and dual part separately.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>other</strong> – at this instance is of the form <em>Dual(real=&lt;real&gt;, dual=&lt;dual&gt;)</em>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Dual(real=&lt;real&gt;, dual=&lt;dual&gt;)</em>: output is the sum of the dual numbers.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">Dual</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;x + y = </span><span class="si">{</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;x + n = </span><span class="si">{</span><span class="n">x</span><span class="o">+</span><span class="n">n</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="go">x + y = Dual(real=7, dual=11)</span>
+<span class="go">x + n = Dual(real=5, dual=1)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dual_autodiff.dual.Dual.__floordiv__">
+<span class="sig-name descname"><span class="pre">__floordiv__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dual_autodiff.dual.Dual.__floordiv__" title="Link to this definition"></a></dt>
+<dd><p>Implementing floor division, this returns integers.</p>
+<p>This follow exatly the same procedure as before, but instead of <em>x/y</em> we compute <em>x//y</em>.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">Dual</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;x//y = </span><span class="si">{</span><span class="n">x</span><span class="o">//</span><span class="n">y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;x//n = </span><span class="si">{</span><span class="n">x</span><span class="o">//</span><span class="n">n</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="go">x//n = Dual(real = -2, dual = -3)</span>
+<span class="go">x//n = Dual(real = 1, dual = 0)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="dual_autodiff.dual.Dual.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">real</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dual</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dual_autodiff.dual.Dual.__init__" title="Link to this definition"></a></dt>
 <dd><p>Initialises dual numbers with a real and dual part.</p>
-<p>A dual number is represented as <cite>real + ε*dual</cite>, where <cite>ε</cite> is an infinitesimal.
+<p>A dual number is represented as <em>real + εdual</em>, where <em>ε</em> is an infinitesimal.
 The real part corresponds to the value of the function, and the dual part
 corresponds to the derivative.</p>
 <dl class="simple">
-<dt>Useful properties of the infinitesimal $epsilon$:</dt><dd><ul class="simple">
-<li><p>ε^n = 0 for n &gt; 1$</p></li>
-<li><p>f(a + εb) = f(a) + εbf’(a)$</p></li>
+<dt>Useful properties of the infinitesimal <em>ε</em>:</dt><dd><ul class="simple">
+<li><p><em>ε^n = 0 for n &gt; 1</em></p></li>
+<li><p><em>f(a + εb) = f(a) + εbf’(a)</em></p></li>
 </ul>
 </dd>
 </dl>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>real</strong> (<em>int</em><em> or </em><em>float</em>) – input real part</p></li>
-<li><p><strong>dual</strong> (<em>int</em><em> or </em><em>float</em>) – input dual part</p></li>
+<li><p><strong>real</strong> (<em>int</em> or <em>float</em>) – input real part</p></li>
+<li><p><strong>dual</strong> (<em>int</em> or <em>float</em>) – input dual part</p></li>
 </ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="dual_autodiff.dual.Dual.cos">
-<span class="sig-name descname"><span class="pre">cos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dual_autodiff.dual.Dual.cos" title="Link to this definition"></a></dt>
-<dd><p>For the cosine function evaluated $x$, where $x = a + epsilon b$;
-real part: $f(a) = cos{a}$
-dual part: $bf’(a) = -bsin{a}$</p>
+<dt class="sig sig-object py" id="dual_autodiff.dual.Dual.__mul__">
+<span class="sig-name descname"><span class="pre">__mul__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dual_autodiff.dual.Dual.__mul__" title="Link to this definition"></a></dt>
+<dd><p>Implementing multiplication.</p>
+<p>Multiplication between dual numbers can be expressed as follows:
+Let <em>x = a + εb</em> and <em>y = c + εd</em> then <em>xy = ac + ε(ad + bc)</em>.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">Dual</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;xy = </span><span class="si">{</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;x*n = </span><span class="si">{</span><span class="n">x</span><span class="o">*</span><span class="n">n</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="go">xy= Dual(real=10, dual=25)</span>
+<span class="go">x*n = Dual(real=6, dual=3)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dual_autodiff.dual.Dual.__neg__">
+<span class="sig-name descname"><span class="pre">__neg__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dual_autodiff.dual.Dual.__neg__" title="Link to this definition"></a></dt>
+<dd><p>Changning the sign of a dual number to negative <em>-Dual(real=&lt;real&gt;, dual=&lt;dual&gt;) = Dual(real=-&lt;real&gt;, dual=-&lt;dual&gt;)</em></p>
+<dl class="simple">
+<dt>Parameter:</dt><dd><p>str: <em>Dual(real=&lt;real&gt;, dual=&lt;dual&gt;)</em>: input is a dual number</p>
+</dd>
+</dl>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p><cite>Dual(real=&lt;real&gt;, dual=&lt;dual&gt;)</cite></p>
+<dd class="field-odd"><p><em>Dual(real=&lt;-real&gt;, dual=&lt;-dual&gt;)</em>: output is a dual number</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">Dual</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="o">-</span> <span class="n">x</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;y = </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="go">y = Dual(real=-2, dual=-1)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dual_autodiff.dual.Dual.__pow__">
+<span class="sig-name descname"><span class="pre">__pow__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dual_autodiff.dual.Dual.__pow__" title="Link to this definition"></a></dt>
+<dd><p>Implement power.</p>
+<dl class="simple">
+<dt>Implementing power can be quite challenging for dual numbers, there are three different possibilities one can think of, namely:</dt><dd><ul class="simple">
+<li><p>a dual number to the power of a real number</p></li>
+<li><p>a dual number to the power of a dual number</p></li>
+<li><p>a real number to the power of a dual number</p></li>
+</ul>
+</dd>
+</dl>
+<p>The aim is to caver all of the above cases. In particular for <em>__pow__</em> the first two are covered and in <em>__rpow__</em> the last case.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">Dual</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;x**n = </span><span class="si">{</span><span class="n">x</span><span class="o">**</span><span class="n">n</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;x**y = </span><span class="si">{</span><span class="n">x</span><span class="o">**</span><span class="n">y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="go">x**n = Dual(real=8, dual=12)</span>
+<span class="go">x**y = Dual(real=0.5, dual=0.09657359027997264)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dual_autodiff.dual.Dual.__repr__">
+<span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dual_autodiff.dual.Dual.__repr__" title="Link to this definition"></a></dt>
+<dd><p>This stands for representation, provides a string representation of the object when returned
+when fed to the elvaluation function.</p>
+<p>The string representation is in the form <em>Dual(real=&lt;real&gt;, dual=&lt;dual&gt;)</em>,
+which makes it easy to interpret the real and dual parts of the number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A string representation of the dual number.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">Dual</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The dual number x = </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="go">The dual number x = Dual(real=2, dual=1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The real part of x is </span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="go">The real part of x is 2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The dual part of x is </span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">dual</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="go">The dual part of x is 1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dual_autodiff.dual.Dual.__rfloordiv__">
+<span class="sig-name descname"><span class="pre">__rfloordiv__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dual_autodiff.dual.Dual.__rfloordiv__" title="Link to this definition"></a></dt>
+<dd><p>Implementing reverse floor division.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">Dual</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;n/x = </span><span class="si">{</span><span class="n">n</span><span class="o">/</span><span class="n">x</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="go">n/x = Dual(real = 2.0, dual = -1.0)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dual_autodiff.dual.Dual.__rmul__">
+<span class="sig-name descname"><span class="pre">__rmul__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dual_autodiff.dual.Dual.__rmul__" title="Link to this definition"></a></dt>
+<dd><p>Implementing reverse Multiplication.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">Dual</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;n*x = </span><span class="si">{</span><span class="n">n</span><span class="o">*</span><span class="n">x</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="go">x*n = Dual(real=6, dual=3)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dual_autodiff.dual.Dual.__rpow__">
+<span class="sig-name descname"><span class="pre">__rpow__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dual_autodiff.dual.Dual.__rpow__" title="Link to this definition"></a></dt>
+<dd><p>Implementing reverse power.</p>
+<p>Evaluating a real number to the power of a daul numner.
+One can follow a similar procedure as before.
+To evaluate <em>n^{(c + εd)}</em> where <em>n</em> is a real number, set <em>n = (a + εb)</em> where <em>a=n</em> and <em>b=0</em>, plug this into
+the previus expression for dual to the power of a dual, then <em>n^{(c + εd)} = n^c (1 + εlog(n)d)</em>.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">Dual</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;n**x = </span><span class="si">{</span><span class="n">n</span><span class="o">**</span><span class="n">x</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="go">n**x = Dual(real=9, dual=9.887510598012987)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dual_autodiff.dual.Dual.__rsub__">
+<span class="sig-name descname"><span class="pre">__rsub__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dual_autodiff.dual.Dual.__rsub__" title="Link to this definition"></a></dt>
+<dd><p>Implementing reverse subtraction.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">Dual</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">=</span><span class="n">Dual</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">=</span><span class="n">Dual</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span><span class="o">=</span><span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;y-x=</span><span class="si">{</span><span class="n">y</span><span class="o">-</span><span class="n">x</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;n-x=</span><span class="si">{</span><span class="n">n</span><span class="o">-</span><span class="n">x</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="go">y-x=Dual(1,1)</span>
+<span class="go">n-x=Dual(1,-1)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dual_autodiff.dual.Dual.__rtruediv__">
+<span class="sig-name descname"><span class="pre">__rtruediv__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dual_autodiff.dual.Dual.__rtruediv__" title="Link to this definition"></a></dt>
+<dd><p>Implementing reverse standard division.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">Dual</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;n/x = </span><span class="si">{</span><span class="n">n</span><span class="o">/</span><span class="n">x</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="go">n/x = Dual(real = 2.0, dual = -1.0)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dual_autodiff.dual.Dual.__sub__">
+<span class="sig-name descname"><span class="pre">__sub__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dual_autodiff.dual.Dual.__sub__" title="Link to this definition"></a></dt>
+<dd><p>Implement Subtraction.</p>
+<p>Computing subtraction between dual numbers.</p>
+<p>This follows the same principle of addition, when subtracting dual numbers, the real part is subtracted from the other real part,
+and the dual part is subtracted from the other dual part.</p>
+<p>For example, let <em>x = a + εb</em> and <em>y = c + εd</em> then <em>x - y = a - c + ε(b - d)</em>.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">Dual</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;x - y = </span><span class="si">{</span><span class="n">x</span><span class="o">-</span><span class="n">y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;x - n = </span><span class="si">{</span><span class="n">x</span><span class="o">-</span><span class="n">n</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="go">x + y = Dual(real=-3, dual=-9)</span>
+<span class="go">x - n = Dual(real=-1, dual=1)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dual_autodiff.dual.Dual.__truediv__">
+<span class="sig-name descname"><span class="pre">__truediv__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dual_autodiff.dual.Dual.__truediv__" title="Link to this definition"></a></dt>
+<dd><p>Implement (true) division.</p>
+<p>Division between dual numbers is very similar to division of complex numbers, one can multiply both numerator and denominator by the
+reciprocal of the denominator, this will allow to split the division into real and dual parts, this is illustrated below:</p>
+<p><em>(a + εb)/(c + εd) = (a + εb)(c - εd)/(c + εd)(c - εd)= a/c + ε[b/c - ad/c^2]</em></p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">Dual</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;x/y = </span><span class="si">{</span><span class="n">x</span><span class="o">/</span><span class="n">y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;x/n = </span><span class="si">{</span><span class="n">x</span><span class="o">/</span><span class="n">n</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="go">x/n = Dual(real = -2.0, dual = -3.0)</span>
+<span class="go">x/n = Dual(real = 0.5, dual = 0.25)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dual_autodiff.dual.Dual.cos">
+<span class="sig-name descname"><span class="pre">cos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dual_autodiff.dual.Dual.cos" title="Link to this definition"></a></dt>
+<dd><p>For the cosine function evaluated <em>x</em>, where <em>x = a + εb</em>;
+real part: <em>f(a) = cos{a}</em>
+dual part: <em>bf’(a) = -bsin{a}</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Dual(real=&lt;real&gt;, dual=&lt;dual&gt;)</em></p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>str</p>
@@ -161,12 +441,12 @@ dual part: $bf’(a) = -bsin{a}$</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="dual_autodiff.dual.Dual.cosh">
 <span class="sig-name descname"><span class="pre">cosh</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dual_autodiff.dual.Dual.cosh" title="Link to this definition"></a></dt>
-<dd><p>For the cosh function evaluated at $x$, where $x = a + epsilon b$;
-real part: $f(a) = cosh{a}$
-dual part: $bf’(a) =bsinh{a}}$</p>
+<dd><p>For the cosh function evaluated at <em>x</em>, where <em>x = a + εb</em>;
+real part: <em>f(a) = cosh{a}</em>
+dual part: <em>bf’(a) =bsinh{a}</em></p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p><cite>Dual(real=&lt;real&gt;, dual=&lt;dual&gt;)</cite></p>
+<dd class="field-odd"><p><em>Dual(real=&lt;real&gt;, dual=&lt;dual&gt;)</em></p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>str</p>
@@ -185,12 +465,12 @@ dual part: $bf’(a) =bsinh{a}}$</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="dual_autodiff.dual.Dual.exp">
 <span class="sig-name descname"><span class="pre">exp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dual_autodiff.dual.Dual.exp" title="Link to this definition"></a></dt>
-<dd><p>For the exponential evaluated at $x$, where $x = a + epsilon b$;
-real part: $f(a) = e^a$
-dual part: $bf’(a) = be^a$</p>
+<dd><p>For the exponential evaluated at <em>x</em>, where <em>x = a + εb</em>;
+real part: <em>f(a) = exp(a)</em>
+dual part: <em>bf’(a) = bexp(a)</em></p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p><cite>Dual(real=&lt;real&gt;, dual=&lt;dual&gt;)</cite></p>
+<dd class="field-odd"><p>Dual(real=&lt;real&gt;, dual=&lt;dual&gt;)</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>str</p>
@@ -209,26 +489,25 @@ dual part: $bf’(a) = be^a$</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="dual_autodiff.dual.Dual.log">
 <span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dual_autodiff.dual.Dual.log" title="Link to this definition"></a></dt>
-<dd><blockquote>
-<div><p>For the logarithmic function evaluated at $x$, where $x = a + epsilon b$;
-real part: $f(a) = log({a})$
-dual part: $bf’(a) =</p>
-</div></blockquote>
-<p>rac{b}{a}}$</p>
-<blockquote>
-<div><dl>
-<dt>Returns:</dt><dd><p>str: <cite>Dual(real=&lt;real&gt;, dual=&lt;dual&gt;)</cite></p>
+<dd><p>For the logarithmic function evaluated at <em>x</em>, where <em>x = a + εb</em>;
+real part: <em>f(a) = log{a)</em>
+dual part: <em>bf’(a) =b/a</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Dual(real=&lt;real&gt;, dual=&lt;dual&gt;)</em></p>
 </dd>
-<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">Dual</span>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">Dual</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">log_x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">log</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;log(x) = </span><span class="si">{</span><span class="n">log_x</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="go">log(x) = Dual(real = 0.6931471805599453, dual = 3.0)</span>
 </pre></div>
 </div>
-</dd>
-</dl>
-</div></blockquote>
 </dd></dl>
 
 <dl class="py method">
@@ -248,7 +527,7 @@ dual part: $bf’(a) =</p>
 </dd>
 </dl>
 <p>Example:
-Computing first order partial derivatives of the function $f(x,y,z) = xy + xcos{z} + sin{y}$ at the point $(1,-1,2)$
+Computing first order partial derivatives of the function <em>f(x,y,z) = xy + xcos{z} + sin{y}</em> at the point <em>(1,-1,2)</em>
 with respect of each variable</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">Dual</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">):</span>
@@ -271,12 +550,12 @@ with respect of each variable</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="dual_autodiff.dual.Dual.sin">
 <span class="sig-name descname"><span class="pre">sin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dual_autodiff.dual.Dual.sin" title="Link to this definition"></a></dt>
-<dd><p>For the sine function evaluated at $x$, where $x = a + epsilon b$;
-real part: $f(a) = sin{a}$
-dual part: $bf’(a) = bcos{a}$</p>
+<dd><p>For the sine function evaluated at $x$, where $x = a + εb$;
+real part: <em>f(a) = sin{a}</em>
+dual part: <em>bf’(a) = bcos{a}</em></p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p><cite>Dual(real=&lt;real&gt;, dual=&lt;dual&gt;)</cite></p>
+<dd class="field-odd"><p><em>Dual(real=&lt;real&gt;, dual=&lt;dual&gt;)</em></p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>str</p>
@@ -295,12 +574,12 @@ dual part: $bf’(a) = bcos{a}$</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="dual_autodiff.dual.Dual.sinh">
 <span class="sig-name descname"><span class="pre">sinh</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dual_autodiff.dual.Dual.sinh" title="Link to this definition"></a></dt>
-<dd><p>For the sinh function evaluated at $x$, where $x = a + epsilon b$;
-real part: $f(a) = sinh{a}$
-dual part: $bf’(a) =bcosh{a}}$</p>
+<dd><p>For the sinh function evaluated at <em>x</em>, where <em>x = a + εb</em>;
+real part: <em>f(a) = sinh{a}</em>
+dual part: <em>bf’(a) =bcosh{a}</em></p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p><cite>Dual(real=&lt;real&gt;, dual=&lt;dual&gt;)</cite></p>
+<dd class="field-odd"><p><em>Dual(real=&lt;real&gt;, dual=&lt;dual&gt;)</em></p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>str</p>
@@ -319,12 +598,12 @@ dual part: $bf’(a) =bcosh{a}}$</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="dual_autodiff.dual.Dual.tan">
 <span class="sig-name descname"><span class="pre">tan</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dual_autodiff.dual.Dual.tan" title="Link to this definition"></a></dt>
-<dd><p>For the tan function evaluated at $x$, where $x = a + epsilon b$;
-real part: $f(a) =      an{a}$
-dual part: $bf’(a) = bsec^2{a}$</p>
+<dd><p>For the tan function evaluated at <em>x</em>, where <em>x = a + εb</em>;
+real part: <em>f(a) = tan{a}</em>
+dual part: <em>bf’(a) = bsec^2{a}</em></p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p><cite>Dual(real=&lt;real&gt;, dual=&lt;dual&gt;)</cite></p>
+<dd class="field-odd"><p><em>Dual(real=&lt;real&gt;, dual=&lt;dual&gt;)</em></p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>str</p>
@@ -343,26 +622,25 @@ dual part: $bf’(a) = bsec^2{a}$</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="dual_autodiff.dual.Dual.tanh">
 <span class="sig-name descname"><span class="pre">tanh</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dual_autodiff.dual.Dual.tanh" title="Link to this definition"></a></dt>
-<dd><blockquote>
-<div><p>For the tanh function evaluated at $x$, where $x = a + epsilon b$;
-real part: $f(a) =      anh{a}$
-dual part: $bf’(a) =</p>
-</div></blockquote>
-<p>rac{b}{cosh^2{a}}$</p>
-<blockquote>
-<div><dl>
-<dt>Returns:</dt><dd><p>str: <cite>Dual(real=&lt;real&gt;, dual=&lt;dual&gt;)</cite></p>
+<dd><p>For the tanh function evaluated at <em>x</em>, where <em>x = a + εb</em>;
+real part: <em>f(a) = *tanh{a}</em>
+dual part: <em>bf’(a) =bsech^2{a}</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Dual(real=&lt;real&gt;, dual=&lt;dual&gt;)</em></p>
 </dd>
-<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">Dual</span>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">Dual</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tanh_x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">tanh</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;tanh(x) = </span><span class="si">{</span><span class="n">tanh_x</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="go">tanh(x) = Dual(real = 0.9640275800758169, dual = 0.4239049491189868</span>
 </pre></div>
 </div>
-</dd>
-</dl>
-</div></blockquote>
 </dd></dl>
 
 </dd></dl>
@@ -404,24 +682,96 @@ forward, central and backward difference and one function to compute second orde
 <dt class="sig sig-object py" id="dual_autodiff.n_diff.NumDiff.first_backward">
 <span class="sig-name descname"><span class="pre">first_backward</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dual_autodiff.n_diff.NumDiff.first_backward" title="Link to this definition"></a></dt>
 <dd><p>Implementing first order numerical differentiation backward difference.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Numerical derivative, derived with backward difference</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">NumDiff</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># define function to differentiate</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x0</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># point at which the derivative is computed</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c1"># step size</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">derivative</span> <span class="o">=</span> <span class="n">NumDiff</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="n">h</span><span class="p">)</span> <span class="c1"># call class</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">derivative</span><span class="o">.</span><span class="n">first_backward</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Backward difference of f(x) at the point x0 = </span><span class="si">{</span><span class="n">x0</span><span class="si">}</span><span class="s1">, with stepsize h = </span><span class="si">{</span><span class="n">h</span><span class="si">}</span><span class="s1">, is </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="go">Backward difference of f(x) at the point x0 = 2, with stepsize h = 0.01, is 0.5892372009922209</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dual_autodiff.n_diff.NumDiff.first_central">
 <span class="sig-name descname"><span class="pre">first_central</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dual_autodiff.n_diff.NumDiff.first_central" title="Link to this definition"></a></dt>
 <dd><p>Implementing fisrt order numerical differentiation central difference.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Numerical derivative, derived with central difference</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">NumDiff</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># define function to differentiate</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x0</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># point at which the derivative is computed</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c1"># step size</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">derivative</span> <span class="o">=</span> <span class="n">NumDiff</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="n">h</span><span class="p">)</span> <span class="c1"># call class</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">derivative</span><span class="o">.</span><span class="n">first_central</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Central difference of f(x) at the point x0 = </span><span class="si">{</span><span class="n">x0</span><span class="si">}</span><span class="s1">, with stepsize h = </span><span class="si">{</span><span class="n">h</span><span class="si">}</span><span class="s1">, is </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="go">Central difference of f(x) at the point x0 = 2, with stepsize h = 0.01, is 0.5939738513171644</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dual_autodiff.n_diff.NumDiff.first_forward">
 <span class="sig-name descname"><span class="pre">first_forward</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dual_autodiff.n_diff.NumDiff.first_forward" title="Link to this definition"></a></dt>
 <dd><p>Implementing first order numerical differenitaion forward difference.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Numerical derivative, derived with forward difference</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">NumDiff</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># define function to differentiate</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x0</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># point at which the derivative is computed</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c1"># step size</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">derivative</span> <span class="o">=</span> <span class="n">NumDiff</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="n">h</span><span class="p">)</span> <span class="c1"># call class</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">derivative</span><span class="o">.</span><span class="n">first_forward</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Forward difference of f(x) at the point x0 = </span><span class="si">{</span><span class="n">x0</span><span class="si">}</span><span class="s1">, with stepsize h = </span><span class="si">{</span><span class="n">h</span><span class="si">}</span><span class="s1">, is </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="go">Forward difference of f(x) at the point x0 = 2, with stepsize h = 0.01, is 0.5987105016421079</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dual_autodiff.n_diff.NumDiff.second_order">
 <span class="sig-name descname"><span class="pre">second_order</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dual_autodiff.n_diff.NumDiff.second_order" title="Link to this definition"></a></dt>
 <dd><p>Implementing second order numerical differentiation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Numerical second order derivative.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">NumDiff</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># define function to differentiate</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x0</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># point at which the derivative is computed</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c1"># step size</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">derivative</span> <span class="o">=</span> <span class="n">NumDiff</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="n">h</span><span class="p">)</span> <span class="c1"># call class</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">derivative</span><span class="o">.</span><span class="n">second_order</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Second derivative of f(x) at the point x0 = </span><span class="si">{</span><span class="n">x0</span><span class="si">}</span><span class="s1">, with stepsize h = </span><span class="si">{</span><span class="n">h</span><span class="si">}</span><span class="s1">, is </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="go">Second derivative of f(x) at the point x0 = 2, with stepsize h = 0.01, is 0.9473300649887051</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </dd></dl>

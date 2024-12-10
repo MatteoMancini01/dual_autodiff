@@ -25,7 +25,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Api Reference" href="pag/api_reference.html" />
-    <link rel="prev" title="Automatic Differentiation Using Dual Numbers" href="dual_autodiff.html" /> 
+    <link rel="prev" title="Automatic Differentiation" href="dual_autodiff.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -51,8 +51,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="pag/introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pag/quick_start.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pag/usage.html">How to use the package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dual_autodiff.html">Automatic Differentiation Using Dual Numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dual_autodiff.html">Automatic Differentiation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Solutions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pag/api_reference.html">Api Reference</a></li>
 </ul>
@@ -83,15 +82,135 @@
              
   <section id="Solutions">
 <h1>Solutions<a class="headerlink" href="#Solutions" title="Link to this heading"></a></h1>
-<div class="nbinput docutils container">
+<ol class="arabic">
+<li><p>Compute the derivative by hand of the following functions (in case of multivariable function compute the partial derivative with respeact to each variable):</p>
+<ul class="simple">
+<li><p>Polynomial</p></li>
+</ul>
+<p><span class="math">\begin{equation}
+f(x) = x^3 - 4x^2 + 6x - 2 \tag{1}
+\end{equation}</span></p>
+<p>Solution Eq. (1)</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}f'(x) = 3x^2 - 8x + 6\\
+f'(x)|_{x=2} = 2\end{split}\]</div>
+<ul class="simple">
+<li><p>Exponential</p></li>
+</ul>
+<p><span class="math">\begin{equation}
+g(x) = e^x - 2x\tag{2}
+\end{equation}</span></p>
+<p>Solution Eq.(2)</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}g'(x) = e^x - 2\\
+g'(x)|_{x=2} = 5.389056099\end{split}\]</div>
+<ul class="simple">
+<li><p>Trigonometric</p></li>
+</ul>
+<p><span class="math">\begin{equation}
+h(x) = \sin{x} + \cos{2x}\tag{3}
+\end{equation}</span></p>
+<p>Solution Eq. (3)</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}h'(x) = \cos{x} - 2\sin{2x}\\
+h'(x)|_{x=2} = 1.097458154\end{split}\]</div>
+<ul class="simple">
+<li><p>Two-Variable Function</p></li>
+</ul>
+<p><span class="math">\begin{equation}
+f(x,y) = x^2 + y^2 + 3xy - 5\tag{4}
+\end{equation}</span></p>
+<p>Solution Eq. (4)</p>
+<ul>
+<li><p>Patial w.r.t <span class="math notranslate nohighlight">\(x\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\frac{\partial f(x,y)}{\partial x} = 2x + 3y\\\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{\partial f(x,y)}{\partial x}|_{x=-1, y=1} = 1\]</div>
+</li>
+<li><p>Patial w.r.t <span class="math notranslate nohighlight">\(y\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\frac{\partial f(x,y)}{\partial y} = 2y + 3x\\\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{\partial f(x,y)}{\partial y}|_{x=-1, y=1} = -1\]</div>
+</li>
+<li><p>Three-Variable Function</p></li>
+</ul>
+<p><span class="math">\begin{equation}
+g(x,y,z) = e^{x+y}\cos{z} - x^2 + y\tag{5}
+\end{equation}</span></p>
+<p>Solution Eq. (5)</p>
+<ul>
+<li><p>Patial w.r.t <span class="math notranslate nohighlight">\(x\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\frac{\partial g(x,y,z)}{\partial x} = e^{x+y}\cos{z} - 2x\\\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{\partial g(x,y,z)}{\partial x}|_{x=2, y=3, z=-4} = -101.0093147\]</div>
+</li>
+<li><p>Patial w.r.t <span class="math notranslate nohighlight">\(y\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\frac{\partial g(x,y,z)}{\partial y} = e^{x+y}\cos{z} + 1\\\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{\partial g(x,y,z)}{\partial y}|_{x=2, y=3, z=-4} = -96.0093147\]</div>
+</li>
+<li><p>Patial w.r.t <span class="math notranslate nohighlight">\(x\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\frac{\partial g(x,y,z)}{\partial z} = -e^{x+y}\sin{z}\\\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{\partial g(x,y,z)}{\partial z}|_{x=2, y=3, z=-4} = -112.3194491\]</div>
+</li>
+</ul>
+</li>
+<li><p>Now compute the derivative of each function using the module <code class="docutils literal notranslate"><span class="pre">dual_autodiff</span></code> or <code class="docutils literal notranslate"><span class="pre">src.dual_autodiff_x</span></code>, at <span class="math notranslate nohighlight">\(x=2\)</span> for Eq. (1,2,3), <span class="math notranslate nohighlight">\((x,y)=(-1,1)\)</span> for Eq. (4) and <span class="math notranslate nohighlight">\((x,y,z) = (2,3,-4)\)</span> for Eq. (5), compare the results with part 1.</p></li>
+</ol>
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">Dual</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importing classes Dual and DualX</span>
+<span class="kn">from</span> <span class="nn">dual_autodiff</span> <span class="kn">import</span> <span class="n">Dual</span>
+<span class="kn">from</span> <span class="nn">src.dual_autodiff_x</span> <span class="kn">import</span> <span class="n">DualX</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Solving Eq. (1,2,3)</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="c1"># Python</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># remeber set the dual part equal to 1</span>
+<span class="c1"># Cython</span>
+<span class="n">xc</span> <span class="o">=</span> <span class="n">DualX</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># construct functions using dual variables x and xc</span>
+<span class="c1"># Python</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">6</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mi">2</span> <span class="c1"># Polynomial</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">exp</span><span class="p">()</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span>           <span class="c1"># Exonential</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">sin</span><span class="p">()</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">cos</span><span class="p">()</span>   <span class="c1"># Trigonometric</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="c1"># Cython</span>
+<span class="n">fc</span> <span class="o">=</span> <span class="n">xc</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">xc</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">6</span><span class="o">*</span><span class="n">xc</span> <span class="o">-</span> <span class="mi">2</span> <span class="c1"># Polynomial</span>
+<span class="n">gc</span> <span class="o">=</span> <span class="n">xc</span><span class="o">.</span><span class="n">exp</span><span class="p">()</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">xc</span>           <span class="c1"># Exonential</span>
+<span class="n">hc</span> <span class="o">=</span> <span class="n">xc</span><span class="o">.</span><span class="n">sin</span><span class="p">()</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">xc</span><span class="p">)</span><span class="o">.</span><span class="n">cos</span><span class="p">()</span>   <span class="c1"># Trigonometric</span>
+
+<span class="c1"># Printing results of derivaives remeber .dual will output the derivative</span>
+<span class="c1"># of the function you want to differentiate</span>
+
+<span class="c1"># Python First</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Pure Python version using dual numbers to compute first order derivative at x=</span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="si">}</span><span class="s1">:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;First order derivative of Eq. (1) at x=</span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="si">}</span><span class="s2"> is f&#39;(</span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="si">}</span><span class="s2">) = </span><span class="si">{</span><span class="n">f</span><span class="o">.</span><span class="n">dual</span><span class="si">}</span><span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;First order derivative of Eq. (2) at x=</span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="si">}</span><span class="s2"> is g&#39;(</span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="si">}</span><span class="s2">) = </span><span class="si">{</span><span class="n">g</span><span class="o">.</span><span class="n">dual</span><span class="si">}</span><span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;First order derivative of Eq. (3) at x=</span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="si">}</span><span class="s2"> is h&#39;(</span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="si">}</span><span class="s2">) = </span><span class="si">{</span><span class="n">h</span><span class="o">.</span><span class="n">dual</span><span class="si">}</span><span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="c1"># Cython</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Cythonised version using dual numbers to compute first order derivative at x=</span><span class="si">{</span><span class="n">xc</span><span class="o">.</span><span class="n">real</span><span class="si">}</span><span class="s1">:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;First order derivative of Eq. (1) at x=</span><span class="si">{</span><span class="n">xc</span><span class="o">.</span><span class="n">real</span><span class="si">}</span><span class="s2"> is f&#39;(</span><span class="si">{</span><span class="n">xc</span><span class="o">.</span><span class="n">real</span><span class="si">}</span><span class="s2">) = </span><span class="si">{</span><span class="n">fc</span><span class="o">.</span><span class="n">dual</span><span class="si">}</span><span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;First order derivative of Eq. (2) at x=</span><span class="si">{</span><span class="n">xc</span><span class="o">.</span><span class="n">real</span><span class="si">}</span><span class="s2"> is g&#39;(</span><span class="si">{</span><span class="n">xc</span><span class="o">.</span><span class="n">real</span><span class="si">}</span><span class="s2">) = </span><span class="si">{</span><span class="n">gc</span><span class="o">.</span><span class="n">dual</span><span class="si">}</span><span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;First order derivative of Eq. (3) at x=</span><span class="si">{</span><span class="n">xc</span><span class="o">.</span><span class="n">real</span><span class="si">}</span><span class="s2"> is h&#39;(</span><span class="si">{</span><span class="n">xc</span><span class="o">.</span><span class="n">real</span><span class="si">}</span><span class="s2">) = </span><span class="si">{</span><span class="n">hc</span><span class="o">.</span><span class="n">dual</span><span class="si">}</span><span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -100,16 +219,132 @@
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Dual(real = 99, dual = 1)
+Pure Python version using dual numbers to compute first order derivative at x=2:
+First order derivative of Eq. (1) at x=2 is f&#39;(2) = 2
+First order derivative of Eq. (2) at x=2 is g&#39;(2) = 5.38905609893065
+First order derivative of Eq. (3) at x=2 is h&#39;(2) = 1.097458154068714
+
+Cythonised version using dual numbers to compute first order derivative at x=2:
+First order derivative of Eq. (1) at x=2 is f&#39;(2) = 2
+First order derivative of Eq. (2) at x=2 is g&#39;(2) = 5.38905609893065
+First order derivative of Eq. (3) at x=2 is h&#39;(2) = 1.097458154068714
 </pre></div></div>
 </div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+
+<span class="sd">Solving Eq. (4) and (5)</span>
+<span class="sd">Usinf parital_derivative fucntion from the Dual and DualX classes</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># initialising for pure Python</span>
+<span class="n">dc</span> <span class="o">=</span> <span class="n">DualX</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># initialising for Cyrhonised version</span>
+
+<span class="c1"># definie two variable function</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span> <span class="o">-</span> <span class="mi">5</span>
+<span class="c1"># define three variable function</span>
+<span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">((</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">exp</span><span class="p">())</span><span class="o">*</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">cos</span><span class="p">())</span> <span class="o">-</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span>
+
+<span class="c1"># Initilaising variables</span>
+
+<span class="c1"># For two variable function f(x,y)</span>
+<span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># Pure Python</span>
+<span class="n">xc2</span><span class="p">,</span> <span class="n">yc2</span>  <span class="o">=</span> <span class="n">DualX</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">DualX</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># Cython</span>
+
+<span class="c1"># For three variable function g(x,y,z)</span>
+<span class="n">x3</span><span class="p">,</span><span class="n">y3</span><span class="p">,</span><span class="n">z3</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">Dual</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">Dual</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># Pure Python</span>
+<span class="n">xc3</span><span class="p">,</span><span class="n">yc3</span><span class="p">,</span><span class="n">zc3</span> <span class="o">=</span> <span class="n">DualX</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">DualX</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">DualX</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># Cython</span>
+
+<span class="c1"># Computing derivative at x=-1 and y=1 for f(x,y)</span>
+<span class="c1"># Python</span>
+<span class="n">f_dx</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">partial_derivative</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">)</span> <span class="c1"># derivative with respect to x</span>
+<span class="n">f_dy</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">partial_derivative</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">)</span> <span class="c1"># derivative with respect to y</span>
+
+<span class="c1"># Cython</span>
+<span class="n">f_dxc</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">partial_derivative</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="n">xc2</span><span class="p">,</span><span class="n">yc2</span><span class="p">)</span>
+<span class="n">f_dyc</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">partial_derivative</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="n">xc2</span><span class="p">,</span><span class="n">yc2</span><span class="p">)</span>
+
+
+<span class="c1"># Computing derivative at x=2, y=3 and z=-4 for g(x,y,z)</span>
+<span class="c1"># Python</span>
+<span class="n">g_dx</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">partial_derivative</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">x3</span><span class="p">,</span><span class="n">y3</span><span class="p">,</span><span class="n">z3</span><span class="p">)</span> <span class="c1"># derivative with respect to x</span>
+<span class="n">g_dy</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">partial_derivative</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">x3</span><span class="p">,</span><span class="n">y3</span><span class="p">,</span><span class="n">z3</span><span class="p">)</span> <span class="c1"># derivative with respect to y</span>
+<span class="n">g_dz</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">partial_derivative</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">x3</span><span class="p">,</span><span class="n">y3</span><span class="p">,</span><span class="n">z3</span><span class="p">)</span> <span class="c1"># derivative with respect to z</span>
+
+<span class="c1"># Cython</span>
+<span class="n">g_dxc</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">partial_derivative</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">xc3</span><span class="p">,</span><span class="n">yc3</span><span class="p">,</span><span class="n">zc3</span><span class="p">)</span> <span class="c1"># derivative with respect to x</span>
+<span class="n">g_dyc</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">partial_derivative</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">xc3</span><span class="p">,</span><span class="n">yc3</span><span class="p">,</span><span class="n">zc3</span><span class="p">)</span> <span class="c1"># derivative with respect to y</span>
+<span class="n">g_dzc</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">partial_derivative</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">xc3</span><span class="p">,</span><span class="n">yc3</span><span class="p">,</span><span class="n">zc3</span><span class="p">)</span> <span class="c1"># derivative with respect to z</span>
+
+<span class="c1"># Printing results</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Partial derivatives of (Eq.4) f(x,y) with respect to x and y at the point (-1,1):&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Pure Python&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Partial derivative of f(x,y) with respect to x at point (</span><span class="si">{</span><span class="n">x2</span><span class="o">.</span><span class="n">real</span><span class="p">,</span><span class="n">y2</span><span class="o">.</span><span class="n">real</span><span class="si">}</span><span class="s1">) is </span><span class="si">{</span><span class="n">f_dx</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Partial derivative of f(x,y) with respect to y at point (</span><span class="si">{</span><span class="n">x2</span><span class="o">.</span><span class="n">real</span><span class="p">,</span><span class="n">y2</span><span class="o">.</span><span class="n">real</span><span class="si">}</span><span class="s1">) is </span><span class="si">{</span><span class="n">f_dy</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Cython&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Partial derivative of f(x,y) with respect to x at point (</span><span class="si">{</span><span class="n">xc2</span><span class="o">.</span><span class="n">real</span><span class="p">,</span><span class="n">yc2</span><span class="o">.</span><span class="n">real</span><span class="si">}</span><span class="s1">) is </span><span class="si">{</span><span class="n">f_dxc</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Partial derivative of f(x,y) with respect to y at point (</span><span class="si">{</span><span class="n">xc2</span><span class="o">.</span><span class="n">real</span><span class="p">,</span><span class="n">yc2</span><span class="o">.</span><span class="n">real</span><span class="si">}</span><span class="s1">) is </span><span class="si">{</span><span class="n">f_dyc</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Partial derivatives of (Eq.5) g(x,y,z) with respect to x, y and z at the point (2,3,-4):&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Pure Python&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Partial derivative of g(x,y,z) with respect to x at point (</span><span class="si">{</span><span class="n">x3</span><span class="o">.</span><span class="n">real</span><span class="p">,</span><span class="n">y3</span><span class="o">.</span><span class="n">real</span><span class="p">,</span><span class="n">z3</span><span class="o">.</span><span class="n">real</span><span class="si">}</span><span class="s1">) is </span><span class="si">{</span><span class="n">g_dx</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Partial derivative of g(x,y,z) with respect to y at point (</span><span class="si">{</span><span class="n">x3</span><span class="o">.</span><span class="n">real</span><span class="p">,</span><span class="n">y3</span><span class="o">.</span><span class="n">real</span><span class="p">,</span><span class="n">z3</span><span class="o">.</span><span class="n">real</span><span class="si">}</span><span class="s1">) is </span><span class="si">{</span><span class="n">g_dy</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Partial derivative of g(x,y,z) with respect to z at point (</span><span class="si">{</span><span class="n">x3</span><span class="o">.</span><span class="n">real</span><span class="p">,</span><span class="n">y3</span><span class="o">.</span><span class="n">real</span><span class="p">,</span><span class="n">z3</span><span class="o">.</span><span class="n">real</span><span class="si">}</span><span class="s1">) is </span><span class="si">{</span><span class="n">g_dz</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Cython&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Partial derivative of g(x,y,z) with respect to x at point (</span><span class="si">{</span><span class="n">xc3</span><span class="o">.</span><span class="n">real</span><span class="p">,</span><span class="n">yc3</span><span class="o">.</span><span class="n">real</span><span class="p">,</span><span class="n">zc3</span><span class="o">.</span><span class="n">real</span><span class="si">}</span><span class="s1">) is </span><span class="si">{</span><span class="n">g_dxc</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Partial derivative of g(x,y,z) with respect to y at point (</span><span class="si">{</span><span class="n">xc3</span><span class="o">.</span><span class="n">real</span><span class="p">,</span><span class="n">yc3</span><span class="o">.</span><span class="n">real</span><span class="p">,</span><span class="n">zc3</span><span class="o">.</span><span class="n">real</span><span class="si">}</span><span class="s1">) is </span><span class="si">{</span><span class="n">g_dyc</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Partial derivative of g(x,y,z) with respect to z at point (</span><span class="si">{</span><span class="n">xc3</span><span class="o">.</span><span class="n">real</span><span class="p">,</span><span class="n">yc3</span><span class="o">.</span><span class="n">real</span><span class="p">,</span><span class="n">zc3</span><span class="o">.</span><span class="n">real</span><span class="si">}</span><span class="s1">) is </span><span class="si">{</span><span class="n">g_dzc</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Partial derivatives of (Eq.4) f(x,y) with respect to x and y at the point (-1,1):
+
+Pure Python
+Partial derivative of f(x,y) with respect to x at point ((-1, 1)) is 1
+Partial derivative of f(x,y) with respect to y at point ((-1, 1)) is -1
+
+Cython
+Partial derivative of f(x,y) with respect to x at point ((-1, 1)) is 1
+Partial derivative of f(x,y) with respect to y at point ((-1, 1)) is -1
+
+
+Partial derivatives of (Eq.5) g(x,y,z) with respect to x, y and z at the point (2,3,-4):
+
+Pure Python
+Partial derivative of g(x,y,z) with respect to x at point ((2, 3, -4)) is -101.0093146996155
+Partial derivative of g(x,y,z) with respect to y at point ((2, 3, -4)) is -96.0093146996155
+Partial derivative of g(x,y,z) with respect to z at point ((2, 3, -4)) is -112.31944914536253
+
+Cython
+Partial derivative of g(x,y,z) with respect to x at point ((2, 3, -4)) is -101.0093146996155
+Partial derivative of g(x,y,z) with respect to y at point ((2, 3, -4)) is -96.0093146996155
+Partial derivative of g(x,y,z) with respect to z at point ((2, 3, -4)) is -112.31944914536253
+</pre></div></div>
+</div>
+<p>Compare the results with you analytical answers!</p>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="dual_autodiff.html" class="btn btn-neutral float-left" title="Automatic Differentiation Using Dual Numbers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dual_autodiff.html" class="btn btn-neutral float-left" title="Automatic Differentiation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="pag/api_reference.html" class="btn btn-neutral float-right" title="Api Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

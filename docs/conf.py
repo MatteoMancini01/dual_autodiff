@@ -37,11 +37,16 @@ autodoc_docstring_signature = True
 autodoc_default_options = {
     'members': True,
     'undoc-members': True,
-    'private-members': False,
+    'private-members': True,
     'show-inheritance': True,
-    'special-members': '__init__',
+    'special-members': "__init__,__repr__,__neg__,__add__, __sub__, __mul__,__pow__, __truediv__,__floordiv__,__rsub__,__rmul__,__rpow__,__rtruediv__,__rfloordiv__",
 }
 
+# Enable MyST extensions
+myst_enable_extensions = [
+    "amsmath",  # Enable AMS math environments
+    "dollarmath",  # Enable LaTeX math using $$
+]
 
 
 mathjax_path = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
