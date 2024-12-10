@@ -22,11 +22,11 @@ Replace `<your_env>` with your preferred environment name, e.g. `dual_venv`.
   Activate your virtual environment with:
    ```bash
     source <your_env>/bin/activate
-
+   ```
   Deactivate your environment with:
    ```bash
     deactivate
-
+   ```
 
 3. Install the package
 
@@ -42,15 +42,18 @@ There are two packages containing two libraries each, `dual_autodiff` (pure pyth
 
 1. Pure python
    You can import the package as follows:
-   - ```python
+-   ```python
       import dual_autodiff 
-   - ```python
+     ```
+-   ```python
       from dual_autodiff import Dual
       from dual_autodiff import NumDiff
+     ```
 2. Cythonised 
     ```python
-    from src/dual_autodiff_x import DualX
-    from src/dual_autodiff_x import NumDiffx
+    from dual_autodiff_x import DualX
+    from dual_autodiff_x import NumDiffx
+    ```
 
 For more instructions on how to use the two packages please use the notebook provided i.e. dual_autodiff.ipynb, furthermore you can access the documentation, where the Jupyter Notebook and detailed explenation with exaples are provided.
 
@@ -65,25 +68,26 @@ Then follow these steps:
 1. Navigate to the `docs` directory:
    ```bash
    cd docs
+   ```
 
 2. Install the required dependencies (e.g. `sphinx`) to generate the documentation, make sure yoru virtual environment is activated:
    ```python
    pip install -r requirements.txt
-
+   ```
 3. Building documentation.
 
    To build documentation run the following commands:
    ```python
    make clean
    make html
-
+   ```
 4. Access documentation.
 
    To access documentation you can either run
-   - ```python
+-    ```python
       open _build/html/index.html
-
-   - Navigate on your file explorer to index.html and click on it (documentation should open on your default browser)
+     ```
+- Navigate on your file explorer to index.html and click on it (documentation should open on your default browser)
 
 I would recomend to follow the second option.
 
