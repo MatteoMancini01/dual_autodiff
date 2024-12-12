@@ -1,4 +1,4 @@
 from .test_dad import TestDual
-from .test_ndiff import NumDiff
+from .test_ndiff import TestNumDiff
 
-__all__ = ["TestDual","NumDiff"]
+__all__ = ["TestDual","TestNumDiff"]
