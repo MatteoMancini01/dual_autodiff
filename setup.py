@@ -33,6 +33,8 @@ setup(
         "numpy>=1.26.4,<2.0.0",
         "pandas>=2.0.0,<3.0.0",
         "matplotlib>=3.9.0,<4.0.0",
+        "pytest >=6.2, < 9.0.0",
+        "ipytest >= 0.14.2, <1.0.0",
     ],
     extras_require={
         "notebooks": ["jupyter", "matplotlib", "pandas", "ipywidgets"],

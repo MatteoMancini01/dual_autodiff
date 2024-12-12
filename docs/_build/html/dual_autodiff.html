@@ -54,13 +54,19 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Automatic Differentiation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Package-Structure">Package Structure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Background">Background</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">Automatic Differentiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Background">Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Automatic Differentiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Coding">Coding</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Dual-vs-Numerical">Dual vs Numerical</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#LogLog-Plots">LogLog Plots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Test-Suiete">Test Suiete</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#Coding">Coding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Automatic-Differentiation-In-1D">Automatic Differentiation In 1D</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Automatic-Differentiation-In-Higher-Dimensions">Automatic Differentiation In Higher Dimensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Automatic-Differentiation-In-Higher-Dimensions">Automatic Differentiation In Higher Dimensions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Comparing-Performance-of-the-Pure-Python-Version-and-the-Cythonised-Version">Comparing Performance of the Pure Python Version and the Cythonised Version</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#Exercises">Exercises</a></li>
 </ul>
 </li>
@@ -137,8 +143,8 @@
 </section>
 <section id="Background">
 <h2>Background<a class="headerlink" href="#Background" title="Link to this heading"></a></h2>
-<p>This is a brief sections where we aim to introduce the concept of a dual number, and how one can use them for automatic differentiation (more details are provided in the report). ##### Definition of Dual Numbers Dual numbers are a hypercomplex number system, these are expressed in the form <span class="math notranslate nohighlight">\(a + \epsilon b\)</span>, where <span class="math notranslate nohighlight">\(a,b \in \mathbb{R}\)</span>, and <span class="math notranslate nohighlight">\(\epsilon\)</span> is the infinitesimal unit which satisfy <span class="math notranslate nohighlight">\(\epsilon^n\)</span>, for <span class="math notranslate nohighlight">\(n \geq 2, n \in \mathbb{N}\)</span> and with
-<span class="math notranslate nohighlight">\(0 &lt; \epsilon &lt;&lt;1\)</span>. ##### Algebra of Dual Numbers Let us define <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> to be dual numbers and <span class="math notranslate nohighlight">\(m\)</span> a real number, in particular <span class="math notranslate nohighlight">\(x = a + \epsilon b\)</span> and <span class="math notranslate nohighlight">\(y = c + \epsilon d\)</span>, where <span class="math notranslate nohighlight">\(a,b,c,d \in \mathbb{R}\)</span>. Then the following results hold:</p>
+<p>This is a brief sections where we aim to introduce the concept of a dual number, and how one can use them for automatic differentiation (more details are provided in the report). #### Definition of Dual Numbers Dual numbers are a hypercomplex number system, these are expressed in the form <span class="math notranslate nohighlight">\(a + \epsilon b\)</span>, where <span class="math notranslate nohighlight">\(a,b \in \mathbb{R}\)</span>, and <span class="math notranslate nohighlight">\(\epsilon\)</span> is the infinitesimal unit which satisfy <span class="math notranslate nohighlight">\(\epsilon^n\)</span>, for <span class="math notranslate nohighlight">\(n \geq 2, n \in \mathbb{N}\)</span> and with
+<span class="math notranslate nohighlight">\(0 &lt; \epsilon &lt;&lt;1\)</span>. #### Algebra of Dual Numbers Let us define <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> to be dual numbers and <span class="math notranslate nohighlight">\(m\)</span> a real number, in particular <span class="math notranslate nohighlight">\(x = a + \epsilon b\)</span> and <span class="math notranslate nohighlight">\(y = c + \epsilon d\)</span>, where <span class="math notranslate nohighlight">\(a,b,c,d \in \mathbb{R}\)</span>. Then the following results hold:</p>
 <ol class="arabic simple">
 <li><p>Addition:</p></li>
 </ol>
@@ -177,8 +183,9 @@
 <li><p><span class="math notranslate nohighlight">\(x^y = a^c \left[1 + \epsilon \left(\frac{cb}{a} + \log{(a)}d\right)\right]\)</span></p></li>
 </ul>
 <p>(All of the above algebric computation are included in both Python and Cython packages)</p>
+</section>
 <section id="id1">
-<h3>Automatic Differentiation<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<h2>Automatic Differentiation<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
 <p>Given any n-degree polynomial, with <span class="math notranslate nohighlight">\(x\)</span> domain <span class="math">\begin{equation}
 P(x) = p_0 + p_1 x + p_2 x^2 + ... + p_n x^n\tag{1}
 \end{equation}</span></p>
@@ -186,17 +193,16 @@ P(x) = p_0 + p_1 x + p_2 x^2 + ... + p_n x^n\tag{1}
 P(a + \epsilon b) = P(a) + \epsilon bP'(a)\tag{2}
 \end{equation}</span> From Eq. (2) one can observe that, the real part of the RHS is the polynomial evaluated at <span class="math notranslate nohighlight">\(a\)</span> while the dual part its the derivative of the polynomila evaluated at <span class="math notranslate nohighlight">\(a\)</span> times the dual coefficient b.</p>
 <p>Generally this can be extended to any analytical real funtion when, computing their Taylor series, i.e. <span class="math">\begin{equation}
-f(a + \epsilon b) = \sum^{\inf}_{n=0} \frac{f^{(n)}(a)b^n\epsilon^n}{n!} = f(a) + \epsilon bf'(a)\tag{3}
+f(a + \epsilon b) = \sum^{\infty}_{n=0} \frac{f^{(n)}(a)b^n\epsilon^n}{n!} = f(a) + \epsilon bf'(a)\tag{3}
 \end{equation}</span></p>
 <p>(More information can be found in the report)</p>
 <p>If one constructs the domanin of any analytical real function to be dual numbers, where the coefficent <span class="math notranslate nohighlight">\(a\)</span> to be any real number and set the coefficient <span class="math notranslate nohighlight">\(b=1\)</span> then, the real part of any analytical real function is the function evaluated at the point <span class="math notranslate nohighlight">\(a\)</span> while the dual part is the function’s derivative evaluated at the point <span class="math notranslate nohighlight">\(a\)</span>. We will see more examples in the coding section.</p>
 <p>Reference: <a class="reference external" href="https://en.wikipedia.org/wiki/Dual_number">Wikipedia</a></p>
 </section>
-</section>
 <section id="Coding">
 <h2>Coding<a class="headerlink" href="#Coding" title="Link to this heading"></a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importing required packages</span>
@@ -597,6 +603,8 @@ f(x) = f(a + \epsilon) = f(a) + \epsilon f'(a)
 </table>
 </div></div>
 </div>
+<section id="Dual-vs-Numerical">
+<h3>Dual vs Numerical<a class="headerlink" href="#Dual-vs-Numerical" title="Link to this heading"></a></h3>
 <p>As we can observe from the above table, automatic differentiation is exact, hence one can now measure the error of the three different numerical methods applyed for differntiation. A good way to visualise the error is through loglog plots. But before we do that, we shall plot the ration between the analytical derivative and automatic derivative.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
@@ -652,6 +660,9 @@ Ratio list:
  1. 1. 1. 1.]
 </pre></div></div>
 </div>
+</section>
+<section id="LogLog-Plots">
+<h3>LogLog Plots<a class="headerlink" href="#LogLog-Plots" title="Link to this heading"></a></h3>
 <p>Using <code class="docutils literal notranslate"><span class="pre">loglog</span> <span class="pre">plots</span></code> is a common approach to visualize and measure errors across scales, especially in numerical methods and scientific computations. So here is how we are going to do it.</p>
 <ul class="simple">
 <li><p>Evaluate the derivative at a single point <span class="math notranslate nohighlight">\(x=1.5\)</span></p></li>
@@ -726,6 +737,9 @@ Ratio list:
 </li>
 </ol>
 <p>Conclusion: - Central Difference is the most accurate method as it achieves faster error reduction with decreasing <span class="math notranslate nohighlight">\(h\)</span>. - Forward Difference and Backward Difference are less accurate but exhibit comparable performance.</p>
+</section>
+<section id="Test-Suiete">
+<h3>Test Suiete<a class="headerlink" href="#Test-Suiete" title="Link to this heading"></a></h3>
 <p>There is a test suite implemented for the pure Python classes <code class="docutils literal notranslate"><span class="pre">Dual</span></code> and <code class="docutils literal notranslate"><span class="pre">NumDiff</span></code>. This is how the tests directory is structured:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>├──<span class="w"> </span>tests
 │<span class="w">   </span>├──<span class="w"> </span>__init__.py
@@ -779,6 +793,7 @@ t_726e70948b184bdabb62cca301c364b1.py <span class="ansi-green-fg">.</span><span 
 &lt;ExitCode.OK: 0&gt;
 </pre></div></div>
 </div>
+</section>
 </section>
 <section id="Automatic-Differentiation-In-1D">
 <h2>Automatic Differentiation In 1D<a class="headerlink" href="#Automatic-Differentiation-In-1D" title="Link to this heading"></a></h2>
@@ -872,6 +887,8 @@ Partial derivaive of f with respect to y, at x,y,z=1,-1,2 is 1.5403023058681398
 Partial derivaive of f with respect to z, at x,y,z=1,-1,2 is -0.9092974268256817
 </pre></div></div>
 </div>
+<section id="Comparing-Performance-of-the-Pure-Python-Version-and-the-Cythonised-Version">
+<h3>Comparing Performance of the Pure Python Version and the Cythonised Version<a class="headerlink" href="#Comparing-Performance-of-the-Pure-Python-Version-and-the-Cythonised-Version" title="Link to this heading"></a></h3>
 <p>To compare performance between the pure Python vs the Cythonised vesrions of the package we are going to use the module <code class="docutils literal notranslate"><span class="pre">timeit</span></code>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">timeit</span></code> module in Python is a standard library tool used to measure the execution time of small code snippets. It is particularly useful for benchmarking and identifying performance bottlenecks.</p>
 <p>Here some key features of <code class="docutils literal notranslate"><span class="pre">timeit</span></code>:</p>
@@ -1074,6 +1091,7 @@ Cython test
 1.92 μs ± 22.7 ns per loop (mean ± std. dev. of 10 runs, 1,000,000 loops each)
 </pre></div></div>
 </div>
+</section>
 </section>
 <section id="Exercises">
 <h2>Exercises<a class="headerlink" href="#Exercises" title="Link to this heading"></a></h2>
