@@ -30,6 +30,32 @@ For Python 3.12:
 sudo apt-get install python3.12-dev
 
 ```
+<b>Pandoc</b>: Pandoc is a universal documentation converter that `nbsphinx` uses to convert Jupyter notebook (`.ipynb` files) into reStructuredText or 
+HTML for inclusion in Sphinx-generated documentation
+
+This is required for the automatic documentation! This is included when running the command `pip install .[docs]`, only perform the following steps
+in case you encounter the following error:
+```bash
+Notebook error:
+PandocMissing in Solutions.ipynb:
+Pandoc wasn't found.
+Please check that pandoc is installed:
+https://pandoc.org/installing.html
+make: *** [Makefile:19: html] Error 2
+```
+while making documentation.
+
+On Debian/Ubuntu-based systems:
+```bash
+sudo apt-get install pandoc
+```
+On macOS:
+```bash
+brew install pandoc
+```
+On Windows:
+You can download the installer from the [official Pandoc website](https://pandoc.org/installing.html), and follow the steps provided.
+
 
 #### Installing Package dual_autodiff
 
