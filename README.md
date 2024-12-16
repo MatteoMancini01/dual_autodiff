@@ -1,6 +1,35 @@
 # dual_autodiff
 `dual_autodiff`is a Python package for automatic differentiation. It provides both pure Python and Cythonized implementations for efficient differentiation. Detailed information and examples can be found in the documentation. Follow the steps below to get started:
 
+#### Pre-requisites
+Make sure you have C compliers installed (in particular `gcc`), if this is not installed, then the Cythonised package will not compile.
+How to ensure `gcc` is installed!
+
+On Debian/Ubuntu and related distributions:
+```bash
+sudo apt-get install build-essential
+```
+This command will install `gcc`, `g++`, `make` and other utilities needed to compile C/C++ extensions in Python packages.
+
+If you are on other operating system, you need the platform-appropriate development tools:
+
+- macOS: Install Xcode Command Line Tools:
+```bash
+xcode-select --install
+```
+
+- Windows: Install Microsoft Build Tools (or have Visual Studio with appropriate C++ build tools). You can install `mingw-w64` and make sure it is on your PATH.
+
+Python Development Headers:
+```bash
+sudo apt-get install python3-dev
+
+```
+For Python 3.12:
+```bash
+sudo apt-get install python3.12-dev
+
+```
 
 #### Installing Package dual_autodiff
 
